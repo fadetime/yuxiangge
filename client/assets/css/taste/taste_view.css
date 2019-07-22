@@ -1,0 +1,39 @@
+.position{
+	margin-top: 20px;
+	border:1px solid #ccc;
+	border-top: none;
+}
+.attribute{
+	border-top:1px solid #ccc;
+	min-height: 40px;
+}
+.attributeName{
+	float: left;
+	width: 20%;
+	line-height: 40px;
+	text-indent: 20px;
+	border-right:1px solid #ccc; 
+}
+.values{
+	float: left;
+	width: 80%;
+}
+.value{
+	float: left;
+	min-width:80px;
+	padding: 0 10px;
+	line-height: 40px;
+}
+.addTasteBox{
+	margin:auto;
+	position: absolute;
+	top:120px;
+	left: 0px;
+	right: 0px;
+	width: 500px;
+}
+.close{
+	position: absolute;
+	top:10px;
+	right: 10px;
+}

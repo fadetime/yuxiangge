@@ -1,0 +1,96 @@
+﻿<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/extra/extra_view.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div class="add_btn add_btnEdit" ng-click="viewExtraCtrl.openShowAdd()">{{viewExtraCtrl.languagePack.restaurant.manage.extra.newExtra}}</div>
+		</div>
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.name}}</div>
+				<div class="table_caption specificat">{{viewExtraCtrl.languagePack.restaurant.manage.extra.norms}}</div>
+				<div class="table_caption price">{{viewExtraCtrl.languagePack.restaurant.manage.extra.price}}</div>
+				<div class="table_caption isactive">{{viewExtraCtrl.languagePack.restaurant.manage.extra.orSold}}</div>
+				<div class="table_caption editbtn"></div>
+			</div>
+			<div class="table_contents" ng-repeat="extra in viewExtraCtrl.extras">
+				<div class="table_content ellipsis name" ng-bind="extra.showName"></div>
+				<div class="table_content ellipsis specificat" ng-bind="extra.showSpecificat"></div>
+				<div class="table_content ellipsis price" ng-bind="extra.price | currency:'$'"></div>
+				<div class="table_content ellipsis isactive pointer {{extra.isActive?'red':''}}" ng-bind="extra.isActive?'{{viewExtraCtrl.languagePack.restaurant.manage.extra.soldOn}}':'{{viewExtraCtrl.languagePack.restaurant.manage.extra.soldOut}}'" ng-click="viewExtraCtrl.changeActive(extra)"></div>
+				<div class="table_content ellipsis editbtn">
+					<div class="edit_btn edit_btnPosition unique_color" ng-click="viewExtraCtrl.openShowEdit(extra)">{{viewExtraCtrl.languagePack.restaurant.manage.extra.edit}}</div>
+				</div>
+			</div>
+		<div>
+	</div>
+</div>
+
+<!-- 新增额外收费 -->
+<div class="input_position" ng-show="viewExtraCtrl.showAdd">
+	<div class="close_btn" ng-click="viewExtraCtrl.closeShowAdd()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.name}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.addExtra.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.englishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.addExtra.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.norms}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.addExtra.specificat">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.englishNorms}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.addExtra.specificat_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.price}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.addExtra.price" ng-change="viewExtraCtrl.checkAdd()">
+			<div class="error" ng-bind="viewExtraCtrl.addPriceError"></div>
+		</div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewExtraCtrl.saveAdd()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<!-- 编辑额外收费 -->
+<div class="input_position" ng-show="viewExtraCtrl.showEdit">
+	<div class="close_btn" ng-click="viewExtraCtrl.closeShowEdit()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.name}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.selectedExtra.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.englishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.selectedExtra.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.norms}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.selectedExtra.specificat">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.englishNorms}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.selectedExtra.specificat_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewExtraCtrl.languagePack.restaurant.manage.extra.price}}:</div>
+			<input class="input_value" type="text" ng-model="viewExtraCtrl.selectedExtra.price" ng-change="viewExtraCtrl.checkEdit()">
+		</div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewExtraCtrl.saveEdit()"></div>
+		<div class="delete_btn" ng-click="viewExtraCtrl.delete(viewExtraCtrl.selectedExtra._id)"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+

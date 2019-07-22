@@ -1,0 +1,87 @@
+﻿<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/order/order_detail.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content " style="{{orderDetailCtrl.errorPrompt?'height:100%;overflow:hidden;':''}}">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div style="float:left">
+				<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-orders-view">{{orderDetailCtrl.languagePack.restaurant.order.order}}</span>
+				<span class="sub_nav blackAlpha54">></span>
+				<span class="sub_nav blackAlpha54 pointer">{{orderDetailCtrl.languagePack.restaurant.order.consumeDetail}}</span>
+			</div>
+			<div class="add_btn" ng-click="orderDetailCtrl.print()">{{orderDetailCtrl.languagePack.restaurant.order.print}}</div>
+			<div style="clear:both"></div>
+		</div>
+
+		<div>
+			<div class="leftbar">
+				<div class="leftbarTitle unique_color size16">{{orderDetailCtrl.languagePack.restaurant.order.costTotal}}</div>
+				<div class="leftbarContent size14">
+					<div>
+						<div class="leftTitles blackAlpha54">
+							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.productTotal}}:</div>
+							<div class="leftTitle discount unique_color" ng-bind="'{{orderDetailCtrl.languagePack.restaurant.order.discount}}'+orderDetailCtrl.discount"></div>
+							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.pot}}:</div>
+							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.total}}:</div>
+							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.serve}}(<span ng-bind="orderDetailCtrl.servicePercent">10%</span>):</div>
+							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.taxation}}(<span ng-bind="orderDetailCtrl.gstPercent">7%</span>):</div>
+						</div>
+						<div class="rightcontents blackAlpha54">
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.productTotal | currency:'$ '}}" ng-bind="orderDetailCtrl.order.productTotal | currency:'$ '">$120.0</div>
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.finalProductTotal | currency:'$ '}}" ng-bind="orderDetailCtrl.order.finalProductTotal | currency:'$ '">$96.0</div>
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.otherTotal | currency:'$ '}}" ng-bind="orderDetailCtrl.order.otherTotal | currency:'$ '">$24.0</div>
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.total | currency:'$ '}}" ng-bind="orderDetailCtrl.order.total | currency:'$ '">$120.0</div>
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.serviceCharge | currency:'$ '}}" ng-bind="orderDetailCtrl.order.serviceCharge | currency:'$ '">$12.0</div>
+							<div class="rightcontent ellipsis" title="{{orderDetailCtrl.order.gst | currency:'$ '}}" ng-bind="orderDetailCtrl.order.gst | currency:'$ '">$8.4</div>
+						</div>
+					</div>
+					<div style="clear:both"></div><!-- 清浮动 -->
+					<div>
+						<div class="sumprice blackAlpha85">{{orderDetailCtrl.languagePack.restaurant.order.totalPrice}}:<span class="unique_color" ng-bind="orderDetailCtrl.order.subtotal | currency:'$ '"> $ 200.50</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="rightbar">
+				<div class="rightbarTitle unique_color size16">{{orderDetailCtrl.languagePack.restaurant.order.costDetail}}</div>
+				<div class="panleft size14">
+					<div class="detailtitles">{{orderDetailCtrl.languagePack.restaurant.order.pot}}</div>
+					<!-- old category -->
+					<!-- <div class="detailcontents blackAlpha54" ng-show="orderDetailCtrl.pan_category">
+						<div class="detailcontent category ellipsis" title="{{orderDetailCtrl.pan_category.showName}}" ng-bind="orderDetailCtrl.pan_category.showName">双拼锅</div>
+						<div class="detailcontent quantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{orderDetailCtrl.pan_category.finalTotal | currency:'$ '}}" ng-bind="orderDetailCtrl.pan_category.finalTotal | currency:'$ '">$20</div>
+					</div> -->
+					<!-- new category -->
+					<div class="detailcontents blackAlpha54" ng-show="orderDetailCtrl.pan_soups[0]" ng-repeat="pan_soup in orderDetailCtrl.pan_soups">
+						<div class="detailcontent category ellipsis" title="{{pan_soup.showName}}" ng-bind="pan_soup.showName">双拼锅</div>
+						<div class="detailcontent quantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{pan_soup.finalTotal | currency:'$ '}}" ng-bind="pan_soup.finalTotal | currency:'$ '">$20</div>
+					</div>
+					<div class="detailcontents blackAlpha54" ng-show="orderDetailCtrl.extras[0]" ng-repeat="extra in orderDetailCtrl.extras">
+						<div class="detailcontent category ellipsis" title="{{extra.showName}}" ng-bind="extra.showName">双拼锅</div>
+						<div class="detailcontent quantity" ng-bind="'×'+extra.orderQuantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{extra.finalTotal | currency:'$'}}" ng-bind="extra.finalTotal | currency:'$'">$20</div>
+					</div>
+				</div>
+
+				<div class="productRight size14" style="{{orderDetailCtrl.productHeight}}">
+					<div class="detailtitles">{{orderDetailCtrl.languagePack.restaurant.order.product}}</div>
+					<div class="detailcontents blackAlpha54" ng-show="orderDetailCtrl.products[0]" ng-repeat="product in orderDetailCtrl.products">
+						<div class="detailcontent category ellipsis" title="{{product.showName}}" ng-bind="product.showName">进口牛肉</div>
+						<div class="detailcontent quantity" ng-bind="'×'+product.orderQuantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{product.finalTotal | currency:'$'}}" ng-bind="product.finalTotal | currency:'$'">$20</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div ng-show="orderDetailCtrl.errorPrompt" style="width:100%;height:140%;z-index:100;background:#ccc;position:fixed;top:-70px;opacity:0.5"></div>
+<div ng-show="orderDetailCtrl.errorPrompt" style="margin: auto;position: fixed;top:0px;bottom:0px;left: 0px;right: 0px;width: 980px;height: 144px;background: #fff;z-index:200;box-shadow: #ccc 0 0 5px 0;opacity:1">
+	<div style="height:100px;line-height:100px;text-align:center;opacity:1">{{orderDetailCtrl.showError}}</div>
+	<div ng-click="orderDetailCtrl.errorPrompt=false;" class="pointer" style="width:74px;height:26px;line-height:26px;text-align:center;border:1px solid #000;position:absolute;bottom:20px;right:20px;opacity:1">{{orderDetailCtrl.languagePack.restaurant.printer.confirm}}</div>
+</div>

@@ -1,0 +1,85 @@
+/*contentLeft*/
+.contentLeft{
+	padding: 7px 0;
+	width: 18%;
+	height: 360px;
+	float: left;
+	background: #fff
+}
+.leftname{
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+}
+/*contentRight*/
+.contentRight{
+	float: left;
+	margin-left: 2%;
+	background:#fff;
+	width: 80%;
+	min-height: 400px; 
+}
+/*餐厅公告*/
+.notice{
+	margin: 30px auto;
+	padding: 10px;
+	width: 600px;
+	height: 120px;
+	line-height: 20px;
+	border:1px solid #ccc;
+	resize: none;
+	display:block
+}
+.save_btnPosition{
+	margin: 0 auto;
+}
+/*积分兑换*/
+.changeintegral{
+	margin: 50px auto;
+	width: 280px;
+	height: 30px;
+}
+.integral{
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 55px;
+	height: 30px;
+	text-indent: 10px;
+	border: 1px solid #ccc;
+	display: inline;
+}
+.size16{
+	font-size: 16px;
+}
+/*密码修改及信息修改*/
+.changepassword{
+	margin: 60px auto 30px;
+	width: 280px;
+	height: 148px;
+}
+.inputcontent{
+	width: 280px;
+	height: 44px;
+	margin-bottom: 30px;
+}
+.word{
+	float: left;
+	margin-right: 20px;
+	width: 60px;
+	height: 44px;
+	line-height: 44px;
+	text-align: right;
+}
+.inputinput{
+	float: left;
+	width: 200px;
+	height: 44px;
+	text-indent: 20px;
+	border:1px solid #ccc;
+}
+.changepassword2{
+	height: 360px;
+}
+.submit_btnPosition{
+	float: left;
+}

@@ -1,0 +1,105 @@
+.header{
+	margin: 7px 0 23px 0;
+	height: 46px;
+}
+.add_btnPosition{
+	float: left;
+}
+.search_boxPosition{
+	float: right;
+}
+
+/*contentLeft*/
+.contentLeft{
+	padding: 7px 0;
+	width: 18%;
+	float: left;
+	background: #fff
+}
+.category{
+	margin-bottom: 30px;
+	text-align: center;
+}
+.sepCategory{
+	margin-top: 20px;
+}
+.edit_btnPosition{
+	margin: 0 auto;
+}
+
+
+/*contentRight*/
+.contentRight{
+	float: left;
+	margin-left: 2%;
+	background:#fff;
+	width: 80%;
+	min-height: 400px; 
+}
+.sorts{
+	padding-left: 20px;
+	border-bottom:1px solid #ccc;
+}
+.sort{
+	float: left;
+	width: 120px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+}
+.item{
+	float: left;
+	margin-right: 5px;
+	height: 36px;
+}
+.btnActive_down{
+	background: url(../../images/pxG.png) 1px no-repeat;
+	width: 14px;
+	height: 100%;
+	float: left
+}
+.btnUnActive_down{
+	background: url(../../images/pxR.png) 1px no-repeat;
+	width: 14px;
+	height: 100%;
+	float: left
+}
+.btnActive_up{
+	background: url(../../images/asecR.png) 1px no-repeat;
+	width: 14px;
+	height: 100%;
+	float: left
+}
+.btnUnActive_up{
+	background: url(../../images/asecG.png) 1px no-repeat;
+	width: 14px;
+	height: 100%;
+	float: left
+}
+.productList{
+	margin:7px 0;
+	width: 100%;
+}
+.box{
+	margin:0 auto;
+}
+.name{
+	float: left;
+}
+.isActive{
+	float: right;
+	margin-top: 5px;
+}
+.price{
+	float: left;
+}
+.specificat{
+	float: left;
+	margin-left: 22px;
+}
+.quantity{
+	float: left;
+}
+.edit_btnPosition2{
+	float: right;
+}

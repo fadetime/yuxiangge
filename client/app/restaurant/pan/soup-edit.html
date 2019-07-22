@@ -1,0 +1,89 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/pan/soup_edit.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-soups-view">{{editSoupCtrl.languagePack.restaurant.manage.pan.soup}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer">{{editSoupCtrl.languagePack.restaurant.manage.pan.editSoup}}</span>
+		</div>
+
+		<div style="background:#fff;padding-bottom:30px;">
+			<div class="input_position">
+				<div class="input_contents">
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.soupName}}:</div>
+						<input type="input_value" class="input_value" ng-model="editSoupCtrl.pan_soup.name">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.soupEnglishName}}:</div>
+						<input type="input_value" class="input_value" ng-model="editSoupCtrl.pan_soup.name_english">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.price}}:</div>
+						<input type="input_value" class="input_value" ng-model="editSoupCtrl.pan_soup.price">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.description}}:</div>
+						<textarea class="describeinput" ng-model="editSoupCtrl.pan_soup.describe">例如:汤汁鲜美，清爽可口</textarea>
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.englishDescription}}:</div>
+						<textarea class="describeinput" style="margin-top:20px;" ng-model="editSoupCtrl.pan_soup.describe_english">例如:汤汁鲜美，清爽可口</textarea>
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.soupPhoto}}:</div>
+						<div class="submit_btn submit_btnPosition" ngf-select ngf-change="editSoupCtrl.upload($files,0)">
+							<span class="submit_prompt">{{editSoupCtrl.languagePack.restaurant.common.submitImg}}</span>
+							<img ng-show="editSoupCtrl.pan_soup.image" ng-src="{{editSoupCtrl.imageFile+editSoupCtrl.pan_soup.image}}"  class="submit_img">
+							<progressbar ng-show="editSoupCtrl.loaded > 0" class="progress_bar" ng-class="{active: editSoupCtrl.loaded < 100}" max="100" value="editSoupCtrl.loaded">
+							<span ng-bind="editSoupCtrl.loaded" ></span>%</progressbar >
+						</div>
+					</div>
+					<div style="clear:both"></div>
+
+					<div class="input_content input_contentDiference">
+						<div class="input_name">{{editSoupCtrl.languagePack.restaurant.manage.pan.taste}}:</div>
+						<div class="tastechoose">
+							<div ng-repeat="attribute in editSoupCtrl.attributes">
+								<div class="tastname">
+									<div class="chooseno pointer" ng-if="!attribute.isSelect" ng-click="attribute.isSelect=!attribute.isSelect"></div>
+									<div class="chooseyes pointer" ng-if="attribute.isSelect" ng-click="attribute.isSelect=!attribute.isSelect"></div>
+									<div class="choosename blackAlpha85 ellipsis" title="{{attribute.showName}}" ng-bind="attribute.showName">汤浓度</div>
+								</div>
+								<div class="tastcatrgories">
+									<div class="tastcatrgory pointer {{v.style}}" ng-repeat="v in attribute.value"  ng-bind="v.showName" ng-click="editSoupCtrl.chooseTasteValue(v,attribute)">标准</div>
+								</div>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+						<div style="clear:both"></div>
+						<div class="example blackAlpha54">
+							<div class="chooseone">
+								<div class="one"></div>
+								<div class="promptone">{{editSoupCtrl.languagePack.restaurant.manage.pan.selectTasty}}</div>
+							</div>
+							<div class="choosetwo">
+								<div class="two"></div>
+								<div class="prompttwo">{{editSoupCtrl.languagePack.restaurant.manage.pan.selectSoup}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div style="clear:both"></div>
+				<div class="btns">
+					<div class="save_btn save_btnPosition" ng-click="editSoupCtrl.update()"></div>
+					<div class="delete_btn delete_btnPosition" ng-click="editSoupCtrl.delete(editSoupCtrl.pan_soup._id)"></div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

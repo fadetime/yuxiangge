@@ -1,0 +1,49 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/print/print_view.css" rel="stylesheet" type="text/css" >
+<div class="content" style="{{printViewCtrl.errorPrompt?'height:100%;overflow:hidden;':''}}">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div class="add_btn add_btnDifferent" ng-click="printViewCtrl.autoPrint()">{{printViewCtrl.intervalId==''?printViewCtrl.languagePack.restaurant.printer.autoPrint:printViewCtrl.languagePack.restaurant.printer.stopAutoPrint}}</div>
+			<div style="clear:both"></div>
+		</div>
+			
+		<div>
+			<div class="errorPrint">
+				<div class="printTitle">{{printViewCtrl.languagePack.restaurant.printer.errorCell}}</div>
+				<div class="errorContent" ng-repeat="err in printViewCtrl.printersInitErr">
+					<div class="printerName ellipsis" style="width:50%;" ng-bind="err.printerName+printViewCtrl.languagePack.restaurant.printer.printerInitErr" title="{{err.printerName+printViewCtrl.languagePack.restaurant.printer.printerInitErr}}">1</div>
+					<div class="reprint ellipsis unique_color" style="width:50%;" ng-click="printViewCtrl.reInitPrinter(err)">{{printViewCtrl.languagePack.restaurant.printer.reInitPrinter}}</div>
+					<div style="clear:both"></div>
+				</div>
+				<div class="errorContent" ng-repeat="err in printViewCtrl.errJobs">
+					<div class="printerName ellipsis" ng-bind="err.printerName">1</div>
+					<div class="printNumber ellipsis" ng-bind="err.tableName">2c</div>
+					<div class="errType ellipsis" ng-bind="err.type=='panSoup'?printViewCtrl.languagePack.restaurant.printer.typePanSoup:printViewCtrl.languagePack.restaurant.printer.typeProduct" title="{{err.type=='panSoup'?printViewCtrl.languagePack.restaurant.printer.typePanSoup:printViewCtrl.languagePack.restaurant.printer.typeProduct}}">菜品</div>
+					<div class="reprint ellipsis unique_color" ng-click="printViewCtrl.rePrint(err)">{{printViewCtrl.languagePack.restaurant.printer.rePrint}}</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="rightPrint">
+				<div class="printTitle">
+					<span>{{printViewCtrl.languagePack.restaurant.printer.changeList}}</span>
+					<div class="prompt unique_color" ng-if="printViewCtrl.intervalId != '' ">{{printViewCtrl.languagePack.restaurant.printer.inAutoPrint}}</div>
+				</div>
+				<div class="rightContent" ng-repeat="change in printViewCtrl.order_changes">
+					<!-- <div class="printerName ellipsis">1</div> -->
+					<div class="printerName ellipsis" style="width:33%;" ng-bind="change.table.name">2c</div>
+					<div class="errType ellipsis" style="width:33%;" ng-bind="change.state==1?printViewCtrl.languagePack.restaurant.printer.typePanSoup:(change.state==4?'退菜':(change.state==11?'催菜':printViewCtrl.languagePack.restaurant.printer.typeProduct))"></div>
+					<div class="reprint ellipsis" style="width:33%;" ng-click="printViewCtrl.print(change)">{{printViewCtrl.languagePack.restaurant.printer.print}}</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- printViewCtrl.errorPrompt -->
+<div ng-show="printViewCtrl.errorPrompt" style="width:100%;height:140%;z-index:100;background:#ccc;position:fixed;top:-70px;opacity:0.5"></div>
+<div ng-show="printViewCtrl.errorPrompt" style="margin: auto;position: fixed;top:0px;bottom:0px;left: 0px;right: 0px;width: 980px;height: 144px;background: #fff;z-index:200;box-shadow: #ccc 0 0 5px 0;opacity:1">
+	<div style="height:100px;line-height:100px;text-align:center;opacity:1">{{printViewCtrl.showError}}</div>
+	<div ng-click="printViewCtrl.errorPrompt=false;" class="pointer" style="width:74px;height:26px;line-height:26px;text-align:center;border:1px solid #000;position:absolute;bottom:20px;right:20px;opacity:1">{{printViewCtrl.languagePack.restaurant.printer.confirm}}</div>
+</div>

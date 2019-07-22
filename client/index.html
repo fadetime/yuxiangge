@@ -1,0 +1,126 @@
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="kuaishangcaiwebApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ui-view=""></div>
+
+    <!-- assets  client-config -->
+    <script src="assets/config.js"></script>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+      <!-- endbower -->
+      <script src="socket.io-client/socket.io.js"></script>
+    <!-- endbuild -->
+
+        
+        <!-- build:js(.tmp) app/app.js -->
+        
+        <script src="app/app.js"></script>
+          <!-- injector:js -->
+          <script src="app/admin/admin.router.js"></script>
+          <script src="app/admin/customer/customer-view.controller.js"></script>
+          <script src="app/admin/restaurant/restaurant-view.controller.js"></script>
+          <script src="app/comment/comment.js"></script>
+          <script src="app/comment/login/login.controller.js"></script>
+          <script src="app/comment/settings/settings.controller.js"></script>
+          <script src="app/comment/signup/signup.controller.js"></script>
+          <script src="app/jsfile/LodopFuncs.js"></script>
+          <script src="app/jsfile/ui-bootstrap-tpls.js"></script>
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="app/restaurant/customer/consume-detail.controller.js"></script>
+          <script src="app/restaurant/customer/consume-record.controller.js"></script>
+          <script src="app/restaurant/customer/customer-view.controller.js"></script>
+          <script src="app/restaurant/customer/integral-record.controller.js"></script>
+          <script src="app/restaurant/extra/extra-view.controller.js"></script>
+          <script src="app/restaurant/gift/gift-view.controller.js"></script>
+          <script src="app/restaurant/integral/integral-add.controller.js"></script>
+          <script src="app/restaurant/order/order-detail.controller.js"></script>
+          <script src="app/restaurant/order/order-edit.controller.js"></script>
+          <script src="app/restaurant/order/order-view.controller.js"></script>
+          <script src="app/restaurant/pan/pan-view.controller.js"></script>
+          <script src="app/restaurant/pan/soup-add.controller.js"></script>
+          <script src="app/restaurant/pan/soup-edit.controller.js"></script>
+          <script src="app/restaurant/pan/soup-view.controller.js"></script>
+          <script src="app/restaurant/personal/personal-view.controller.js"></script>
+          <script src="app/restaurant/print/print-view.controller.js"></script>
+          <script src="app/restaurant/printer/printer-add.controller.js"></script>
+          <script src="app/restaurant/printer/printer-edit.controller.js"></script>
+          <script src="app/restaurant/printer/printer-test.controller.js"></script>
+          <script src="app/restaurant/printer/printer-view.controller.js"></script>
+          <script src="app/restaurant/product/category-view.controller.js"></script>
+          <script src="app/restaurant/product/product-add.controller.js"></script>
+          <script src="app/restaurant/product/product-edit.controller.js"></script>
+          <script src="app/restaurant/product/product-view.controller.js"></script>
+          <script src="app/restaurant/restaurant.router.js"></script>
+          <script src="app/restaurant/statistic/statistic.controller.js"></script>
+          <script src="app/restaurant/table/table-view.controller.js"></script>
+          <script src="app/restaurant/taste/taste-view.controller.js"></script>
+          <script src="app/restaurant/waiter/waiter-view.controller.js"></script>
+          <script src="components/attribute/attribute.service.js"></script>
+          <script src="components/auth/auth.service.js"></script>
+          <script src="components/auth/user.service.js"></script>
+          <script src="components/category/category.service.js"></script>
+          <script src="components/customer/customer.service.js"></script>
+          <script src="components/extra/extra.service.js"></script>
+          <script src="components/gift/gift.services.js"></script>
+          <script src="components/integral/integral.service.js"></script>
+          <script src="components/language/language.service.js"></script>
+          <script src="components/member/member.service.js"></script>
+          <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+          <script src="components/navbar/navbar.controller.js"></script>
+          <script src="components/navbar/navbar.controller0.js"></script>
+          <script src="components/order/order.service.js"></script>
+          <script src="components/pan_category/pan_category.service.js"></script>
+          <script src="components/pan_soup/pan_soup.service.js"></script>
+          <script src="components/printer/printer.service.js"></script>
+          <script src="components/product/product.service.js"></script>
+          <script src="components/restaurant/restaurant.service.js"></script>
+          <script src="components/socket/socket.service.js"></script>
+          <script src="components/table/table.service.js"></script>
+          <script src="components/waiter/waiter.service.js"></script>
+          <!-- endinjector -->
+        <!-- endbuild -->
+</body>
+</html>

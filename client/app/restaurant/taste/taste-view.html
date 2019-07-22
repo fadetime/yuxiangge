@@ -1,0 +1,53 @@
+<link href="assets/css/taste/taste_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header ">
+			<div class="add_btn" ng-click="viewTasteCtrl.showAddTasteBox=true">汤底口味</div>
+			<div class="pointer" style="float:right" ng-click="viewTasteCtrl.destroyAll()">重置</div>
+			<div style="clear:both"></div>
+		</div>
+		<div class="position">
+			<div class="attribute" ng-repeat="attribute in viewTasteCtrl.attributes">
+				<div class="attributeName" ng-bind="attribute.showName"></div>
+				<div class="values">
+					<div class="value" ng-repeat="v in attribute.value" ng-bind="v.showName"></div>
+				</div>
+			</div>
+		</div>
+		<div class="addTasteBox" ng-show="viewTasteCtrl.showAddTasteBox">
+			<div class="close" ng-click="viewTasteCtrl.showAddTasteBox=false">close</div>
+			<div class="input_position" style="width: 518px">
+				<div class="input_contents" style="width: 442px">
+					<div class="input_content" style="width: 442px">
+						<div class="input_name" style="width: 218px">口味名称(中文)/Name:</div>
+						<input type="text" ng-model="viewTasteCtrl.attribute.name" class="input_value" style="width: 202px">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name" style="width: 218px">口味名称(英文)/English Name:</div>
+						<input type="text" ng-model="viewTasteCtrl.attribute.name_english" class="input_value" style="width: 202px">
+					</div>
+					<div ng-repeat="v in viewTasteCtrl.attribute.value">
+						<div class="input_content">
+							<div class="input_name" style="width: 218px">可选值(中文)/Value name:</div>
+							<input type="text" ng-model="v.name" class="input_value" style="width: 202px">
+						</div>
+
+						<div class="input_content">
+							<div class="input_name" style="width: 218px">可选值(英文)/English value name:</div>
+							<input type="text" ng-model="v.name_english" class="input_value" style="width: 202px">
+						</div>
+					</div>
+					<button style="margin-left:160px;" ng-click="viewTasteCtrl.addMore()">add</button>
+					
+				</div>
+				<div class="btns">
+					<div class="save_btn" ng-click="viewTasteCtrl.save()"></div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

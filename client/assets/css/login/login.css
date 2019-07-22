@@ -1,0 +1,107 @@
+.content{
+	margin:auto;
+	width:428px;
+	height:398px;
+	background:#fff;
+	padding:0 46px;
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+}
+.login{
+	color:#000;
+	font-size:70px;
+	text-align:center;
+	margin:46px 0 50px;
+}
+.body{
+	width:100%;
+	height:100%;	
+	background:#fcfcfc;
+}
+.input{
+	border:1px solid rbga(00,00,00,0.2);
+	height:44px;
+	width:100%;
+	opacity:28%;
+	font-size:20px;
+	color:#000;
+	padding-left:20px;
+}
+.margin-top{
+	margin-top:50px;
+}
+.margin-bottom{
+	margin-bottom:50px;
+}
+.button{
+	color:#fff;
+	font-size:22px;
+	background:#c30101;
+	border-radius:4px;
+	text-align:center;
+	height:44px;
+	line-height:44px;
+}
+.content{
+	margin:auto;
+	width:428px;
+	height:398px;
+	background:#fff;
+	padding:0 46px;
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+}
+.login{
+	color:#000;
+	font-size:70px;
+	text-align:center;
+	margin:46px 0 50px;
+}
+.body{
+	width:100%;
+	height:100%;	
+	background:#fcfcfc;
+}
+.input{
+	border:1px solid rbga(00,00,00,0.2);
+	height:44px;
+	transparent:20%;
+	width:100%;
+	opacity:28%;
+	font-size:20px;
+	color:#000;
+	padding-left:20px;
+}
+.margin-top{
+	margin-top:50px;
+}
+.margin-bottom{
+	margin-bottom:50px;
+}
+.button{
+	color:#fff;
+	font-size:22px;
+	background:#c30101;
+	border-radius:4px;
+	text-align:center;
+	height:44px;
+	line-height:44px;
+}
+.error{
+	height: 0;
+	position: relative;
+	top:-36px;
+	
+}
+.red{
+	color:#a94442;
+}
+form{
+	margin:0;
+}

@@ -1,0 +1,69 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/admin/admin_view.css" rel="stylesheet" type="text/css" >
+<div class="content">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+	
+		<div class="header">
+			<div class="add_btn add_btnPosition" ng-click="adminRestaurantCtrl.openAddRestaurant()">{{adminRestaurantCtrl.languagePack.admin.restaurant.addRestaurant}}</div>
+			<div class="search_box search_boxPosition">
+				<input type="text" class="search_input" style="background:#f8f8f8;" placeholder="{{adminRestaurantCtrl.languagePack.admin.restaurant.search}}" onfocus="this.placeholder=''" ng-onblur="this.placeholder='{{adminRestaurantCtrl.languagePack.admin.restaurant.search}}'" ng-model="adminRestaurantCtrl.retrieval">
+				<div class="search_btn" ng-click="adminRestaurantCtrl.select()"></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption width33 text20">{{adminRestaurantCtrl.languagePack.admin.restaurant.name}}</div>
+				<div class="table_caption width33">{{adminRestaurantCtrl.languagePack.admin.restaurant.account}}</div>
+				<div class="table_caption width34">{{adminRestaurantCtrl.languagePack.admin.restaurant.Password}}</div>
+			</div>
+			<div class="table_contents" ng-repeat="restaurant in adminRestaurantCtrl.restaurants">
+				<div class="table_content ellipsis width33 text20" ng-bind="restaurant._restaurantProflie.name"><span>阿夏</span></div>
+				<div class="table_content ellipsis width33" ng-bind="restaurant.account">1235678</div>
+				<div class="table_content ellipsis width34 pointer" ng-click="adminRestaurantCtrl.openEditPassword(restaurant)"><span class="unique_color">{{adminRestaurantCtrl.languagePack.admin.restaurant.editPassword}}</span></div>
+			</div>
+		</div>
+
+		<!-- 新增餐厅 -->
+		<div class="input_position height300" ng-show="adminRestaurantCtrl.addRestaurant">
+			<div class="close_btn" ng-click="adminRestaurantCtrl.closeAddRestaurant()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">餐厅名称：</div>
+					<input class="input_value" type="text" ng-model="adminRestaurantCtrl.restaurant.name">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{adminRestaurantCtrl.languagePack.admin.restaurant.account}}：</div>
+					<input class="input_value" type="text" ng-model="adminRestaurantCtrl.restaurant.account">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{adminRestaurantCtrl.languagePack.admin.restaurant.Password}}：</div>
+					<input class="input_value" type="text" ng-model="adminRestaurantCtrl.restaurant.password">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="adminRestaurantCtrl.save()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<!-- 编辑密码 -->
+		<div class="input_position height160" ng-show="adminRestaurantCtrl.editPassword">
+			<div class="close_btn" ng-click="adminRestaurantCtrl.closeEditPassword()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{adminRestaurantCtrl.languagePack.admin.restaurant.Password}}：</div>
+					<input type="text" class="input_value" ng-model="adminRestaurantCtrl.restaurant.password">
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="adminRestaurantCtrl.updatePassword()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+<pagination style="float:right;margin-right:200px;" ng-if="viewOrderCtrl.pagination.numPages > 1" total-items="viewOrderCtrl.pagination.totalItems" ng-model="viewOrderCtrl.pagination.page" items-per-page="viewOrderCtrl.pagination.itemsPerPage" max-size="viewOrderCtrl.pagination.maxSize" boundary-links="{{viewOrderCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewOrderCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewOrderCtrl.pageChanged()"></pagination>
+</div>
+	

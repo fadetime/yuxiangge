@@ -1,0 +1,111 @@
+<div ng-include="'components/navbar/navbar.html'"></div> 
+<link href="assets/css/product/product_edit.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->	
+
+<div class="content ">	
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div>
+			<div class="header">
+				<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-products-view">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.dishes}}</span>
+				<span class="sub_nav blackAlpha54">></span>
+				<span class="sub_nav blackAlpha54 pointer">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.add}}</span>
+			</div>
+		</div>
+		<div class="smallContent">
+			<div class="input_position">
+				<div class="input_contents">
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.name}}:</div>
+						<input type="text" ng-model="addProductCtrl.product.info_chinese.name" class="input_value">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.englishName}}:</div>
+						<input type="text" ng-model="addProductCtrl.product.info_english.name" class="input_value">
+					</div>
+
+					<!-- <div class="input_content">
+						<div  class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.norms}}:</div>
+						<input type="text" ng-model="addProductCtrl.product.info_chinese.specificat" placeholder="{{addProductCtrl.languagePack.restaurant.manage.product.product_add.nor}}" class="input_value" >
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.englishNorms}}:</div>
+						<input type="text"  ng-model="addProductCtrl.product.info_english.specificat" class="input_value">
+					</div> -->
+
+					<div class="input_content">
+						<div  class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.price}}:</div>
+						<input type="text" ng-model="addProductCtrl.product.price" placeholder="{{addProductCtrl.languagePack.restaurant.manage.product.product_add.pri}}" ng-change="addProductCtrl.check('price')" class="input_value">
+						<div class="error150" ng-bind="addProductCtrl.priceError"></div>
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.stock}}:</div>
+						<input type="text" ng-model="addProductCtrl.product.quantity" ng-change="addProductCtrl.check('quantity')" class="input_value">
+						<div class="error150" ng-bind="addProductCtrl.quantityError"></div>
+					</div>
+
+					<div class="input_content" style="position:relative;">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.ableDiscount}}:</div>
+						<div class="input_value">
+							<div class="show_name" ng-bind="addProductCtrl.havingDiscount"></div>
+							<div class="select_btn" ng-click="addProductCtrl.openDiscount()"></div>
+						</div>
+						<div class="chooseDiscounts" ng-show="addProductCtrl.onDiscount">
+							<div class="chooseDiscount pointer" ng-click="addProductCtrl.discount()">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.discount}}</div>
+							<div class="chooseDiscount pointer" ng-click="addProductCtrl.noDiscount()">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.noDiscount}}</div>
+						</div>	
+						<div style="clear:both"></div>
+					</div>
+					
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.classfy}}:</div>
+						<div class="chooseCategory">
+							<div class="showCategory" ng-repeat="tag in addProductCtrl.product.category" ng-bind="tag.showName" ng-click="addProductCtrl.splice(tag,'category')">荤菜-肉类</div>
+							<div class="showCategory" ng-repeat="tag in addProductCtrl.product.separatCategory" ng-bind="tag.tagName" ng-click="addProductCtrl.splice(tag,'separatCategory')">荤菜-肉类</div>
+
+							<div class="add_btn add_btnPosition" ng-click="addProductCtrl.addCategory()">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.select}}</div>
+						</div>
+						<div style="clear:both"></div>	
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{addProductCtrl.languagePack.restaurant.manage.product.product_add.photo}}:</div>
+						<div ngf-select ngf-change="addProductCtrl.upload($files,0)" class="submit_btn submit_btnPosition">
+							<span class="submit_prompt">上传图片</span>
+							<img ng-show="addProductCtrl.product.image" ng-src="{{addProductCtrl.imageFile+addProductCtrl.product.image}}"  class="submit_img">
+							<progressbar ng-show="addProductCtrl.loaded > 0" class="progress_bar" ng-class="{active: addProductCtrl.loaded < 100}" max="100" value="addProductCtrl.loaded">
+								<span ng-bind="addProductCtrl.loaded" ></span>%
+							</progressbar >
+						</div>
+						<div style="clear:both"></div>
+					</div>
+					<div style="clear:both"></div>
+					<div class="btns">
+						<div class="save_btn" ng-click="addProductCtrl.save()"></div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="chooseCategoryBoxPosition" ng-show="addProductCtrl.showCategoryCell">
+			<div class="close_btn close_btnPosition" ng-click="addProductCtrl.closeShow()"></div>
+			<div class="chooseCategoryBox">
+
+				<div class="leftBox">
+					<div class="firstCategory pointer {{category.style}}" ng-repeat="category in addProductCtrl.categories" ng-bind="category.showName" ng-mouseenter="addProductCtrl.enterCategory(category)" ng-click="addProductCtrl.confirmCategory(category,1)">肉类</div>
+				</div>
+
+				<div class="rightBox">
+					<div class="secondCategory pointer" ng-repeat="separatCategory in addProductCtrl.selectCategory.separatCategory" ng-bind="separatCategory.showName" ng-click="addProductCtrl.confirmCategory(separatCategory,2)">家禽</div>
+				</div>	
+
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+	</div>
+</div>

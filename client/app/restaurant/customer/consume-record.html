@@ -1,0 +1,33 @@
+﻿<link href="assets/css/customer/consume_record.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-customers-view">{{consumeRecordCtrl.languagePack.restaurant.customer.consumers}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer">{{consumeRecordCtrl.languagePack.restaurant.customer.details}}</span>
+		</div>
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption time">{{consumeRecordCtrl.languagePack.restaurant.customer.consumeTime}}</div>
+				<div class="table_caption address">{{consumeRecordCtrl.languagePack.restaurant.customer.consumePlace}}</div>
+				<div class="table_caption customer">{{consumeRecordCtrl.languagePack.restaurant.customer.consumer}}</div>
+				<div class="table_caption consumemoney">{{consumeRecordCtrl.languagePack.restaurant.customer.consumeCost}}</div>
+				<div class="table_caption staff">{{consumeRecordCtrl.languagePack.restaurant.customer.waiter}}</div>
+			</div>
+			<div class="table_contents" ng-repeat="order in consumeRecordCtrl.orders">
+				<div class="table_content ellipsis time" ng-bind="order.createDate | date:'MM/dd'">06/23</div>
+				<div class="table_content ellipsis address" ng-bind="order._restaurant.name"></div>
+				<div class="table_content ellipsis customer" ng-bind="order._customer.name">200</div>
+				<div class="table_content ellipsis consumemoney"><span ng-bind="order.subtotal | currency:'$'"></span><span class="detail unique_color pointer" ui-sref="restaurant-consume-detail({id:order._id})">{{consumeRecordCtrl.languagePack.restaurant.customer.detail}}</span></div>
+				<div class="table_content ellipsis staff" ng-bind="order.waiter.name">小翠</div>
+			</div>
+		</div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="consumeRecordCtrl.pagination.numPages > 1" total-items="consumeRecordCtrl.pagination.totalItems" ng-model="consumeRecordCtrl.pagination.page" items-per-page="consumeRecordCtrl.pagination.itemsPerPage" max-size="consumeRecordCtrl.pagination.maxSize" boundary-links="{{consumeRecordCtrl.pagination.numPages > 2}}" rotate="false" num-pages="consumeRecordCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="consumeRecordCtrl.pageChanged()"></pagination>
+</div>
+	
+

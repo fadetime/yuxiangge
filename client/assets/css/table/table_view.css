@@ -1,0 +1,43 @@
+.header{
+	/*width: 100%;*/
+	margin-bottom: 20px;
+}
+.box{
+	margin:0 auto;
+	width: 100%;
+}
+.table{
+	width: 90px;
+	margin: 5px;
+	height: 90px;
+	background: #e3e3e3;
+	/*border: 1px solid #000;*/
+	-moz-border-radius: 45px;      /* Gecko browsers */
+    -webkit-border-radius: 45px;   /* Webkit browsers */
+    border-radius:45px;            /* W3C syntax */
+    float: left;
+}
+.name{
+	position: relative;
+	top:25px;
+	/*border: 1px solid #000;*/
+	text-align: center;
+	font-size: 14px;
+}
+.remark{
+	position: relative;
+	top:25px;
+	/*border: 1px solid #000;*/
+	text-align: center;
+	font-size: 12px;
+}
+
+
+.input_position{
+	margin: auto;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top:150px;
+	height: 240px;
+}

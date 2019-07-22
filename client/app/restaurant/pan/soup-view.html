@@ -1,0 +1,48 @@
+﻿<link href="assets/css/pan/panandsoup_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="contentLeft">
+			<div class="soup unique_color pointer">{{viewSoupCtrl.languagePack.restaurant.manage.pan.soup}}</div>
+			<div class="pan blackAlpha85 pointer" ui-sref="restaurant-pans-view">{{viewSoupCtrl.languagePack.restaurant.manage.pan.pot}}</div>
+		</div>
+		<div class="contentRight">
+			<div>
+				<div class="add_btn add_btnPosition" ui-sref="restaurant-soups-add">{{viewSoupCtrl.languagePack.restaurant.manage.pan.newSoup}}</div>
+				<div style="clear:both"></div>
+			</div>
+			<!-- pan -->
+			<div class="panList">
+				<div class="box">
+
+					<div class="show_box" ng-repeat="pan_soup in viewSoupCtrl.pan_soups">
+						<div class="show_image"><img ng-src="{{viewSoupCtrl.imageFile+pan_soup.image}}"  class="boxFixed" width="246px" height="200px" ng-if="pan_soup.image"></div>
+						<div class="show_info" style="{{pan_soup.isActive?'background:#fff':'background:#f8f8f8'}}">
+
+							<div class="text_line">
+								<div class="panname blackAlpha85 ellipsis" ng-bind="pan_soup.showName">单锅</div>
+								<div class="isActive {{pan_soup.isActive?'down_aciive':'up_aciive'}}" ng-click="viewSoupCtrl.changestate(pan_soup)" ng-bind="pan_soup.isActive?'{{viewSoupCtrl.languagePack.restaurant.manage.pan.soldOn}}':'{{viewSoupCtrl.languagePack.restaurant.manage.pan.soldOut}}'">已上架</div>
+							</div>
+
+							<div class="text_line">
+								<div class="price unique_color" ng-bind="pan_soup.price | currency:'$'">$ 88</div>
+								<div class="descripetion ellipsis" title="{{pan_soup.describe_showname}}" ng-bind="pan_soup.describe_showname">汤汁鲜美</div>
+							</div>
+
+							<div class="text_line">
+								<div class="tastedescripetion ellipsis" title="{{pan_soup.tasteDescribe}}" ng-bind="pan_soup.tasteDescribe">汤汁鲜美</div>
+								<div class="edit_btn edit_btnPosition unique_color" ui-sref="restaurant-soups-edit({id:pan_soup._id})">{{viewSoupCtrl.languagePack.restaurant.manage.pan.edit}}</div>
+							</div>
+						</div>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="viewSoupCtrl.pagination.numPages > 1" total-items="viewSoupCtrl.pagination.totalItems" ng-model="viewSoupCtrl.pagination.page" items-per-page="viewSoupCtrl.pagination.itemsPerPage" max-size="viewSoupCtrl.pagination.maxSize" boundary-links="{{viewSoupCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewSoupCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewSoupCtrl.pageChanged()"></pagination>
+</div>

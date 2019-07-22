@@ -1,0 +1,61 @@
+﻿<link href="assets/css/order/order_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content " style="{{viewOrderCtrl.errorPrompt?'height:100%;overflow:hidden;':''}}">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div class="search_box">
+				<div class="search_input blackAlpha54" ng-bind="viewOrderCtrl.date | date:'MMM d, yyyy'">今天</div>
+				<div class="calendar_btn" ng-click="viewOrderCtrl.showDate=!viewOrderCtrl.showDate"></div>
+			</div>
+			<div class="datepickerPosition">
+				<datepicker class="from-data" style="box-shadow: 0 0 20px #aaa;" ng-show="viewOrderCtrl.showDate" ng-model="viewOrderCtrl.date"  datepicker-mode="year" ng-click="viewOrderCtrl.select()"></datepicker>
+			</div>
+
+			<div class="add_btnDifferent" ng-click="viewOrderCtrl.autoPrint()">{{viewOrderCtrl.intervalId==''?'开启自动打印':'关闭自动打印'}}</div>
+
+			<div class="download pointer" ng-click="viewOrderCtrl.download()">{{viewOrderCtrl.languagePack.restaurant.order.download}}</div>
+			<div style="clear:both"></div>
+		</div>
+		
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption width10 textIndent20">{{viewOrderCtrl.languagePack.restaurant.order.date}}</div>
+				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.tableNumber}}</div>
+				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.cost}}</div>
+				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.customer}}</div>
+				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.waiter}}</div>
+				<div class="table_caption width16">订单号</div>
+				<div class="table_caption width10">消费方式</div>
+				<div class="table_caption width10" style="color:red">isPrint</div>
+				<div class="table_caption width14"></div>
+			</div>
+			<div class="table_contents" ng-repeat="order in viewOrderCtrl.orders">
+				<div class="table_content width10 textIndent20 ellipsis"  ng-bind="order.createDate | date:'shortTime'"></div>
+				<div class="table_content width10 ellipsis"><span ng-bind="order.table.name">8</span></div>
+				<div class="table_content width10 ellipsis uniquecolor" ng-bind="order.subtotal | currency:'$'">$200</div>
+				<div class="table_content width10 ellipsis" ng-bind="order._customer.name?order._customer.name:viewOrderCtrl.languagePack.restaurant.order.notMember"></div>
+				<div class="table_content width10 ellipsis" ng-bind="order.waiter.name?order.waiter.name:'服务员无姓名'">小翠</div>
+				<div class="table_content width16 ellipsis" ng-bind="order.doNumber" title="{{order.doNumber}}">订单号</div>
+				<div class="table_content width10" ng-bind="order.payment">消费方式</div>
+				<div class="table_content width10" style="color:red" ng-bind="order.isPrint"></div>
+				<div class="table_content width14 pointer">
+					<a class="unique_color" target="_blank" ui-sref="restaurant-orders-detail({id:order._id})">{{viewOrderCtrl.languagePack.restaurant.order.checkDetail}}</a>
+					<span style="margin-left:20px;" ui-sref="restaurant-orders-edit({id:order._id})" ng-show="order.status>3">编辑</span>
+				</div>
+			</div>
+			<div class="table_contents" style="text-align:center;line-height:60px" ng-hide="viewOrderCtrl.orders[0]"><span class="blackAlpha28">{{viewOrderCtrl.languagePack.restaurant.order.noOrder}}</span></div>
+		</div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="viewOrderCtrl.pagination.numPages > 1" total-items="viewOrderCtrl.pagination.totalItems" ng-model="viewOrderCtrl.pagination.page" items-per-page="viewOrderCtrl.pagination.itemsPerPage" max-size="viewOrderCtrl.pagination.maxSize" boundary-links="{{viewOrderCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewOrderCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewOrderCtrl.pageChanged()"></pagination>
+</div>
+
+<!-- viewOrderCtrl.errorPrompt -->
+<div ng-show="viewOrderCtrl.errorPrompt" style="width:100%;height:140%;z-index:100;background:#ccc;position:fixed;top:-70px;opacity:0.5"></div>
+<div ng-show="viewOrderCtrl.errorPrompt" style="margin: auto;position: fixed;top:0px;bottom:0px;left: 0px;right: 0px;width: 980px;height: 144px;background: #fff;z-index:200;box-shadow: #ccc 0 0 5px 0;opacity:1">
+	<div style="height:100px;line-height:100px;text-align:center;opacity:1">{{viewOrderCtrl.showError}}</div>
+	<div ng-click="viewOrderCtrl.errorPrompt=false;" class="pointer" style="width:74px;height:26px;line-height:26px;text-align:center;border:1px solid #000;position:absolute;bottom:20px;right:20px;opacity:1">{{viewOrderCtrl.languagePack.restaurant.printer.confirm}}</div>
+</div>

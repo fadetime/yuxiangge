@@ -1,0 +1,15 @@
+.choosePayments{
+	position: absolute;
+	top:38px;
+	left: 160px;
+	width: 280px;
+}
+.choosePayment{
+	width: 280px;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 10px;
+	border:1px solid #ccc;
+	border-top:none;
+	background: #fff;
+}

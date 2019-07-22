@@ -1,0 +1,89 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/admin/admin_view.css" rel="stylesheet" type="text/css" >
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+	
+		<div class="header">
+			<div class="add_btn add_btnPosition" ng-click="adminCustomerCtrl.openAddCustomer()">{{adminCustomerCtrl.languagePack.admin.customer.addCustomer}}</div>
+			<div class="search_box search_boxPosition">
+				<input type="text" class="search_input" style="background:#f8f8f8;" placeholder="{{adminCustomerCtrl.languagePack.admin.customer.search}}" onfocus="this.placeholder=''" ng-onblur="this.placeholder='{{adminCustomerCtrl.languagePack.admin.customer.search}}'" ng-model="adminCustomerCtrl.retrieval">
+				<div class="search_btn"ng-click="adminCustomerCtrl.select()"></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div>
+			<div class="table_captions">
+				<div class="table_caption width25 text20">{{adminCustomerCtrl.languagePack.admin.customer.name}}</div>
+				<div class="table_caption width25">{{adminCustomerCtrl.languagePack.admin.customer.account}}</div>
+				<div class="table_caption width25">{{adminCustomerCtrl.languagePack.admin.customer.password}}</div>
+				<div class="table_caption width25"></div>
+			</div>
+			<div class="table_contents" ng-repeat="customer in adminCustomerCtrl.customers">
+				<div class="table_content ellipsis  width25 text20" ng-bind="customer._customerProflie.name"><span>阿夏</span></div>
+				<div class="table_content ellipsis width25" ng-bind="customer.account">1235678</div>
+				<div class="table_content ellipsis width25">
+					<span class="unique_color pointer" ng-click="adminCustomerCtrl.openEditPassword(customer)">{{adminCustomerCtrl.languagePack.admin.customer.editPassword}}</span>
+				</div>
+				<div class="table_content width25">
+					<span class="unique_color pointer" ng-click="adminCustomerCtrl.openEditCustomer(customer)">{{adminCustomerCtrl.languagePack.admin.customer.edit}}</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- 新增用户 -->
+		<div class="input_position height300" ng-show="adminCustomerCtrl.addCustomer">
+			<div class="close_btn" ng-click="adminCustomerCtrl.closeAddCustomer()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">用户昵称：</div>
+					<input type="text" class="input_value" ng-model="adminCustomerCtrl.customer.name">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{adminCustomerCtrl.languagePack.admin.customer.account}}：</div>
+					<input type="text" class="input_value" ng-model="adminCustomerCtrl.customer.account">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{adminCustomerCtrl.languagePack.admin.customer.password}}：</div>
+					<input type="text" class="input_value" ng-model="adminCustomerCtrl.customer.password">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="adminCustomerCtrl.save()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<!-- 编辑用户信息 -->
+		<div class="input_position height160" ng-show="adminCustomerCtrl.editCustomer">
+			<div class="close_btn" ng-click="adminCustomerCtrl.closeEditCustomer()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{adminCustomerCtrl.languagePack.admin.customer.name}}：</div>
+					<input type="text" class="input_value" ng-model="adminCustomerCtrl.customer.name">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="adminCustomerCtrl.update()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<!-- 编辑用户密码 -->
+		<div class="input_position height160"  ng-show="adminCustomerCtrl.editPassword">
+			<div class="close_btn" ng-click="adminCustomerCtrl.closeEditPassword()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{adminCustomerCtrl.languagePack.admin.customer.password}}：</div>
+					<input type="text" class="input_value" ng-model="adminCustomerCtrl.customer.password">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="adminCustomerCtrl.updatePassword()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+<pagination style="float:right;margin-right:200px;" ng-if="viewOrderCtrl.pagination.numPages > 1" total-items="viewOrderCtrl.pagination.totalItems" ng-model="viewOrderCtrl.pagination.page" items-per-page="viewOrderCtrl.pagination.itemsPerPage" max-size="viewOrderCtrl.pagination.maxSize" boundary-links="{{viewOrderCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewOrderCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewOrderCtrl.pageChanged()"></pagination>
+</div>
+	

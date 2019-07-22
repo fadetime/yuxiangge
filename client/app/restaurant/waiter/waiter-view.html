@@ -1,0 +1,97 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/waiter/waiter_view.css" rel="stylesheet" type="text/css" >
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- <div ngf-select ngf-change="viewProductCtrl.upload($files)">测试本地上传按钮</div> -->
+	<!-- <img src="http://192.168.2.104:3030/uploadfile/1467253334048_3992487388_89f14ee20eba7ee93012f91ee53d90f8.png"> -->
+	<!-- 这里开始显示不同页面 -->
+	
+		<div class="header">
+			<div class="add_btn add_btnPosition" ng-click="waiterCtrl.openAddWaiter()">{{waiterCtrl.languagePack.restaurant.waiter.newWaiter}}</div>
+			<div class="search_box search_boxPosition">
+				<input type="text" class="search_input blackAlpha85" style="background-color:#f8f8f8" placeholder="{{waiterCtrl.languagePack.restaurant.waiter.search}}" onfocus="this.placeholder=''" ng-onblur="this.placeholder={{waiterCtrl.languagePack.restaurant.waiter.search}}" ng-model="waiterCtrl.retrieval">
+				<div class="search_btn" ng-click="waiterCtrl.select()"></div>
+			</div>
+		</div>
+		<div>
+			<div class="table_captions">
+				<div class="table_caption time">{{waiterCtrl.languagePack.restaurant.waiter.name}}</div>
+				<div class="table_caption customer">{{waiterCtrl.languagePack.restaurant.waiter.account}}</div>
+				<div class="table_caption integral">{{waiterCtrl.languagePack.restaurant.waiter.password}}</div>
+				<div class="table_caption event"></div>
+			</div>
+			<div class="table_contents" ng-repeat="waiter in waiterCtrl.waiters">
+				<div class="table_content ellipsis time" ng-bind="waiter._waiterProflie.name">阿夏</div>
+				<div class="table_content ellipsis customer" ng-bind="waiter.account">1235678</div>
+				<div class="table_content ellipsis integral"><span class="pointer" ng-click="waiterCtrl.openEditPassword(waiter)">{{waiterCtrl.languagePack.restaurant.waiter.editPassword}}</span></div>
+				<div class="table_content event">
+					<div class="edit_btn edit_btnPosition unique_color" ng-click="waiterCtrl.openEditWaiter(waiter)">{{waiterCtrl.languagePack.restaurant.waiter.edit}}</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 新增员工 -->
+		<div class="input_position" ng-show="waiterCtrl.addWaiter">
+			<div class="close_btn" ng-click="waiterCtrl.closeAddWaiter()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.restaurant.waiter.name}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.waiter.name">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.restaurant.waiter.account}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.waiter.account">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.restaurant.waiter.password}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.waiter.password">
+				</div>
+				<!-- <div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.price}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.pan_category.subtotal">
+				</div> -->
+				<div style="clear:both"></div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="waiterCtrl.save()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<!-- 编辑员工信息 -->
+		<div class="input_position" ng-show="waiterCtrl.editWaiter">
+			<div class="close_btn" ng-click="waiterCtrl.closeEditWaiter()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.restaurant.waiter.name}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.waiter.name">
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="waiterCtrl.update()"></div>
+				<div class="delete_btn" ng-click="waiterCtrl.delete(waiterCtrl.waiter._id)"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<!-- 编辑员工密码 -->
+		<div class="input_position" ng-show="waiterCtrl.editPassword">
+			<div class="close_btn" ng-click="waiterCtrl.closeEditPassword()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{waiterCtrl.languagePack.restaurant.waiter.password}}:</div>
+					<input class="input_value" type="text" ng-model="waiterCtrl.password">
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="waiterCtrl.updatePassword()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		
+	</div>
+<pagination style="float:right;margin-right:200px;" ng-if="viewOrderCtrl.pagination.numPages > 1" total-items="viewOrderCtrl.pagination.totalItems" ng-model="viewOrderCtrl.pagination.page" items-per-page="viewOrderCtrl.pagination.itemsPerPage" max-size="viewOrderCtrl.pagination.maxSize" boundary-links="{{viewOrderCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewOrderCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewOrderCtrl.pageChanged()"></pagination>
+</div>
+	

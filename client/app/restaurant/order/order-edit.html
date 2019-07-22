@@ -1,0 +1,90 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/order/order_edit.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div style="float:left">
+				<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-orders-view">账单</span>
+				<span class="sub_nav blackAlpha54">></span>
+				<span class="sub_nav blackAlpha54 pointer">编辑</span>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div>
+			<div>
+				<div>Product</div>
+				<div class="input_position">
+					<div class="input_contents" ng-repeat="product in orderEditlCtrl.order.products">
+						<div class="input_content">
+							<div class="input_name">name:</div>
+							<div type="text" ng-bind="product.name" class="input_value" style="border:none"></div>
+						</div>
+
+						<div class="input_content">
+							<div class="input_name">englishName:</div>
+							<div type="text" ng-bind="product.name_english" class="input_value" style="border:none"></div>
+						</div>
+
+						<div class="input_content">
+							<div  class="input_name">数量:</div>
+							<input type="text" ng-model="product.orderQuantity" class="input_value" >
+						</div>
+
+						<div class="input_content">
+							<div class="input_name">最终收费:</div>
+							<input type="text" ng-model="product.finalTotal" class="input_value">
+						</div>
+						<hr>
+					</div>
+					<div class="btns">
+						<div class="save_btn" ng-click="orderEditlCtrl.saveProduct()"></div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div style="color:red">Total(慎用，如果改变产品价格,该费用也会改变)</div>
+				<div class="input_position">
+					<div class="input_contents">
+						<div class="input_content">
+							<div class="input_name">总费用:</div>
+							<input type="text" ng-model="orderEditlCtrl.order.subtotal" class="input_value" >
+						</div>
+					</div>
+					<div class="btns">
+						<div class="save_btn" ng-click="orderEditlCtrl.saveSubtotal()"></div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>Payment</div>
+				<div class="input_position">
+					<div class="input_contents">
+						<div class="input_content" style="position:relative;">
+							<div class="input_name">支付方式:</div>
+							<div class="input_value">
+								<div class="show_name" ng-bind="orderEditlCtrl.showPayment"></div>
+								<div class="select_btn pointer" ng-click="orderEditlCtrl.openChoose=!orderEditlCtrl.openChoose"></div>
+							</div>
+							<div class="choosePayments" ng-show="orderEditlCtrl.openChoose">
+								<div class="choosePayment pointer" ng-click="orderEditlCtrl.choosePayment('cash')">cash(现金)</div>
+								<div class="choosePayment pointer" ng-click="orderEditlCtrl.choosePayment('unionPay')">unionPay(银联)</div>
+								<div class="choosePayment pointer" ng-click="orderEditlCtrl.choosePayment('credit')">credit(信用卡)</div>
+								<div class="choosePayment pointer" ng-click="orderEditlCtrl.choosePayment('net')">net(网络)</div>
+							</div>	
+							<div style="clear:both"></div>
+						</div>
+						<div class="btns">
+							<div class="save_btn" ng-click="orderEditlCtrl.savePayment()"></div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,111 @@
+/*header*/
+.header{
+	/*border:1px solid red;*/
+	margin-bottom: 20px;
+}
+/*content*/
+.input_contents{
+	width: 500px;
+}
+.describeinput{
+	float: left;
+	margin-left: 20px;
+	width: 280px;
+	height: 80px;
+	padding: 5px 0px 0px 20px;
+	border:1px solid #ccc;
+	resize:none;
+}
+.submit_btnPosition{
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.input_contentDiference{
+	width: 600px;
+}
+.tastechoose{
+	float: left;
+	margin-left: 20px;
+	width: 400px;
+	border:1px solid #ccc;
+	padding-bottom: 9px;
+}
+.tastname{
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 80px;
+}
+.chooseno{
+	float: left;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/chooseNo.png);
+}
+.chooseyes{
+	float: left;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/chooseYes.png);
+}
+.choosename{
+	float: left;
+	margin-left: 10px;
+	width: 50px;
+}
+.tastcatrgories{
+	float: left;
+	margin-top: 12px;
+	width: 280px;
+}
+.tastcatrgory{
+	float: left;
+	margin: 5px 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+	min-width: 42px;
+	height: 20px;
+	line-height: 18px;
+	text-align: center;
+	border:1px solid #ccc;
+	border-radius: 20px;
+}
+.selecttaste{
+	color: #fff;
+	background-color: #fba025;
+	border:none;
+}
+
+.example{
+	margin-left: 140px;
+	width: 400px;
+	height: 25px;
+}
+.chooseone,.choosetwo{
+	float: left;
+	margin-left: 20px;
+	height: 25px;
+	line-height: 25px;
+}
+.one,.promptone,.two,.prompttwo{
+	float: left;
+}
+.one,.two{
+	margin-top: 5px;
+	width: 14px;
+	height: 14px;
+	background-color: #ccc;
+}
+.one{
+	background: url(../../images/1.png);
+}
+.two{
+	background: url(../../images/2.png);
+}
+.promptone,.prompttwo{
+	margin-left: 10px;
+}
+
+
+

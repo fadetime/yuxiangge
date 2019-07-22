@@ -1,0 +1,17 @@
+<link href="assets/css/printer/printer_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header ">
+			<div class="add_btn" ui-sref="restaurant-printers-add">{{printerViewCtrl.languagePack.restaurant.printer.add}}</div>
+			<div style="clear:both"></div>
+		</div>
+			
+
+		<div class="printerList">
+			<div ng-repeat="printer in printerViewCtrl.printers" class="printer pointer ellipsis {{printer.isActive?'hasActive':'noActive'}}" ng-bind="printer.name" title="{{printer.name}}" ui-sref="restaurant-printers-edit({id:printer._id})">一号</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</div>

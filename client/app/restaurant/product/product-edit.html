@@ -1,0 +1,115 @@
+﻿<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/product/product_edit.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->	
+
+<div class="content ">	
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div>
+			<div class="header">
+				<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-products-view">{{editProductCtrl.languagePack.restaurant.manage.product.product_edit.dishes}}</span>
+				<span class="sub_nav blackAlpha54">></span>
+				<span class="sub_nav blackAlpha54 pointer">{{editProductCtrl.languagePack.restaurant.manage.product.product_edit.edit}}</span>
+			</div>
+		</div>
+		<div class="smallContent" style="position: relative;">
+			<div ng-click="editProductCtrl.createHelfProduct()"style="position: absolute;right: 12px;background-color: #fba025;color: #fff;height: 42px;line-height: 42px;padding:0 12px;border-radius: 10px;cursor: pointer;">
+				<span>生成半份</span>
+			</div>
+			<div class="input_position">
+				<div class="input_contents">
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.name}}:</div>
+						<input type="text" ng-model="editProductCtrl.product.info_chinese.name" class="input_value">
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.englishName}}:</div>
+						<input type="text" ng-model="editProductCtrl.product.info_english.name" class="input_value">
+					</div>
+
+					<!-- <div class="input_content">
+						<div  class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.norms}}:</div>
+						<input type="text" ng-model="editProductCtrl.product.info_chinese.specificat" placeholder="{{editProductCtrl.languagePack.restaurant.manage.product.product_add.nor}}" class="input_value" >
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.englishNorms}}:</div>
+						<input type="text"  ng-model="editProductCtrl.product.info_english.specificat" class="input_value">
+					</div> -->
+
+					<div class="input_content">
+						<div  class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.price}}:</div>
+						<input type="text" ng-model="editProductCtrl.product.price" placeholder="{{editProductCtrl.languagePack.restaurant.manage.product.product_add.pri}}" ng-change="editProductCtrl.check('price')" class="input_value">
+						<div class="error150" ng-bind="editProductCtrl.priceError"></div>
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.stock}}:</div>
+						<input type="text" ng-model="editProductCtrl.product.quantity" ng-change="editProductCtrl.check('quantity')" class="input_value">
+						<div class="error150" ng-bind="editProductCtrl.quantityError"></div>
+					</div>
+
+					<div class="input_content" style="position:relative;">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.ableDiscount}}:</div>
+						<div class="input_value">
+							<div class="show_name" ng-bind="editProductCtrl.havingDiscount"></div>
+							<div class="select_btn" ng-click="editProductCtrl.openDiscount()"></div>
+						</div>
+						<div class="chooseDiscounts" ng-show="editProductCtrl.onDiscount">
+							<div class="chooseDiscount pointer" ng-click="editProductCtrl.discount()">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.discount}}</div>
+							<div class="chooseDiscount pointer" ng-click="editProductCtrl.noDiscount()">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.noDiscount}}</div>
+						</div>	
+						<div style="clear:both"></div>
+					</div>
+					
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.classfy}}:</div>
+						<div class="chooseCategory">
+							<div class="showCategory" ng-repeat="tag in editProductCtrl.product.category" ng-bind="tag.showName" ng-click="editProductCtrl.splice(tag,'category')">荤菜-肉类</div>
+							<div class="showCategory" ng-repeat="tag in editProductCtrl.product.separatCategory" ng-bind="tag.tagName" ng-click="editProductCtrl.splice(tag,'separatCategory')">荤菜-肉类</div>
+
+							<div class="add_btn add_btnPosition" ng-click="editProductCtrl.addCategory()">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.select}}</div>
+						</div>
+						<div style="clear:both"></div>	
+					</div>
+
+					<div class="input_content">
+						<div class="input_name">{{editProductCtrl.languagePack.restaurant.manage.product.product_add.photo}}:</div>
+						<div ngf-select ngf-change="editProductCtrl.upload($files,0)" class="submit_btn submit_btnPosition">
+							<span class="submit_prompt">上传图片</span>
+							<img ng-show="editProductCtrl.product.image" ng-src="{{editProductCtrl.imageFile+editProductCtrl.product.image}}"  class="submit_img">
+							<progressbar ng-show="editProductCtrl.loaded > 0" class="progress_bar" ng-class="{active: editProductCtrl.loaded < 100}" max="100" value="editProductCtrl.loaded">
+								<span ng-bind="editProductCtrl.loaded" ></span>%
+							</progressbar >
+						</div>
+						<div style="clear:both"></div>
+					</div>
+					<div style="clear:both"></div>
+					<div class="btns">
+						<div class="save_btn" ng-click="editProductCtrl.save()"></div>
+						<div class="delete_btn" ng-click="editProductCtrl.delete()"></div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="chooseCategoryBoxPosition" ng-show="editProductCtrl.showCategoryCell">
+			<div class="close_btn close_btnPosition" ng-click="editProductCtrl.closeShow()"></div>
+			<div class="chooseCategoryBox">
+
+				<div class="leftBox">
+					<div class="firstCategory pointer {{category.style}}" ng-repeat="category in editProductCtrl.categories" ng-bind="category.showName" ng-mouseenter="editProductCtrl.enterCategory(category)" ng-click="editProductCtrl.confirmCategory(category,1)">肉类</div>
+				</div>
+
+				<div class="rightBox">
+					<div class="secondCategory pointer" ng-repeat="separatCategory in editProductCtrl.selectCategory.separatCategory" ng-bind="separatCategory.showName" ng-click="editProductCtrl.confirmCategory(separatCategory,2)">家禽</div>
+				</div>	
+
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<link href="assets/css/table/table_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header ">
+			<div class="add_btn" ng-click="viewTableCtrl.showEidtCell()">{{viewTableCtrl.languagePack.restaurant.manage.table.newTable}}</div>
+			<div style="clear:both"></div>
+		</div>
+			
+		<!-- table -->
+		<div class="tableList">
+			<div class="box">
+				<div class="table" ng-repeat="table in viewTableCtrl.tables" ng-click="viewTableCtrl.showEidtCell(table)">
+					<div class="name blackAlpha85" ng-bind="table.name">A11</div>
+					<div class="remark blackAlpha60" ng-bind="table.remark || '暂无备注'">无人卓</div>
+				</div>
+
+				<div style="clear:both"></div>
+				
+			</div>
+			<div style="clear:both"></div>
+			<pagination style="float:right;margin-right:30px;" ng-if="viewTableCtrl.pagination.numPages > 1" total-items="viewTableCtrl.pagination.totalItems" ng-model="viewTableCtrl.pagination.page" items-per-page="viewTableCtrl.pagination.itemsPerPage" max-size="viewTableCtrl.pagination.maxSize" boundary-links="{{viewTableCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewTableCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewTableCtrl.pageChanged()"></pagination>
+		</div>
+
+		<!-- 编辑餐桌 -->
+		<div class="input_position" ng-show="viewTableCtrl.showEdit">
+			<div class="close_btn" ng-click="viewTableCtrl.closeEditCell()"></div>
+			<div class="input_contents">
+				<div class="input_content">
+					<div class="input_name">{{viewTableCtrl.languagePack.restaurant.manage.table.number}}:</div>
+					<input class="input_value" type="text" ng-model="viewTableCtrl.eidtTable.name">
+				</div>
+				<div class="input_content">
+					<div class="input_name">{{viewTableCtrl.languagePack.restaurant.manage.table.remark}}:</div>
+					<input class="input_value" type="text" ng-model="viewTableCtrl.eidtTable.remark">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="viewTableCtrl.save()"></div>
+				<div class="delete_btn" ng-if="viewTableCtrl.eidtTable._id" ng-click="viewTableCtrl.delete(viewTableCtrl.eidtTable._id)"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+	</div>
+</div>

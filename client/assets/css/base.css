@@ -1,0 +1,52 @@
+/*layout*/
+body{
+	padding: 0;
+	padding-bottom: 150px;
+	margin:0;
+	background: #f8f8f8;
+	font-family: '微软雅黑';
+}
+
+/*基本字体样式*/
+.blackAlpha85{
+	color: #202020;
+}
+.blackAlpha54{
+	color: #737373;
+}
+.blackAlpha28{
+	color: #b4b4b4;
+}
+.size12{
+	font-size: 12px;
+}
+.size14{
+	font-size: 14px;
+}
+.size16{
+	font-size: 16px;
+}
+
+
+/*其他基本属性*/
+a,a:hover,a:active,a:visited,a:focus{
+	text-decoration: none;
+}
+.pointer{
+	cursor:pointer;
+}
+input{
+	border:none;
+}
+input:focus {
+    outline:none;
+}
+textarea:focus {
+    outline:none;
+}
+.ellipsis{
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	/*作用：将超出部分隐藏为省略号，仅限一行*/
+}

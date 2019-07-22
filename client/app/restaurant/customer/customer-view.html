@@ -1,0 +1,39 @@
+﻿<link href="assets/css/customer/customer_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div class="sort pointer" ng-click="viewCustomerCtrl.changeSort()">
+				<div class="chooseSort" ng-if="viewCustomerCtrl.sortBy!='integral'"></div>
+				<div class="chooseSort chooseYes" ng-if="viewCustomerCtrl.sortBy=='integral'"></div>
+				<div class="sortWord blackAlpha54">{{viewCustomerCtrl.languagePack.restaurant.customer.consume}}</div>
+				<div style="clear:both"></div><!-- 清浮动 -->
+			</div>
+			<div class="search_box search_boxPosition">
+				<input type="text" class="search_input blackAlpha85" style="background-color:#f8f8f8" onfocus="this.placeholder=''" Placeholder="{{viewCustomerCtrl.languagePack.restaurant.customer.search}}" ng-model="viewCustomerCtrl.retrieval">
+				<div class="search_btn" ng-click="viewCustomerCtrl.select()"></div>
+			</div>
+		</div>
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption time">{{viewCustomerCtrl.languagePack.restaurant.customer.date}}</div>
+				<div class="table_caption account">{{viewCustomerCtrl.languagePack.restaurant.customer.account}}</div>
+				<div class="table_caption contract">{{viewCustomerCtrl.languagePack.restaurant.customer.name}}</div>
+				<div class="table_caption sumintegral">{{viewCustomerCtrl.languagePack.restaurant.customer.integral}}</div>
+				<div class="table_caption consumerecord">{{viewCustomerCtrl.languagePack.restaurant.customer.detail}}</div>
+			</div>
+			<div class="table_contents" ng-repeat="customer in viewCustomerCtrl.customers">
+				<div class="table_content ellipsis time" ng-bind="customer.createDate | date:'MM/dd'"></div>
+				<div class="table_content ellipsis account" ng-bind="customer.account"></div>
+				<div class="table_content ellipsis contract" ng-bind="customer.name"></div>
+				<div class="table_content ellipsis sumintegral"><span ng-bind="customer.integral"></span><span class="detail unique_color pointer" ui-sref="restaurant-integral-record({id:customer._id,_restaurant:viewCustomerCtrl._restaurant})">{{viewCustomerCtrl.languagePack.restaurant.customer.detail}}</span></div>
+				<div class="table_content ellipsis consumerecord"><span class="unique_color pointer" ui-sref="restaurant-consume-record({id:customer._id})">{{viewCustomerCtrl.languagePack.restaurant.customer.detail}}</span></div>
+			</div>
+		</div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="viewCustomerCtrl.pagination.numPages > 1" total-items="viewCustomerCtrl.pagination.totalItems" ng-model="viewCustomerCtrl.pagination.page" items-per-page="viewCustomerCtrl.pagination.itemsPerPage" max-size="viewCustomerCtrl.pagination.maxSize" boundary-links="{{viewCustomerCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewCustomerCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewCustomerCtrl.pageChanged()"></pagination>
+</div>

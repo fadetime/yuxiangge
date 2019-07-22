@@ -1,0 +1,36 @@
+.header{
+	height: 50px;
+	margin-bottom: 15px;
+}
+.add_btnPosition{
+	float: left;
+}
+.search_boxPosition{
+	float: right;
+}
+.time{
+	width: 25%;
+	text-indent: 30px;
+}
+.customer{
+	width: 25%;
+}
+.integral{
+	width: 25%;
+}
+.event{
+	width: 25%;
+}
+.edit_btnPosition{
+	margin-top: 18px;
+	margin-left: 20px;
+}
+
+
+/*新增waiter*/
+.input_position{
+	position: absolute;
+	top:20%;
+	left: 0px;
+	right: 0px;
+}

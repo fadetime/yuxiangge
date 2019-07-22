@@ -1,0 +1,47 @@
+.header{
+	height: 50px;
+	margin-bottom: 15px;
+}
+.sort{
+	float: left;
+	width: 180px;
+	height: 46px;
+	line-height: 46px;
+}
+.chooseSort{
+	float: left;
+	margin-top: 13px;
+	margin-left: 10px;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/chooseNo.png);
+}
+.chooseYes{
+	background: url(../../images/chooseYes.png);
+}
+.sortWord{
+	float: left;
+	margin-left: 10px;
+}
+.search_boxPosition{
+	float: right;
+}
+.time{
+	width: 15%;
+	text-indent: 30px;
+}
+.account{
+	width: 19%;
+}
+.contract{
+	width: 19%;
+}
+.sumintegral{
+	width: 21%;
+}
+.consumerecord{
+	width: 26%;
+}
+.detail{
+	margin-left: 20px;
+}

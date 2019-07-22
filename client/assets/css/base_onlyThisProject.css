@@ -1,0 +1,287 @@
+/*layout*/
+.content{
+	min-width: 980px;
+}
+.htmSize{
+	
+	max-width: 1000px;
+}
+.content_body{
+	margin: 0 auto;
+	margin-top: 70px;
+	padding-top:20px; 
+	font-size: 14px;
+	width:78.2%;
+}
+
+
+/*基本字体样式*/
+.unique_color{
+	color: #fba025;
+}
+
+/*表格基本属性*/
+.table_captions{
+	height: 36px;
+	background-color: #fff;
+	border-bottom: 1px solid #f2f2f2;
+}
+.table_caption{
+	float: left;
+	height: 36px;
+	font: 14px/36px Arial; /*size/line-height family*/
+	color: #737373;
+}
+.table_contents{
+	height: 56px;
+	background-color: #fff;
+	border-bottom: 1px solid #f2f2f2;
+}
+.table_content{
+	float: left;
+	height: 56px;
+	font: 14px/56px Arial;
+	color: #202020;	
+}
+.table_contents:nth-child(odd){
+	background: #fff;
+}
+.table_contents:nth-child(even){
+	background: #fcfcfc;
+}
+
+/*层级子导航*/
+.sub_nav{
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+/*其他基本属性*/
+a,a:hover,a:active,a:visited,a:focus{
+	color: #202020;
+}
+
+/*按钮*/
+.add_btn{
+	width: 120px;
+	height: 40px;
+	line-height: 38px;
+	text-indent: 40px;
+	color: #fba025;
+	border-radius: 40px;
+	border:1px solid #ccc;
+	background:#fff url(../images/addB.png) no-repeat 20px 13px;
+	cursor: pointer;
+}
+.add_btn:hover{
+	color: #fff;
+	border:none;
+	line-height: 40px;
+	background: #fba025 url(../images/addBw.png) no-repeat 20px 13px;
+}
+.edit_btn{
+	width: 43px;
+	height: 20px;
+	line-height: 20px;
+	text-indent: 15px;
+	background: url(../images/edit.png) no-repeat 0 4px;
+	cursor: pointer;
+}
+.sort_btn{
+	width: 45px;
+	height: 20px;
+	line-height: 20px;
+	text-indent: 15px;
+	background: url(../images/sort.png) no-repeat;
+	cursor: pointer;
+}
+.close_btn{
+	position: absolute;
+	top:10px;
+	right: 10px;
+	width: 24px;
+	height: 24px;
+	background: url(../images/close.png) no-repeat;
+	cursor:pointer;
+}
+.btns{
+	margin: 30px auto;
+	width: 150px;
+	height: 42px;
+}
+.save_btn{
+	float: left;
+	margin-left: 20px;
+	width: 42px;
+	height: 42px;
+	background: url(../images/save.png) no-repeat;
+	cursor:pointer;
+}
+.delete_btn{
+	float: left;
+	margin-left: 20px;
+	width: 42px;
+	height: 42px;
+	background: url(../images/deleteB.png) no-repeat;
+	cursor: pointer;
+}
+.submit_btn{
+	position: relative;
+	width: 122px;
+	height: 122px;
+	text-align: center;
+	border:1px solid #ccc;
+	background: url(../images/sc.png) no-repeat 41px 30px;
+	cursor: pointer;
+	/*图片上传按钮*/
+}
+.submit_prompt{
+	margin-top:75px;
+	display:block;
+	/*图片上传文字*/
+}
+.submit_btn img{
+	margin-top: -95px;
+	width:120px;
+	height:120px;
+	/*上传的图片*/
+}
+.progress_bar{
+	background-color:#9DD1FF;
+	display: block;
+	border-radius:5px;
+	text-align:center;
+	width:120px;
+	position: absolute;
+	bottom: -41px;
+	/*进度条*/
+}
+.up_aciive{
+	width: 60px;
+	height: 20px;
+	line-height: 18px;
+	text-align: center;
+	color: #fba025;
+	border-radius: 20px;
+	border:1px solid #ccc;
+	background: #fff;
+	cursor: pointer;
+	/*上架按钮*/
+}
+.down_aciive{
+	height: 20px;
+	line-height: 20px;
+	cursor: pointer;
+	/*下架按钮*/
+}
+
+/*产品展示栏*/
+.show_box{
+	float: left;
+	margin-left:12px;
+	margin-bottom: 10px;
+	width: 248px;
+	height: 292px;
+	border: 1px solid #BABABA;
+}
+.show_image{
+	height: 200px;
+	background: #bababa;
+	cursor: pointer;
+}
+.show_image img{
+	width: 246px;
+	height: 200px;
+}
+.show_info{
+	width: 246px;
+	height: 90px;
+}
+.text_line{
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 10px;
+}
+
+/*错误提示*/
+.error{
+	height: 0;
+	position: relative;
+	top:0;
+	left:22px;
+	color: #a94442;
+}
+.error150{
+	height: 0;
+	position: relative;
+	top:0;
+	left:150px;
+	color: #a94442;
+}
+
+/*输入框的基本属性*/
+.search_box{
+	width: 180px;
+	height: 40px;
+	border: 1px #ccc solid;
+}
+.search_input{
+	float: left;
+	width: 145px;
+	height: 38px;
+	line-height: 38px;
+	text-indent: 10px;
+	border: none;
+}
+.search_btn,.calendar_btn{
+	float: left;
+	width: 30px;
+	height: 38px;
+	background: url(../images/search.png) no-repeat 6px 10px;
+	cursor: pointer;
+}
+.calendar_btn{
+	background: url(../images/calendar.png) no-repeat 7.5px 10.5px;
+}
+.input_position{
+	margin: 0 auto;
+	padding-top: 20px;
+	width: 500px;
+	background-color: #fff;
+}
+.input_contents{
+	margin: 0 auto;
+	width: 450px;
+}
+.input_content{
+	margin-top: 20px;
+	width: 450px;
+	height: 40px;
+}
+.input_name{
+	float: left;
+	width: 140px;
+	line-height: 40px;
+	text-align: right;
+}
+.input_value{
+	float: left;
+	margin-left: 20px;
+	width: 280px;
+	height: 38px;
+	line-height: 38px;
+	text-indent: 10px;
+	border:1px solid #ccc;
+}
+.show_name{
+	float: left;
+	width: 250px;
+	height: 38px;
+}
+.select_btn{
+	float: left;
+	width: 28px;
+	height: 38px;
+	background: url(../images/dropDown.png) no-repeat 8px 15px;
+}

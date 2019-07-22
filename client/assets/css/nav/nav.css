@@ -1,0 +1,107 @@
+/*nav*/
+.nav{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	min-width: 980px;
+	height: 70px;
+	background: #fff;
+	box-shadow:#ccc 0 0 1px 0;
+	z-index: 10;
+}
+.body{
+	position: relative;
+	margin: 0 auto;
+	width:78.2%;
+	height: 70px;
+}
+.logo{
+	float: left;
+	margin-top: 20px;
+	width: 46px;
+	height: 31px;
+}
+.logo img{
+	width: 46px;
+	height: 31px;
+}
+.navList{
+	/*border:1px solid red;*/
+	float: left;
+	width:87.4%;
+	height: 70px;
+}
+.title{
+	/*border:1px solid red;*/
+	float:left;
+	margin-left: 4%;
+	width: 100px;
+	height: 70px;
+	line-height: 65px;
+	font-size: 16px;
+	text-align: center;
+	border:1px solid #fff;
+	border-top: 5px solid #fff;
+}
+.title:hover{
+	border:1px solid #ccc;
+	border-top: 5px solid #fba025;
+	color:#fba025;
+	-moz-box-shadow: 0px 0px 1px #eee inset;               /* For Firefox3.6+ */
+	-webkit-box-shadow :0px 0px 1px #eee inset;            /* For Chrome0+, Safari0+ */
+	box-shadow: 0px 0px 1px #eee inset;                    /* For Latest Opera */
+}
+ul,li{
+	padding: 0;
+	text-decoration: none;
+	list-style:none;
+}
+.ul{
+	width: 108px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	margin-top: -1px;
+}
+.li{
+	width: 106px;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	background: #fff;
+	opacity: 1;
+	font-size: 14px;
+}
+.title ul li:hover{
+	background: #fff5e9;
+	color: #fba025;
+}
+.user{
+	/*border:1px solid red;*/
+	float: left;
+	width: 34px;
+	height: 34px;
+	height: 70px;
+	background: url(../../images/admin.png) no-repeat 0px 18px;
+}
+.navOrange{
+	background-color: #fff5e9;
+}
+.others{
+	position: absolute;
+	top:70px;
+	right:0;
+	width: 130px;
+	height: 122px;
+	border:1px solid #ccc;
+	z-index: 999;
+}
+.all{
+	width: 128px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #fff;
+}
+.all:hover{
+	background-color: #fff5e9;
+}

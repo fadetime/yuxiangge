@@ -1,0 +1,127 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/pan/panandsoup_view.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="contentLeft">
+			<div class="pan unique_color pointer">{{viewGiftCtrl.languagePack.restaurant.manage.gift.gift}}</div>
+		</div>
+		<div class="contentRight">
+			<div>
+				<div class="add_btn add_btnPosition" ng-click="viewGiftCtrl.openGiftAdd()">{{viewGiftCtrl.languagePack.restaurant.manage.gift.newGift}}</div>
+				<div style="clear:both"></div>
+			</div>
+			<!-- pan -->
+			<div class="panList">
+				<div class="box">
+					<div class="show_box" ng-repeat="gift in viewGiftCtrl.gifts">
+						<div class="show_image"><img ng-src="{{viewGiftCtrl.imageFile+gift.image}}" ng-if="gift.image"></div>
+						<div class="show_info">
+							<div class="text_line">
+								<div class="panname blackAlpha85 ellipsis" ng-bind="gift.showName"></div>
+								<div class="editbtn2">
+									<div class="isActive {{gift.isActive?'down_aciive':'up_aciive'}}" ng-bind="gift.isActive?'{{viewGiftCtrl.languagePack.restaurant.manage.gift.soldOn}}':'{{viewGiftCtrl.languagePack.restaurant.manage.gift.soldOut}}'" ng-click="viewGiftCtrl.changestate(gift)">已上架</div>
+								</div>
+							</div>
+
+							<div class="text_line">
+								<div class="price unique_color" ng-bind="gift.integralPrice+' {{viewGiftCtrl.languagePack.restaurant.manage.gift.integral}}'">汤汁鲜美</div>
+								
+							</div>
+
+							<div class="text_line">
+								<div class="tastedescripetion ellipsis" ng-bind="'{{viewGiftCtrl.languagePack.restaurant.manage.gift.stock}}:'+gift.quantity"></div>
+								<div class="edit_btn edit_btnPosition unique_color" ng-click="viewGiftCtrl.openGiftEdit(gift)">{{viewGiftCtrl.languagePack.restaurant.manage.gift.edit}}</div>
+							</div>
+						</div>
+					</div>
+		
+					<div style="clear:both"></div>
+				</div>
+			</div>
+
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="viewGiftCtrl.pagination.numPages > 1" total-items="viewGiftCtrl.pagination.totalItems" ng-model="viewGiftCtrl.pagination.page" items-per-page="viewGiftCtrl.pagination.itemsPerPage" max-size="viewGiftCtrl.pagination.maxSize" boundary-links="{{viewGiftCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewGiftCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewGiftCtrl.pageChanged()"></pagination>
+</div>
+
+<!-- 新增礼品 -->
+<div class="input_position" style="height:550px;" ng-show="viewGiftCtrl.giftAdd">
+	<div class="close_btn" ng-click="viewGiftCtrl.closeGiftAdd()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.name}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.englishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.integralDemand}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.integralPrice" ng-change="viewGiftCtrl.check('integralPrice')">
+			<div class="error" ng-bind="viewGiftCtrl.integralPriceError"></div>
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.stock}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.quantity" ng-change="viewGiftCtrl.check('quantity')">
+			<div class="error" ng-bind="viewGiftCtrl.quantityError"></div>
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.photo}}:</div>
+			<div class="submit_btn submit_btnPosition" ngf-select ngf-change="viewGiftCtrl.upload($files,0)">
+				<span class="submit_prompt">上传图片</span>
+				<img ng-src="{{viewGiftCtrl.imageFile+viewGiftCtrl.gift.image}}" ng-show="viewGiftCtrl.gift.image">
+				<progressbar ng-show="viewGiftCtrl.loaded > 0" class="progress_bar" ng-class="{active: viewGiftCtrl.loaded < 100}" max="100" value="viewGiftCtrl.loaded">
+					<span ng-bind="viewGiftCtrl.loaded" ></span>%
+				</progressbar >
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewGiftCtrl.save()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<!-- 修改礼品 -->
+<div class="input_position" style="height:550px;" ng-show="viewGiftCtrl.giftEdit">
+	<div class="close_btn" ng-click="viewGiftCtrl.closeGiftEdit()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.name}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.englishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.integralDemand}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.integralPrice">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.stock}}:</div>
+			<input class="input_value" type="text" ng-model="viewGiftCtrl.gift.quantity">
+		</div>
+		<div class="input_content">
+			<div class="input_name">{{viewGiftCtrl.languagePack.restaurant.manage.gift.photo}}:</div>
+			<div class="submit_btn submit_btnPosition" ngf-select ngf-change="viewGiftCtrl.upload($files,0)">
+				<span class="submit_prompt">上传图片</span>
+				<img ng-src="{{viewGiftCtrl.imageFile+viewGiftCtrl.gift.image}}" ng-show="viewGiftCtrl.gift.image">
+				<progressbar ng-show="viewGiftCtrl.loaded > 0" class="progress_bar" ng-class="{active: viewGiftCtrl.loaded < 100}" max="100" value="viewGiftCtrl.loaded">
+				<span ng-bind="viewGiftCtrl.loaded" ></span>%</progressbar >
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewGiftCtrl.update(viewGiftCtrl.gift._id)"></div>
+		<div class="delete_btn" ng-click="viewGiftCtrl.delete(viewGiftCtrl.gift._id)"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+	

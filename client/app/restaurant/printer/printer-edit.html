@@ -1,0 +1,80 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/printer/printer_edit.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-printers-view">{{printerEditCtrl.languagePack.restaurant.printer.title}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer">{{printerEditCtrl.languagePack.restaurant.printer.editTitle}}</span>
+		</div>
+
+		<div style="background:#fff;padding-bottom:30px;">
+			<div class="input_position">
+				<div class="input_contents">
+					<div class="input_content">
+						<div class="input_name">{{printerEditCtrl.languagePack.restaurant.printer.name}}</div>
+						<input type="input_value" class="input_value" ng-model="printerEditCtrl.printer.name" Placeholder="{{printerEditCtrl.languagePack.restaurant.printer.nameRemind}}">
+					</div>
+
+					<div class="input_content input_contentDiference">
+						<div class="input_name">{{printerEditCtrl.languagePack.restaurant.printer.task}}</div>
+						<div class="taskchoose">
+							<div>
+								<div class="taskname">
+									<div class="chooseno pointer" ng-if="!printerEditCtrl.isSelectOrder" ng-click="printerEditCtrl.isSelectOrder=!printerEditCtrl.isSelectOrder"></div>
+									<div class="chooseyes pointer" ng-if="printerEditCtrl.isSelectOrder" ng-click="printerEditCtrl.isSelectOrder=!printerEditCtrl.isSelectOrder"></div>
+									<div class="choosename blackAlpha85 ellipsis">{{printerEditCtrl.languagePack.restaurant.printer.order}}</div>
+									<div style="clear:both"></div>
+								</div>
+								<div style="clear:both"></div>
+
+								<div class="taskname">
+									<div class="chooseno pointer" ng-if="!printerEditCtrl.isSelectPanAndSoup" ng-click="printerEditCtrl.isSelectPanAndSoup=!printerEditCtrl.isSelectPanAndSoup"></div>
+									<div class="chooseyes pointer" ng-if="printerEditCtrl.isSelectPanAndSoup" ng-click="printerEditCtrl.isSelectPanAndSoup=!printerEditCtrl.isSelectPanAndSoup"></div>
+									<div class="choosename blackAlpha85 ellipsis">{{printerEditCtrl.languagePack.restaurant.printer.panSoup}}</div>
+									<div style="clear:both"></div>
+								</div>
+
+								<div class="taskname">
+									<div class="chooseno pointer" ng-if="!printerEditCtrl.isSelectReduce" ng-click="printerEditCtrl.isSelectReduce=!printerEditCtrl.isSelectReduce"></div>
+									<div class="chooseyes pointer" ng-if="printerEditCtrl.isSelectReduce" ng-click="printerEditCtrl.isSelectReduce=!printerEditCtrl.isSelectReduce"></div>
+									<div class="choosename blackAlpha85 ellipsis">退菜、催菜</div>
+									<div style="clear:both"></div>
+								</div>
+								<div style="clear:both"></div>
+								
+								<div class="taskname" style="float:left">
+									<div class="chooseno pointer" ng-if="!printerEditCtrl.isSelectProduct" ng-click="printerEditCtrl.isSelectProduct=!printerEditCtrl.isSelectProduct"></div>
+									<div class="chooseyes pointer" ng-if="printerEditCtrl.isSelectProduct" ng-click="printerEditCtrl.isSelectProduct=!printerEditCtrl.isSelectProduct"></div>
+									<div class="choosename blackAlpha85 ellipsis">{{printerEditCtrl.languagePack.restaurant.printer.product}}</div>
+								</div>
+								<div class="taskcatrgories">
+									<div class="taskcatrgory pointer {{category.isSelect}}" ng-repeat="category in printerEditCtrl.categories" ng-bind="category.showName" ng-click="printerEditCtrl.isSelectProductCategory(category)">标准</div>
+								</div>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+					<div style="clear:both"></div>
+
+					<div class="input_content">
+						<div class="input_name">{{printerEditCtrl.languagePack.restaurant.printer.isActive}}</div>
+						<div class="activeBtnPosition">
+							<div class="chooseno pointer" ng-if="!printerEditCtrl.isActivePrinter" ng-click="printerEditCtrl.isActivePrinter=!printerEditCtrl.isActivePrinter"></div>
+							<div class="chooseyes pointer" ng-if="printerEditCtrl.isActivePrinter" ng-click="printerEditCtrl.isActivePrinter=!printerEditCtrl.isActivePrinter"></div>
+							<div class="choosename blackAlpha85">{{printerEditCtrl.languagePack.restaurant.printer.active}}</div>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both"></div>
+				<div class="btns">
+					<div class="save_btn" ng-click="printerEditCtrl.update()"></div>
+					<div class="delete_btn" ng-click="printerEditCtrl.destroy()"></div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

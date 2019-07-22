@@ -1,0 +1,9 @@
+﻿.content{
+	min-width: 980px;
+}
+.contentbody{
+	margin: 0;
+	padding-top:15px; 
+	font-size: 14px;
+	width:100%;
+}

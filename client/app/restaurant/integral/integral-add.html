@@ -1,0 +1,27 @@
+<link href="assets/css/product/product_edit.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="content ">
+    <div class="content_body htmSize">
+    <!-- 这里开始显示不同页面 -->
+        <div class="smallContent">
+            <div class="input_position">
+                <div class="input_contents">
+                    <div class="input_content">
+                        <div class="input_name">订单号:</div>
+                        <input type="text" ng-model="integralAddCtrl.doNumber" class="input_value" placeholder="请输入订单号">
+                    </div>
+
+                    <div class="input_content">
+                        <div class="input_name">客户账号:</div>
+                        <input type="text" ng-model="integralAddCtrl.account" class="input_value">
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="btns">
+                        <div class="save_btn" ng-click="integralAddCtrl.submit()"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

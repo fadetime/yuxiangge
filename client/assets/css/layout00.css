@@ -1,0 +1,335 @@
+/*基本布局属性*/
+body{
+	padding: 0;
+	margin:0;
+	background: #f8f8f8;
+	font-family: Arial;
+}
+ul,li{
+	text-decoration: none;
+	list-style:none;
+	/*border: 1px solid #000;*/
+	padding: 0;
+	/*width: 100%;*/
+}
+li{
+	width: 100px;
+	display: block;
+	background: #fff;
+	opacity: 1;
+}
+/*基本字体样式*/
+.blackAlpha85{
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+.blackAlpha54{
+	filter:alpha(opacity=54); /*IE滤镜，透明度54%*/
+	-moz-opacity:0.54; /*Firefox私有，透明度54%*/
+	opacity:0.54;/*其他，透明度54%*/
+	color: #000;
+}
+.blackAlpha28{
+	filter:alpha(opacity=28); /*IE滤镜，透明度28%*/
+	-moz-opacity:0.28; /*Firefox私有，透明度28%*/
+	opacity:0.28;/*其他，透明度28%*/
+	color: #000;
+}
+.red{
+	color: #c30101;
+}
+
+.background{
+	background: #f8f8f8;
+}
+.backgroundRedAlpha28{
+	background: #c30101;
+	filter:alpha(opacity=54); /*IE滤镜，透明度54%*/
+	-moz-opacity:0.54; /*Firefox私有，透明度54%*/
+	opacity:0.54;/*其他，透明度54%*/
+}
+.backgroundGray{
+	background:#e3e3e3;
+}
+
+.border{
+	border:1px solid #000;
+}
+.htmSize{
+	/*border:1px solid red;*/
+	/*max-width: 1280px;*/
+	max-width: 1000px;
+	/*min-width: 750px;*/
+}
+
+/*nav*/
+.nav{
+	/*border:1px solid red;*/
+	background: #fff;
+	min-width: 980px;
+	box-shadow:#ccc 0 0 1px 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+.body{
+	/*border:1px solid red;*/
+	margin: 0 auto;
+/*	height: 200px;*/
+	width:78.2%;
+/*	height: 44px;*/
+	padding: 15px 0;
+	position: relative;
+	
+}
+.logo{
+	/*border:1px solid red;*/
+	width: 9.2%;
+	float: left;
+	height: 44px;
+}
+.logo img{
+	width: 100%
+}
+.navList{
+	width:87.4%;
+	height: 44px;
+	float: left;
+}
+.title{
+	width: 100px;
+	margin-left: 4%;
+	float:left;
+	font-size: 16px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+}
+.navRed{
+	background: #DF7777;
+	color: #c30101;
+}
+.title ul li:hover{
+	background: #E8D6D6;
+}
+.user{
+	width: 3.4%;
+	float: left;
+	height: 44px;
+}
+.user img{
+	margin-top: 8px;
+	width: 100%
+}
+/*content*/
+.content{
+	/*border:1px solid red;*/
+	min-width: 980px;
+}
+.contentbody{
+	/*border:1px solid red;*/
+	margin: 0 auto;
+	margin-top: 80px;
+	padding-top:15px; 
+	font-size: 14px;
+	width:78.2%;
+}
+.pointer{
+	cursor:pointer;
+}
+
+
+
+
+/*css by xutao*/
+
+/*表格基本属性*/
+.captions{
+	height: 40px;
+	background-color: #fff;
+	border-bottom: 1px solid #f2f2f2;
+}
+.caption{
+	float: left;
+	height: 40px;
+	font: 14px/40px Arial; /*size/line-height family*/
+	filter:alpha(opacity=54); /*IE滤镜*/
+	-moz-opacity:0.54; /*Firefox私有*/
+	opacity:0.54;/*其他*/
+}
+.tableContents{
+	height: 60px;
+	background-color: #fff;
+	border-bottom: 1px solid #f2f2f2;
+}
+.tableContent{
+	float: left;
+	height: 60px;
+	font: 14px/60px Arial; /*size/line-height family*/
+	filter:alpha(opacity=85); /*IE滤镜*/
+	-moz-opacity:0.85; /*Firefox私有*/
+	opacity:0.85;/*其他*/	
+}
+
+
+/*输入框的基本属性*/
+/*新增waiter*/
+/*.inputposition{
+	margin: 0 auto;
+	position: absolute;
+	top:20%;
+	left: 0px;
+	right: 0px;
+	width: 500px;
+	background-color: #fff;
+	box-shadow: #ccc 0 0 5px 0;
+}
+.inputcontents{
+	margin: 40px auto 0px;
+	width: 400px;
+}
+.inputcontent{
+	margin-top: 20px;
+	width: 400px;
+	height: 44px;
+}
+.word{
+	float: left;
+	width: 80px;
+	line-height: 44px;
+	text-align: right;
+}
+.inputinput{
+	float: left;
+	margin-left: 20px;
+	width: 300px;
+	height: 42px;
+	text-indent: 20px;
+	border:1px solid #ccc;
+}
+.closeBtn{
+	position: absolute;
+	top:10px;
+	right: 10px;
+}
+.submitimage{
+	float: left;
+	margin-left: 20px;
+	width: 120px;
+	height: 120px;
+	background: url(../../images/submit.png);
+}
+.btns{
+	margin: 30px auto;
+	width: 100px;
+}
+.greenSaveBtn,.deleteBtn{
+	float: left;
+	margin-left: 20px;
+}
+.deleteBtn{
+	margin-top: 6px;
+}
+.submitimage{
+	float: left;
+	width: 120px;
+	height: 120px;
+	background: url(../../images/submit.png);
+}*/
+
+/*层级子导航*/
+.subnav{
+	height: 50px;
+	line-height: 50px;
+	font-size: 14px;
+}
+/*其他基本属性*/
+input{
+	border:none;
+}
+input:focus {
+    outline:none;
+}
+a{
+	text-decoration: none;
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+a:hover{
+	text-decoration: none;
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+a:active{
+	text-decoration: none;
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+a:visited{
+	text-decoration: none;
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+a:focus{
+	text-decoration: none;
+	filter:alpha(opacity=85); /*IE滤镜，透明度85%*/
+	-moz-opacity:0.85; /*Firefox私有，透明度85%*/
+	opacity:0.85;/*其他，透明度85%*/
+	color: #000;
+}
+.ellipsis{
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+/*按钮*/
+.redSaveBtn{
+	background: url("../images/redSave.png") no-repeat;
+	width: 32px;
+	height: 32px;
+	cursor:pointer;
+}
+.greenSaveBtn{
+	background: url("../images/greenSave.png") no-repeat;
+	width: 32px;
+	height: 32px;
+	cursor:pointer;
+}
+.closeBtn{
+	background: url("../images/close.png") no-repeat;
+	width: 24px;
+	height: 24px;
+	cursor:pointer;
+}
+.deleteBtn{
+	background: url("../images/delete.png") no-repeat;
+	width: 16px;
+	height: 20px;
+	cursor: pointer;
+}
+/*错误提示*/
+.error{
+	height: 0;
+	position: relative;
+	top:0;
+	left:22px;
+	color: #a94442;
+}
+.error150{
+	height: 0;
+	position: relative;
+	top:0;
+	left:150px;
+	color: #a94442;
+}

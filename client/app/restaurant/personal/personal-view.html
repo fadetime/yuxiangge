@@ -1,0 +1,98 @@
+﻿<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/personal/personal_view.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="contentLeft">
+			<div class="leftname pointer {{personalViewCtrl.showRestaurantNotice?'unique_color':'blackAlpha85'}}" ng-click="personalViewCtrl.openShowRestaurantNotice()">{{personalViewCtrl.languagePack.restaurant.personal.notice}}</div>
+			<div class="leftname pointer {{personalViewCtrl.showIntegralChange?'unique_color':'blackAlpha85'}}" ng-click="personalViewCtrl.openShowIntegralChange()">{{personalViewCtrl.languagePack.restaurant.personal.changeIntegral}}</div>
+			<div class="leftname pointer {{personalViewCtrl.showChangePassword?'unique_color':'blackAlpha85'}}" ng-click="personalViewCtrl.openShowChangePassword()">{{personalViewCtrl.languagePack.restaurant.personal.changePassword}}</div>
+			<div class="leftname pointer {{personalViewCtrl.showChangeRestaurantInfo?'unique_color':'blackAlpha85'}}" ng-click="personalViewCtrl.openShowChangeRestaurantInfo()">{{personalViewCtrl.languagePack.restaurant.personal.changeInfo}}</div>
+		</div>
+
+		<div class="contentRight" ng-show="personalViewCtrl.showRestaurantNotice">
+			<textarea Placeholder="{{personalViewCtrl.languagePack.restaurant.personal.restaurantNotice}}" class="notice blackAlpha54" ng-model="personalViewCtrl.restaurant._restaurantProflie.notice"></textarea>
+			<textarea Placeholder="{{personalViewCtrl.languagePack.restaurant.personal.integralNotice}}" class="notice blackAlpha54" ng-model="personalViewCtrl.restaurant._restaurantProflie.integralRule"></textarea>
+			<div class="btns">
+				<div class="save_btn" ng-click="personalViewCtrl.saveRestaurantNotice()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div class="contentRight" ng-show="personalViewCtrl.showIntegralChange">
+			<div class="changeintegral">
+				<span class="blackAlpha28">{{personalViewCtrl.languagePack.restaurant.personal.gst}}:</span>
+				<input type="text" class="integral" ng-model="personalViewCtrl.restaurant._restaurantProflie.gstPercent">
+			</div>
+
+			<div class="changeintegral">
+				<span class="blackAlpha28">{{personalViewCtrl.languagePack.restaurant.personal.service}}:</span>
+				<input type="text" class="integral" ng-model="personalViewCtrl.restaurant._restaurantProflie.servicePercent">
+			</div>
+			
+			<div class="changeintegral">
+				<span class="blackAlpha28">{{personalViewCtrl.languagePack.restaurant.personal.consume}}</span>
+				<span class="blackAlpha85 size16">{{personalViewCtrl.languagePack.restaurant.personal.oneDoller}} = </span>
+				<input type="text" class="integral" ng-model="personalViewCtrl.restaurant._restaurantProflie.ratio">
+				<span class="blackAlpha85 size16">{{personalViewCtrl.languagePack.restaurant.personal.integral}}</span>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="personalViewCtrl.saveIntegralChange()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div class="contentRight" ng-show="personalViewCtrl.showChangePassword">
+			<div class="changepassword">
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.oldPassword}}:</div>
+					<input type="text" class="inputinput" ng-model="personalViewCtrl.oldPassword">
+				</div>
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.newPassword}}:</div>
+					<input type="text" class="inputinput" ng-model="personalViewCtrl.newPassword">
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="personalViewCtrl.saveChangePassword()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div class="contentRight" ng-show="personalViewCtrl.showChangeRestaurantInfo">
+			<div class="changepassword changepassword2">
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.name}}:</div>
+					<input type="text" class="inputinput" ng-model="personalViewCtrl.restaurant._restaurantProflie.name">
+				</div>
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.address}}:</div>
+					<input type="text" class="inputinput" ng-model="personalViewCtrl.restaurant._restaurantProflie.address">
+				</div>
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.tel}}:</div>
+					<input type="text" class="inputinput" ng-model="personalViewCtrl.restaurant._restaurantProflie.tel">
+				</div>
+				<div class="inputcontent">
+					<div class="word blackAlpha85">{{personalViewCtrl.languagePack.restaurant.personal.logo}}:</div>
+					<div class="submit_btn submit_btnPosition" ngf-select ngf-change="personalViewCtrl.upload($files,0)" style="{{personalViewCtrl.restaurant._restaurantProflie.logo?'background:#fff':''}}">
+						<span class="submit_prompt">{{personalViewCtrl.restaurant._restaurantProflie.logo?'&nbsp;':personalViewCtrl.languagePack.restaurant.common.submitImg}}</span>
+						<img ng-show="personalViewCtrl.restaurant._restaurantProflie.logo" ng-src="{{personalViewCtrl.imageFile+personalViewCtrl.restaurant._restaurantProflie.logo}}">
+						<progressbar ng-show="personalViewCtrl.loaded > 0" class="progressB_bar" ng-class="{active: personalViewCtrl.loaded < 100}" max="100" value="personalViewCtrl.loaded">
+							<span ng-bind="personalViewCtrl.loaded" ></span>%
+						</progressbar >
+					</div>
+				</div>
+			</div>
+			<div class="btns">
+				<div class="save_btn" ng-click="personalViewCtrl.saveChangeRestaurantInfo()"></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div style="clear:both"></div>
+	</div>
+</div>
+

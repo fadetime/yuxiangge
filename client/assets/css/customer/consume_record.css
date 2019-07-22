@@ -1,0 +1,22 @@
+.header{
+	margin-bottom: 20px;
+}
+.time{
+	width: 16%;
+	text-indent: 30px;
+}
+.address{
+	width: 16%;
+}
+.customer{
+	width: 21%;
+}
+.consumemoney{
+	width: 21%;
+}
+.staff{
+	width: 26%;
+}
+.detail{
+	margin-left: 20px;
+}

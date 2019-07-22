@@ -1,0 +1,123 @@
+﻿<link href="assets/css/pan/panandsoup_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="contentLeft">
+			<div class="soup blackAlpha85 pointer" ui-sref="restaurant-soups-view">{{viewPanCtrl.languagePack.restaurant.manage.pan.soup}}</div>
+			<div class="pan unique_color pointer">{{viewPanCtrl.languagePack.restaurant.manage.pan.pot}}</div>
+		</div>
+		<div class="contentRight">
+			<div>
+				<div class="add_btn add_btnPosition" ng-click="viewPanCtrl.openPanAdd()">{{viewPanCtrl.languagePack.restaurant.manage.pan.newPot}}</div>
+				<div style="clear:both"></div>
+			</div>
+			<!-- pan -->
+			<div class="panList">
+				<div class="box">
+
+					<div class="show_box " ng-repeat="pan_category in viewPanCtrl.pan_categories">
+						<div class="show_image" ><img ng-src="{{viewPanCtrl.imageFile+pan_category.image}}" ng-if="pan_category.image"></div>
+						<div class="show_info" style="{{pan_category.isActive?'background:#fff':'background:#f8f8f8'}}">
+							<div class="text_line">
+								<div class="panname blackAlpha85" ng-bind="pan_category.showName">单锅</div>
+								<div class="isActive {{pan_category.isActive?'down_aciive':'up_aciive'}}" ng-click="viewPanCtrl.changestate(pan_category)" ng-bind="pan_category.isActive?'{{viewPanCtrl.languagePack.restaurant.manage.pan.soldOn}}':'{{viewPanCtrl.languagePack.restaurant.manage.pan.soldOut}}'">已上架</div>
+							</div>
+
+							<div class="text_line">
+								<div class="price unique_color" ng-bind="pan_category.subtotal | currency:'$'"></div>
+							</div>
+
+							<div class="text_line">
+								<div class="edit_btn edit_btnPosition unique_color" ng-click="viewPanCtrl.openPanEdit(pan_category)">{{viewPanCtrl.languagePack.restaurant.manage.pan.edit}}</div>
+							</div>
+						</div>
+					</div>
+					<div style="clear:both"></div>	
+				</div>
+			</div>
+
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<pagination style="float:right;margin-right:200px;" ng-if="viewPanCtrl.pagination.numPages > 1" total-items="viewPanCtrl.pagination.totalItems" ng-model="viewPanCtrl.pagination.page" items-per-page="viewPanCtrl.pagination.itemsPerPage" max-size="viewPanCtrl.pagination.maxSize" boundary-links="{{viewPanCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewPanCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewPanCtrl.pageChanged()"></pagination>
+</div>
+
+<!-- 新增锅子 -->
+<div class="input_position" ng-show="viewPanCtrl.panAdd">
+	<div class="close_btn" ng-click="viewPanCtrl.closePanAdd()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potName}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potEnglishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.total}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.soupTotal" ng-change="viewPanCtrl.check('soupTotal')">
+			<div class="error" ng-bind="viewPanCtrl.soupTotalError"></div>
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.price}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.subtotal"  ng-change="viewPanCtrl.check('subtotal')">
+			<div class="error" ng-bind="viewPanCtrl.subtotalError"></div>
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potPhoto}}:</div>
+			<div class="submit_btn submit_btnPosition" ngf-select ngf-change="viewPanCtrl.upload($files,0)">
+				<span class="submit_prompt">{{viewPanCtrl.languagePack.restaurant.common.submitImg}}</span>
+				<img ng-show="viewPanCtrl.pan_category.image" ng-src="{{viewPanCtrl.imageFile+viewPanCtrl.pan_category.image}}">
+				<progressbar ng-show="viewPanCtrl.loaded > 0" class="progress_bar" ng-class="{active: viewPanCtrl.loaded < 100}" max="100" value="viewPanCtrl.loaded" style="background-color:#9DD1FF;display: block;border-radius:5px;text-align:center">
+				<span ng-bind="viewPanCtrl.loaded" ></span>%</progressbar >
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewPanCtrl.save()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<!-- 修改锅子 -->
+<div class="input_position" ng-show="viewPanCtrl.panEdit">
+	<div class="close_btn" ng-click="viewPanCtrl.closePanEdit()"></div>
+	<div class="input_contents">
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potName}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.name">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potEnglishName}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.name_english">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.total}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.soupTotal">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.price}}:</div>
+			<input class="input_value" type="text" ng-model="viewPanCtrl.pan_category.subtotal">
+		</div>
+		<div class="input_content">
+			<div class="input_name blackAlpha85">{{viewPanCtrl.languagePack.restaurant.manage.pan.potPhoto}}:</div>
+			<div class="submit_btn submit_btnPosition" ngf-select ngf-change="viewPanCtrl.upload($files,0)">
+				<span class="submit_prompt">{{viewPanCtrl.languagePack.restaurant.common.submitImg}}</span>
+				<img ng-show="viewPanCtrl.pan_category.image" ng-src="{{viewPanCtrl.imageFile+viewPanCtrl.pan_category.image}}">
+				<progressbar ng-show="viewPanCtrl.loaded > 0" class="progressbar" ng-class="{active: viewPanCtrl.loaded < 100}" max="100" value="viewPanCtrl.loaded" style="background-color:#9DD1FF;display: block;border-radius:5px;text-align:center">
+				<span ng-bind="viewPanCtrl.loaded" ></span>%</progressbar >
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewPanCtrl.update()"></div>
+		<div class="delete_btn" ng-click="viewPanCtrl.delete(viewPanCtrl.pan_category._id)"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+	

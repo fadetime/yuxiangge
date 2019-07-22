@@ -1,0 +1,131 @@
+﻿<div ng-include="'components/navbar/navbar.html'"></div>
+<link href="assets/css/product/category_view.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-products-view">{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.dishes}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer">{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.editDishes}}</span>
+		</div>
+
+		<div class="main" id="main" >
+			<div class="maintitle">
+				<div class="mainleft uniquecolor">
+					<span>{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.firstDishes}}</span>
+					<div class="sort_btn srot_btnPosition unique_color" ng-click="viewCategoryCtrl.sortCategory('',1)">{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.order}}</div>
+				</div>
+				<div class="mainright blackAlpha85">{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.secondDishes}}</div>
+				<div style="clear:both"></div><!-- 清浮动 -->
+			</div>
+
+			<div class="maincontent blackAlpha85" ng-repeat="category in viewCategoryCtrl.categories">
+				<div class="leftcontent" style="{{category.height}}">
+					<div class="postion">
+						<div class="first ellipsis" ng-bind="category.showName"></div>
+						<div class="edit_btn edit_btnPosition unique_color" style="width:15px;" ng-click="viewCategoryCtrl.editCategory(category,1)"></div>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+				<div class="rightcontent">
+					<div class="second ellipsis" ng-repeat="sepCategory in category.separatCategory" ng-bind="sepCategory.showName"></div>
+					<div class="addsecondbtn pointer" ng-click="viewCategoryCtrl.addCategory(category,2)">新增类目</div>
+					<div class="editbtns">
+						<div class="edit_btnDeferent unique_color" ng-show="category.separatCategory[0]" ng-click="viewCategoryCtrl.editCategory(category,2)"></div>
+						<div class="sort_btnDeferent unique_color" ng-show="category.separatCategory[0]" ng-click="viewCategoryCtrl.sortCategory(category,2)"></div>
+					</div>
+				</div>
+				<div style="clear:both"></div><!-- 清浮动 -->
+			</div>
+
+			<div class="addfirst blackAlpha85">
+				<div class="leftadd">
+					<div class="add_btn add_btnPosition" ng-click="viewCategoryCtrl.addCategory('',1)">{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.newDishes}}</div>
+				</div>
+				<div class="rightadd"></div>
+				<div style="clear:both"></div><!-- 清浮动 -->
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- 类目编辑 -->
+<div class="eidtcategoryposition" ng-show="viewCategoryCtrl.showEditCategory">
+	<div class="close_btn" ng-click="viewCategoryCtrl.initOpen(true)"></div>
+	<div class="categories">
+		<!-- 二级分类 -->
+		<div ng-repeat="category in viewCategoryCtrl.selectedCategory.separatCategory" ng-if="viewCategoryCtrl.categoryState==2">
+			<div class="category">
+				<input type="text" class="categoryinput" ng-model="category.name">
+				<!-- <div class="deletecategory pointer" ng-click="viewCategoryCtrl.delete(category)"></div> -->
+			</div>
+			<div class="category">
+				<input type="text" class="categoryinput" ng-model="category.name_english">
+				<div class="deleteBtnS" ng-click="viewCategoryCtrl.delete(category)"></div>
+			</div>
+		</div>
+		<!-- 一级分类 -->
+		<div ng-if="viewCategoryCtrl.categoryState==1">
+			<div class="category">
+				<input type="text" class="categoryinput" ng-model="viewCategoryCtrl.selectedCategory.name">
+				<!-- <div class="deletecategory pointer" ng-click="viewCategoryCtrl.delete()"></div> -->
+			</div>
+			<div class="category">
+				<input type="text" class="categoryinput" ng-model="viewCategoryCtrl.selectedCategory.name_english">
+				<div class="deleteBtnS" ng-click="viewCategoryCtrl.delete()"></div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewCategoryCtrl.saveEdit()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<!-- 增加类目 -->
+<div class="addcategoryposition" ng-show="viewCategoryCtrl.showAddCategory">
+	<div class="smallTitle" ng-bind="viewCategoryCtrl.selectedCategory.name">aaaa</div>
+	<div class="close_btn" ng-click="viewCategoryCtrl.initOpen(true)"></div>
+	<div class="categories">
+		<div class="category">
+			<input type="text" class="categoryinput" ng-model="viewCategoryCtrl.readyCatgeory.name" placeholder="{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.name}}">
+		</div>
+		<div class="category">
+			<input type="text" class="categoryinput" ng-model="viewCategoryCtrl.readyCatgeory.name_english" placeholder="{{viewCategoryCtrl.languagePack.restaurant.manage.product.categories.englishName}}">
+		</div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewCategoryCtrl.add()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<!-- 二级类目排序 -->
+<div class="sortcategoryposition" ng-show="viewCategoryCtrl.showSortCategory">
+	<div class="close_btn" ng-click="viewCategoryCtrl.initOpen(true)"></div>
+	<div class="sorts">
+		<!-- 二级分类 -->
+		<div class="sort" ng-repeat="category in viewCategoryCtrl.selectedCategory.separatCategory" ng-if="viewCategoryCtrl.categoryState==2">
+			<div class="sortindex"><span ng-bind="viewCategoryCtrl.selectedCategory.separatCategory.indexOf(category)+1">1</span>.</div>
+			<div class="sortinput" ng-bind="category.showName"></div>
+			<div class="sortup pointer" ng-click="viewCategoryCtrl.upSeqCategory(category)"></div>
+			<div class="sortdown pointer" ng-click="viewCategoryCtrl.downSeqCategory(category)"></div>
+		</div>
+		<!-- 一级分类 -->
+		<div class="sort" ng-if="viewCategoryCtrl.categoryState==1" ng-repeat="category in viewCategoryCtrl.categories">
+			<div class="sortindex"><span ng-bind="viewCategoryCtrl.categories.indexOf(category)+1">1</span>.</div>
+			<div class="sortinput"  ng-bind="category.showName"></div>
+			<div class="sortup pointer" ng-click="viewCategoryCtrl.upCategory(category)"></div>
+			<div class="sortdown pointer" ng-click="viewCategoryCtrl.downCategory(category)"></div>
+		</div>
+	</div>
+	<div class="btns">
+		<div class="save_btn" ng-click="viewCategoryCtrl.saveSort()"></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+

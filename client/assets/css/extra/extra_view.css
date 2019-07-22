@@ -1,0 +1,36 @@
+/*header*/
+.header{
+	margin-bottom: 20px;
+}
+.add_btnEdit{
+	width: 140px;
+}
+.name{
+	width: 15%;
+	text-indent: 30px;
+}
+.specificat{
+	width: 19%;
+}
+.price{
+	width: 19%;
+}
+.isactive{
+	width: 21%;
+}
+.editbtn{
+	width: 26%;
+}
+.edit_btnPosition{
+	margin-left: 20px;
+	margin-top: 18px;
+}
+
+
+.input_position{
+	position: fixed;
+	top:130px;
+	left: 0px;
+	right: 0px;
+	box-shadow: 0 0 5px 0 #ccc;
+}

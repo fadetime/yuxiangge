@@ -1,0 +1,80 @@
+<link href="assets/css/product/product_view.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<div class="add_btn add_btnPosition" ui-sref="restaurant-products-add">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.newDish}}</div>
+			<div class="search_box search_boxPosition">
+				<input type="text" style="background-color:#f8f8f8" class="search_input blackAlpha85" placeholder="{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.search}}" onfocus="this.placeholder=''" ng-onblur="this.placeholder={{viewProductCtrl.languagePack.restaurant.manage.product.product_view.search}}" ng-model="viewProductCtrl.search">
+				<div class="search_btn" ng-click="viewProductCtrl.select()"></div>
+			</div>
+		</div>
+
+		<div class="contentLeft">
+			<div class="category pointer {{viewProductCtrl.allProduct}}" ng-click="viewProductCtrl.selectCategory('all')">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.allDish}}</div>
+			<div class="category" ng-repeat="category in viewProductCtrl.categories">
+				<div class="{{category.style}}"><span class="pointer" ng-bind="category.showName" ng-click="viewProductCtrl.selectCategory(category._id,1)" ng-mouseenter="category.showSep = true" ></span><img src="assets/images/dropDown.png"  class="pointer" style="margin-left:5px;" ng-if="category.separatCategory.length>0" ng-click="category.showSep = !category.showSep"></div>
+				<div class="pointer sepCategory {{sepCategory.style}}" ng-repeat="sepCategory in category.separatCategory" ng-bind="sepCategory.showName" ng-click="viewProductCtrl.selectCategory(sepCategory._id,2)" ng-if="category.showSep"></div>
+			</div>
+			<div class="edit_btn edit_btnPosition unique_color" ui-sref="restaurant-categories-view">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.editCategory}}</div>
+		</div>
+
+		<div class="contentRight">
+			<div class="sorts">
+				<div class="sort pointer">
+					<div class="item" ng-click="viewProductCtrl.changeSort('date')">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.addtime}}</div>
+					<div class="{{viewProductCtrl.sortByDate}}" ng-click="viewProductCtrl.changeSort('date')"></div>
+				</div>
+				<div class="sort pointer">
+					<div class="item" ng-click="viewProductCtrl.changeSort()">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.price}}</div>
+					<div class="{{viewProductCtrl.sortByPriceDown}}" ng-click="viewProductCtrl.changeSort('price_down')"></div>
+					<div class="{{viewProductCtrl.sortByPriceUp}}" ng-click="viewProductCtrl.changeSort('price_up')"></div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+
+			<!-- product -->
+			<div class="productList">
+				<div class="box">
+					<div class="show_box" ng-repeat="product in viewProductCtrl.products">
+						<div class="show_image" ui-sref="restaurant-products-edit({id:product._id})"><img ng-src="{{viewProductCtrl.imageFile+product.image}}" ng-if="product.image" ></div>
+
+						<div class="show_info" style="{{product.isActive?'background:#fff;':'background:#f8f8f8;'}}">
+							<div class="text_line">
+								<div class="blackAlpha85 name" ng-bind="product.product_info.name||'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.temporaryNoName}}'"></div>
+								<div class="isActive pointer {{product.isActive?'down_aciive':'up_aciive'}}" ng-bind="product.isActive?'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.soldOn}}':'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.off}}'" ng-click="viewProductCtrl.changeActive(product)">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.sold}}</div>
+								<div style="clear:both"></div>
+							</div>
+
+							<div class="text_line ">
+								<div class="price">
+									<span class="unique_color" ng-bind="product.price?(product.price | currency:'$ '):'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.temporaryNoPrice}}'">$8.0</span>
+									<span class="blackAlpha54 ">/份</span>
+								</div>
+								<div  class="specificat blackAlpha54" ng-bind="product.product_info.specificat?product.product_info.specificat:'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.temporaryNoNorms}}'"></div>
+								<div style="clear:both"></div>
+							</div>
+
+							<div class="text_line">
+								<div class="quantity {{product.quantity>30?'blackAlpha54':'unique_color'}}">
+									<span>{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.stock}}:</span><span ng-bind="product.isActive?(product.quantity>0?product.quantity:'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.soldOut}}'):(product.quantity?product.quantity:'{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.temporaryNoStock}}')"></span>
+								</div>
+								<div class="edit_btn edit_btnPosition2 unique_color" ui-sref="restaurant-products-edit({id:product._id})">{{viewProductCtrl.languagePack.restaurant.manage.product.product_view.edit}}</div>
+								<div style="clear:both"></div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div style="clear:both"></div>
+					
+				</div>
+				<pagination style="float:right;margin-right:30px;" ng-if="viewProductCtrl.pagination.numPages > 1" total-items="viewProductCtrl.pagination.totalItems" ng-model="viewProductCtrl.pagination.page" items-per-page="viewProductCtrl.pagination.itemsPerPage" max-size="viewProductCtrl.pagination.maxSize" boundary-links="{{viewProductCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewProductCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewProductCtrl.pageChanged()"></pagination>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+

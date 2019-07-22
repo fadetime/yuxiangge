@@ -1,0 +1,75 @@
+﻿<link href="assets/css/customer/consume_detail.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header">
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-customers-view">{{consumeDetailCtrl.languagePack.restaurant.customer.consumers}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer" ui-sref="restaurant-consume-record({id:consumeDetailCtrl.order._customer._id})">{{consumeDetailCtrl.languagePack.restaurant.customer.details}}</span>
+			<span class="sub_nav blackAlpha54">></span>
+			<span class="sub_nav blackAlpha54 pointer">{{consumeDetailCtrl.languagePack.restaurant.customer.detailss}}</span>
+		</div>
+
+		<div>
+			<div class="leftbar">
+				<div class="leftbarTitle unique_color size16">{{consumeDetailCtrl.languagePack.restaurant.order.costTotal}}</div>
+				<div class="leftbarContent size14">
+					<div>
+						<div class="leftTitles blackAlpha54">
+							<div class="leftTitle">{{consumeDetailCtrl.languagePack.restaurant.order.productTotal}}:</div>
+							<div class="leftTitle discount unique_color" ng-bind="'{{consumeDetailCtrl.languagePack.restaurant.order.discount}}'+consumeDetailCtrl.discount"></div>
+							<div class="leftTitle">{{consumeDetailCtrl.languagePack.restaurant.order.pot}}:</div>
+							<div class="leftTitle">{{consumeDetailCtrl.languagePack.restaurant.order.total}}:</div>
+							<div class="leftTitle">{{consumeDetailCtrl.languagePack.restaurant.order.serve}}(<span ng-bind="consumeDetailCtrl.servicePercent+'%'">10%</span>):</div>
+							<div class="leftTitle">{{consumeDetailCtrl.languagePack.restaurant.order.taxation}}(<span ng-bind="consumeDetailCtrl.gstPercent+'%'">7%</span>):</div>
+						</div>
+						<div class="rightcontents blackAlpha54">
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.productTotal | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.productTotal | currency:'$ '">$120.0</div>
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.finalProductTotal | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.finalProductTotal | currency:'$ '">$96.0</div>
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.otherTotal | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.otherTotal | currency:'$ '">$24.0</div>
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.total | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.total | currency:'$ '">$120.0</div>
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.serviceCharge | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.serviceCharge | currency:'$ '">$12.0</div>
+							<div class="rightcontent ellipsis" title="{{consumeDetailCtrl.order.gst | currency:'$ '}}" ng-bind="consumeDetailCtrl.order.gst | currency:'$ '">$8.4</div>
+						</div>
+					</div>
+					<div style="clear:both"></div><!-- 清浮动 -->
+					<div>
+						<div class="sumprice blackAlpha85">{{consumeDetailCtrl.languagePack.restaurant.order.totalPrice}}:<span class="unique_color" ng-bind="consumeDetailCtrl.order.subtotal | currency:'$ '"> $ 200.50</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="rightbar">
+				<div class="rightbarTitle unique_color size16">{{consumeDetailCtrl.languagePack.restaurant.order.costDetail}}</div>
+				<div class="panleft size14" style="{{consumeDetailCtrl.extraHeight}}">
+					<div class="detailtitles">{{consumeDetailCtrl.languagePack.restaurant.order.pot}}</div>
+
+					<div class="detailcontents blackAlpha54" ng-show="consumeDetailCtrl.pan_category">
+						<div class="detailcontent category ellipsis" title="{{consumeDetailCtrl.pan_category.showName}}" ng-bind="consumeDetailCtrl.pan_category.showName">双拼锅</div>
+						<div class="detailcontent quantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{consumeDetailCtrl.pan_category.finalTotal | currency:'$ '}}" ng-bind="consumeDetailCtrl.pan_category.finalTotal | currency:'$ '">$20</div>
+					</div>
+
+					<div class="detailcontents blackAlpha54" ng-show="consumeDetailCtrl.extras[0]" ng-repeat="extra in consumeDetailCtrl.extras">
+						<div class="detailcontent category ellipsis" title="{{extra.showName}}" ng-bind="extra.showName">双拼锅</div>
+						<div class="detailcontent quantity" ng-bind="'×'+extra.orderQuantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{extra.finalTotal | currency:'$'}}" ng-bind="extra.finalTotal | currency:'$'">$20</div>
+					</div>
+				</div>
+
+				<div class="productRight size14" style="{{consumeDetailCtrl.productHeight}}">
+					<div class="detailtitles">{{consumeDetailCtrl.languagePack.restaurant.order.product}}</div>
+					<div class="detailcontents blackAlpha54" ng-show="consumeDetailCtrl.products[0]" ng-repeat="product in consumeDetailCtrl.products">
+						<div class="detailcontent category ellipsis" title="{{product.showName}}" ng-bind="product.showName">进口牛肉</div>
+						<div class="detailcontent quantity" ng-bind="'×'+product.orderQuantity">×1</div>
+						<div class="detailcontent price ellipsis" title="{{product.finalTotal | currency:'$'}}" ng-bind="product.finalTotal | currency:'$'">$20</div>
+					</div>
+				</div>
+			</div>
+
+		<div>
+	</div>
+</div>
+	

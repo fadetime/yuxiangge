@@ -1,0 +1,93 @@
+/*header*/
+.header{
+	/*border:1px solid red;*/
+	height: 60px;
+}
+.search_box{
+	float: left;
+}
+.add_btnDifferent{
+	float: left;
+	margin-left: 30px;
+	width: 120px;
+	height: 40px;
+	line-height: 38px;
+	text-align: center;
+	color: #fba025;
+	border-radius: 40px;
+	border:1px solid #ccc;
+	cursor: pointer;
+}
+.add_btnDifferent:hover{
+	color: #fff;
+	border:none;
+	background: #fba025;
+	line-height: 40px;
+}
+.download{
+	float: right;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 38px;
+	text-align: center;
+	border-radius: 40px;
+	border: 1px #ccc solid;
+}
+.sort{
+	/*margin-top: 28px;*/
+	width: 180px;
+	height: 40px;
+	border:1px solid #ccc;
+}
+.sortword{
+	/*border:1px solid red;*/
+	float: left;
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 10px;
+}
+.sortimg{
+	float: left;
+	margin-top: 10px;
+	width: 15px;
+	height: 17px;
+	background: url(../../images/calendar.png) no-repeat;
+}
+/*.time{
+	width: 15%;
+	text-indent: 30px;
+}
+.tablenum{
+	width: 16%;
+}
+.consume{
+	width: 18%;
+}
+.customer{
+	width: 17%;
+}
+.staff{
+	width: 25%;
+}
+.detail{
+	width: 9%;
+}*/
+.textIndent20{
+	text-indent: 20px;
+}
+.width10{
+	width: 10%;
+}
+.width14{
+	width: 14%;
+}
+.width16{
+	width: 16%;
+}
+.datepickerPosition{
+	position: absolute;
+	top:129px;
+	z-index: 999;
+	background: #fff;
+}

@@ -1,0 +1,34 @@
+<link href="assets/css/base.css" rel="stylesheet" type="text/css" >
+<link href="assets/css/base_onlyThisProject.css" rel="stylesheet" type="text/css" >
+<link href="assets/css/nav/nav.css" rel="stylesheet" type="text/css" >
+<!-- 内容部分max-width:1280px;min-width:? -->
+<div class="hasNav nav" ng-controller="NavbarCtrl as navbarCtrl">
+	<div class="body htmSize ">
+		<div class="logo">
+			<img ng-src="{{navbarCtrl.logo?(navbarCtrl.imageFile+navbarCtrl.logo):'assets/images/logo.png'}}">
+		</div>
+		<div class="navList">
+			<div class="title " ng-repeat="menu in navbarCtrl.menu" ng-mouseover="menu.showContent=true" ng-mouseout="menu.showContent=false">
+				<div>
+					<span ui-sref="{{menu.state}}" ng-bind="menu.title" class="blackAlpha54 pointer {{menu.style}}"></span>
+					<span ></span>
+					<img src="assets/images/dropDown.png"  style="margin-left:5px;" ng-if="menu.content.length>0">
+				</div> <!-- ng-mouseover="menu.showContent=true" -->
+				<ul class="ul" ng-if="menu.content" ng-show="menu.showContent"> 
+					<li class="li" ng-repeat="content in menu.content"><div class="blackAlpha54 pointer {{content.style}}" ng-bind="content.title" ui-sref="{{content.state}}" ng-click="menu.showContent=false"></div></li>
+				</ul>
+				
+			</div>
+		</div>
+		<div class="user pointer" ng-mouseover="navbarCtrl.showOther=true" ng-mouseout="navbarCtrl.showOther=false">
+			<div class="others" ng-show="navbarCtrl.showOther">
+				<div class="all pointer" ui-sref="restaurant-personals-view">{{navbarCtrl.languagePack.navbar.user.setUp}}</div>
+				<div class="all pointer" ng-click="navbarCtrl.changeLanguage()"><a href="" onfocus="this.blur()"><loader>{{navbarCtrl.languagePack.navbar.user.language}}</loader></a></div>
+				<div class="all pointer" ng-click="navbarCtrl.logout()">{{navbarCtrl.languagePack.navbar.user.logout}}</div>
+			</div>
+		</div>
+		
+		<div style="clear:both"></div>
+	</div>
+	
+</div>

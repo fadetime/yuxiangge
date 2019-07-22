@@ -1,0 +1,53 @@
+<link href="assets/css/statistic/statistic.css" rel="stylesheet" type="text/css" >
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- 内容部分max-width:1280px;min-width:? -->
+
+<div class="content ">
+	<div class="content_body htmSize">
+	<!-- 这里开始显示不同页面 -->
+		<div class="header" style="position:relative">
+			<div class="search_box dateBox">
+				<div class="search_input blackAlpha54" ng-bind="'From:'+(statisticCtrl.startTime | date:'MMM d, yyyy')">今天</div>
+				<div class="calendar_btn" ng-click="statisticCtrl.showStartTime=!statisticCtrl.showStartTime"></div>
+			</div>
+			<div class="search_box dateBox">
+				<div class="search_input blackAlpha54" ng-bind="'To:'+(statisticCtrl.endTime | date:'MMM d, yyyy')">今天</div>
+				<div class="calendar_btn" ng-click="statisticCtrl.showEndTime=!statisticCtrl.showEndTime"></div>
+			</div>
+			<div class="search_btn" ng-click="statisticCtrl.select()"></div>
+			<div style="clear:both"></div>
+			<div class="datepickerPosition">
+				<datepicker class="from-data" style="box-shadow: 0 0 20px #aaa;" ng-show="statisticCtrl.showStartTime" ng-model="statisticCtrl.startTime"  datepicker-mode="year"></datepicker>
+			</div>
+			<div class="datepickerPosition secondDate">
+				<datepicker class="from-data" style="box-shadow: 0 0 20px #aaa;" ng-show="statisticCtrl.showEndTime" ng-model="statisticCtrl.endTime"  datepicker-mode="year"></datepicker>
+			</div>
+		</div>
+
+		
+
+		<div>
+			<div class="table_captions">
+				<div class="table_caption width16 textIndent20">{{statisticCtrl.languagePack.restaurant.statistic.cashCost}}</div>
+				<div class="table_caption width14">银联消费</div>
+				<div class="table_caption width14">信用卡消费</div>
+				<div class="table_caption width14">网络消费</div>
+				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.discountCost}}</div>
+				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.giveProducts}}</div>
+				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.orderCount}}</div>
+				<!-- <div class="table_caption width14"></div> -->
+			</div>
+			<div class="table_contents">
+				<div class="table_content ellipsis width16 textIndent20" ng-bind="statisticCtrl.statistic.cashCost | currency:'$'"></div>
+				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.unionPayCost | currency:'$'"></div>
+				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.creditCost | currency:'$'"></div>
+				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.netCost | currency:'$'"></div>
+				<div class="table_content ellipsis width14 unique_color" ng-bind="statisticCtrl.statistic.discountCost  | currency:'$'"></div>
+				<div class="table_content width14" ng-bind="statisticCtrl.statistic.givePrs"  style="line-height:26px;"></div>
+				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.orderCount"></div>
+			</div>
+		</div>
+	</div>
+	<!-- <pagination style="float:right;margin-right:200px;" ng-if="statisticCtrl.pagination.numPages > 1" total-items="statisticCtrl.pagination.totalItems" ng-model="statisticCtrl.pagination.page" items-per-page="statisticCtrl.pagination.itemsPerPage" max-size="statisticCtrl.pagination.maxSize" boundary-links="{{statisticCtrl.pagination.numPages > 2}}" rotate="false" num-pages="statisticCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="statisticCtrl.pageChanged()"></pagination> -->
+</div>
+	

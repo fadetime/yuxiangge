@@ -1,0 +1,55 @@
+.header{
+	margin-bottom: 20px;
+}
+.add_btnDifferent{
+	background: url();
+	text-indent: 0px;
+	text-align: center;
+}
+.add_btnDifferent:hover{
+	background: #fba025 url();
+	text-indent: 0px;
+	text-align: center;
+}
+.errorPrint{
+	float: left;
+	width: 32%;
+	min-height: 300px;
+	background: #fff;
+}
+.rightPrint{
+	float: right;
+	width: 65%;
+	min-height: 300px;
+	background: #fff;
+}
+.printTitle{
+	position: relative;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+}
+.errorContent,.rightContent{
+	height: 36px;
+	line-height: 36px;
+	border-bottom:1px solid #ccc;
+
+}
+.printerName,.printNumber,.errType,.reprint{
+	float: left;
+	width: 25%;
+}
+.printerName{
+	text-indent: 20px;
+}
+.reprint{
+	text-align: right;
+	padding-right: 20px;
+	cursor: pointer;
+}
+.prompt{
+	position: absolute;
+	top:0px;
+	right: 20px;
+}

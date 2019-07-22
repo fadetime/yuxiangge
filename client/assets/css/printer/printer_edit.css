@@ -1,0 +1,78 @@
+.header{
+	margin-bottom: 20px;
+}
+.input_contents{
+	width: 500px;
+}
+
+.input_contentDiference{
+	width: 600px;
+}
+.taskchoose{
+	float: left;
+	margin-left: 20px;
+	width: 400px;
+	border:1px solid #ccc;
+	padding-bottom: 9px;
+}
+.taskname{
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.chooseno{
+	float: left;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/chooseNo.png);
+}
+.chooseyes{
+	float: left;
+	width: 18px;
+	height: 18px;
+	background: url(../../images/chooseYes.png);
+}
+.choosename{
+	float: left;
+	margin-left: 10px;
+}
+.taskcatrgories{
+	float: left;
+	margin-top: 15px;
+	width: 280px;
+}
+.taskcatrgory{
+	float: left;
+	margin: 5px 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+	min-width: 42px;
+	height: 20px;
+	line-height: 18px;
+	text-align: center;
+	border-radius: 20px;
+}
+.noChooseCatrgory{
+	border:1px solid #ccc;
+}
+.hasChooseCatrgory{
+	border:none;
+	background: #fba025;
+	color: #fff;
+}
+.activeBtnPosition{
+	float: left;
+	margin-left: 20px;
+	padding-top: 10px;
+	width: 100px;
+	height: 40px;
+}
+
+.btns{
+	margin: 30px auto;
+	width: 150px;
+	height: 42px;
+}
+.save_btnPosition,.delete_btnPosition{
+	float: left;
+	margin-left: 20px;
+}

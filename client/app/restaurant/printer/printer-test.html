@@ -1,0 +1,1008 @@
+<!-- 总宽220px -->
+<div style="float:left">
+	<div id="div2" style="margin-right:50px;">
+		<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;padding:0 20px;">
+			<!-- 餐厅信息 -->
+			<div>
+				<div style="font-size:14px;font-weight:900;text-align:center;margin-bottom:10px;">HAIDILAO HOT POT</div>
+				<div>
+					<span>地址:</span><span ng-bind="printerCtrl.printOrder._restaurant.address">IMM 2 JURONG EAST ST 21 #03-01</span>
+				</div>
+				<div>
+					<span>Address:</span><span ng-bind="printerCtrl.printOrder._restaurant.address">IMM 2 JURONG EAST ST 21 #03-01</span>
+				</div>
+				<div>
+					<span>电话:</span><span ng-bind="printerCtrl.printOrder._restaurant.tel">68964111</span>
+				</div>
+				<div>
+					<span>Tel:</span><span ng-bind="printerCtrl.printOrder._restaurant.tel">68964111</span>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 餐桌信息 -->
+			<div style="text-align:left;">
+				<div>
+					<div style="width:60px;float:left">桌号:</div>
+					<div style="width:80px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.printOrder.table.name">18号</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:60px;float:left">Table:</div>
+					<div style="width:80px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.printOrder.table.name">NO.18</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">收银员:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.waiter.name||142052">142052</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">staff:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.waiter.name||142052">142052</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:40px;float:left">日期:</div>
+					<div style="width:90px;float:left" ng-bind="printerCtrl.printOrder.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+					<div style="width:40px;float:left">时间:</div>
+					<div style="width:50px;float:left" ng-bind="printerCtrl.printOrder.createDate | date:'shortTime'">14:36</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:40px;float:left">Date:</div>
+					<div style="width:90px;float:left" ng-bind="printerCtrl.printOrder.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+					<div style="width:40px;float:left">Time:</div>
+					<div style="width:50px;float:left" ng-bind="printerCtrl.printOrder.createDate | date:'shortTime'">14:36</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">单号:</div>
+					<div style="width:220px;float:left" ng-bind="printerCtrl.printOrder._id">0000086063</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">NO.:</div>
+					<div style="width:220px;float:left" ng-bind="printerCtrl.printOrder._id">0000086063</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 菜品及锅底等 -->
+			<div>
+				<div>
+					<div style="width:90px;text-align:left;float:left">品名</div>
+					<div style="width:50px;text-align:center;float:left">规格</div>
+					<div style="width:40px;text-align:center;float:left">数量</div>
+					<div style="width:40px;text-align:right;float:left">金额</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:90px;text-align:left;float:left">Item</div>
+					<div style="width:50px;text-align:center;float:left">Specificat</div>
+					<div style="width:40px;text-align:center;float:left">Qty</div>
+					<div style="width:40px;text-align:right;float:left">Amount</div>
+					<div style="clear:both"></div>
+				</div>
+				<!-- 锅子 -->
+				<div>
+					<div>
+						<div style="width:90px;text-align:left;float:left" ng-bind="printerCtrl.printOrder.pan_category.name">品名</div>
+						<div style="width:50px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="printerCtrl.printOrder.pan_category.finalTotal" ng-show="true">金额</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+						<!--<div style="width:90px;text-align:left;float:left" ng-bind="printerCtrl.printOrder.pan_category.name_english">品名</div>
+						<div style="width:50px;text-align:center;float:left">规格</div>
+						<div style="width:40px;text-align:center;float:left">数量</div>
+						<div style="width:40px;text-align:right;float:left">金额</div> -->
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				
+				<!-- 汤底 -->
+				<div ng-repeat="soup in printerCtrl.printOrder.pan_soups">
+					<div >
+						<div style="width:90px;text-align:left;float:left" ng-bind="soup.name">品名</div>
+						<div style="width:50px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="soup.finalTotal" ng-show="true">金额</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+						<div style="width:90px;text-align:left;float:left" ng-bind="soup.name_english">品名</div>
+						<div style="width:50px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="soup.finalTotal" ng-show="true">金额</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<!-- 其它收费项目 -->
+				<div ng-repeat="extra in printerCtrl.printOrder.extras">
+					<div >
+						<div style="width:90px;text-align:left;float:left" ng-bind="extra.name">品名</div>
+						<div style="width:50px;text-align:center;float:left" ng-bind="extra.specificat"></div>
+						<div style="width:40px;text-align:center;float:left" ng-bind="extra.orderQuantity"></div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="extra.finalTotal" ng-show="true">金额</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+						<div style="width:90px;text-align:left;float:left" ng-bind="extra.name_english">品名</div>
+						<div style="width:50px;text-align:center;float:left" ng-bind="extra.specificat_english"></div>
+						<!-- <div style="width:40px;text-align:center;float:left">&nbsp;</div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="soup.finalTotal" ng-show="true">金额</div> -->
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				
+				<div ng-repeat="product in printerCtrl.printOrder.products">
+					<div>
+						<div style="width:90px;text-align:left;float:left" ng-bind="product.name">苹果</div>
+						<div style="width:50px;text-align:center;float:left" ng-bind="product.specificat">锅</div>
+						<div style="width:40px;text-align:center;float:left" ng-bind="product.orderQuantity">1.00</div>
+						<div style="width:40px;text-align:right;float:left" ng-bind="product.finalTotal">23.00</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+						<div style="width:90px;text-align:left;float:left" ng-bind="product.name_english">apple</div>
+						<div style="width:50px;text-align:center;float:left" ng-bind="product.specificat_english">pan</div>
+						<!-- <div style="width:40px;text-align:center;float:left">1.00</div> -->
+						<!-- <div style="width:40px;text-align:right;float:left">23.00</div> -->
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 结算部分 -->
+			<div style="text-align:left;">
+				<div>
+					<div style="width:140px;float:left">菜品合计:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.total">103.50</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Item Total:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.total">103.50</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">服务费(<span ng-bind="printerCtrl.printOrder.servicePercent+'%'"></span>):</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.serviceCharge">10.35</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">SvcCharge(<span ng-bind="printerCtrl.printOrder.servicePercent+'%'"></span>):</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.serviceCharge">10.35</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">折扣:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.discount+'%'">80%</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Distcount:</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.discount+'%'">80%</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">税金(<span ng-bind="printerCtrl.printOrder.gstPercent+'%'"></span>):</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.gst">7.09</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Gst(<span ng-bind="printerCtrl.printOrder.gstPercent+'%'"></span>):</div>
+					<div style="width:80px;float:left" ng-bind="printerCtrl.printOrder.gst">7.09</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:100px;float:left">实收:</div>
+					<div style="width:120px;float:left;font-size:14px;" ng-bind="printerCtrl.printOrder.subtotal">108.44</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:100px;float:left">Check Total:</div>
+					<div style="width:120px;float:left;font-size:14px;" ng-bind="printerCtrl.printOrder.subtotal">108.44</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<div style="font-size:16px;">
+				谢谢光临
+			</div>
+		</div>
+
+		<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+			<tr>
+				<td style="width:0;text-align:left">品名</td>
+				<td style="width:0;text-align:center">规格</td>
+				<td style="width:0;text-align:center">数量</td>
+				<td style="width:220px;text-align:right">金额</td>
+			</tr>
+			<tr>
+				<td style="width:70px;text-align:left">Item</td>
+				<td style="width:50px;text-align:center">Specificat</td>
+				<td style="width:50px;text-align:center">Qty</td>
+				<td style="width:50px;text-align:right">Amount</td>
+			</tr>
+			<tr ng-repeat="a in [1,2,3]">
+				<td style="width:70px;text-align:left">苹果</td>
+				<td style="width:50px;text-align:center">锅</td>
+				<td style="width:50px;text-align:center">1.00</td>
+				<td style="width:50px;text-align:right">23.00</td>
+			</tr>
+		</table> -->
+	</div>
+	<div style="clear:both;"></div>
+	<input type="button" value="预览" onclick="myPreview(1)">
+	<input type="button" value="打印" onclick="myPreview()">
+	<input type="button" value="取消" onclick="cancel()">
+</div>
+
+
+<div style="float:left">
+	拉伸状态<br>
+
+	<!-- 总宽220px -->
+	<div id="secondDiv2" style="margin-right:50px;">
+		<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;">
+			<!-- 餐厅信息 -->
+			<div>
+				<div style="font-size:14px;font-weight:900;text-align:center;margin-bottom:10px;">HAIDILAO HOT POT</div>
+				<div>
+					<span>地址:</span><span>IMM 2 JURONG EAST ST 21 #03-01</span>
+				</div>
+				<div>
+					<span>Address:</span><span>IMM 2 JURONG EAST ST 21 #03-01</span>
+				</div>
+				<div>
+					<span>电话:</span><span>68964111</span>
+				</div>
+				<div>
+					<span>Tel:</span><span>68964111</span>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 餐桌信息 -->
+			<div style="text-align:left;">
+				<div>
+					<div style="width:60px;float:left">桌号:</div>
+					<div style="width:80px;float:left;font-size:14px;font-weight:600;">18号</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:60px;float:left">Table:</div>
+					<div style="width:80px;float:left;font-size:14px;font-weight:600;">NO.18</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">收银员:</div>
+					<div style="width:80px;float:left">142052</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">staff:</div>
+					<div style="width:80px;float:left">142052</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:40px;float:left">日期:</div>
+					<div style="width:90px;float:left">2016-07-29</div>
+					<div style="width:40px;float:left">时间:</div>
+					<div style="width:50px;float:left">14:36</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:40px;float:left">Date:</div>
+					<div style="width:90px;float:left">2016-07-29</div>
+					<div style="width:40px;float:left">Time:</div>
+					<div style="width:50px;float:left">14:36</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">单号:</div>
+					<div style="width:80px;float:left">0000086063</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:50px;float:left">NO.:</div>
+					<div style="width:80px;float:left">0000086063</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 菜品及锅底等 -->
+			<div>
+				<div>
+					<div style="width:90px;text-align:left;float:left">品名</div>
+					<div style="width:50px;text-align:center;float:left">规格</div>
+					<div style="width:40px;text-align:center;float:left">数量</div>
+					<div style="width:40px;text-align:right;float:left">金额</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:90px;text-align:left;float:left">Item</div>
+					<div style="width:50px;text-align:center;float:left">Specificat</div>
+					<div style="width:40px;text-align:center;float:left">Qty</div>
+					<div style="width:40px;text-align:right;float:left">Amount</div>
+					<div style="clear:both"></div>
+				</div>
+				<div ng-repeat="a in [1,2,3]">
+					<div>
+						<div style="width:90px;text-align:left;float:left">苹果</div>
+						<div style="width:50px;text-align:center;float:left">锅</div>
+						<div style="width:40px;text-align:center;float:left">1.00</div>
+						<div style="width:40px;text-align:right;float:left">23.00</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+						<div style="width:90px;text-align:left;float:left">apple</div>
+						<div style="width:50px;text-align:center;float:left">pan</div>
+						<div style="width:40px;text-align:center;float:left">1.00</div>
+						<div style="width:40px;text-align:right;float:left">23.00</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<!-- 结算部分 -->
+			<div style="text-align:left;">
+				<div>
+					<div style="width:140px;float:left">菜品合计:</div>
+					<div style="width:80px;float:left">103.50</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Item Total:</div>
+					<div style="width:80px;float:left">103.50</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">服务费(10%):</div>
+					<div style="width:80px;float:left">10.35</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">SvcCharge(10%):</div>
+					<div style="width:80px;float:left">10.35</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">折扣:</div>
+					<div style="width:80px;float:left">80%</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Distcount:</div>
+					<div style="width:80px;float:left">80%</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">税金(7%):</div>
+					<div style="width:80px;float:left">7.09</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:140px;float:left">Gst(7%):</div>
+					<div style="width:80px;float:left">7.09</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:100px;float:left">实收:</div>
+					<div style="width:120px;float:left;font-size:14px;">108.44</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:100px;float:left">Check Total:</div>
+					<div style="width:120px;float:left;font-size:14px;">108.44</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+			<div style="font-size:16px;">
+				谢谢光临
+			</div>
+		</div>
+
+		<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+			<tr>
+				<td style="width:0;text-align:left">品名</td>
+				<td style="width:0;text-align:center">规格</td>
+				<td style="width:0;text-align:center">数量</td>
+				<td style="width:220px;text-align:right">金额</td>
+			</tr>
+			<tr>
+				<td style="width:70px;text-align:left">Item</td>
+				<td style="width:50px;text-align:center">Specificat</td>
+				<td style="width:50px;text-align:center">Qty</td>
+				<td style="width:50px;text-align:right">Amount</td>
+			</tr>
+			<tr ng-repeat="a in [1,2,3]">
+				<td style="width:70px;text-align:left">苹果</td>
+				<td style="width:50px;text-align:center">锅</td>
+				<td style="width:50px;text-align:center">1.00</td>
+				<td style="width:50px;text-align:right">23.00</td>
+			</tr>
+		</table> -->
+	</div>
+	<div style="clear:both;"></div>
+	<input type="button" value="预览" onclick="secondPreview(1)">
+	<input type="button" value="打印" onclick="secondPreview()">
+</div>
+
+<div style="clear:both;"></div>
+
+
+
+
+
+<div style="float:left">
+<br><br>锅汤底<br>
+<!-- 总宽220px  锅底汤底，菜品-->
+<div id="pan">
+	<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;padding:0 20px;">
+		<!-- 餐桌信息 -->
+		<div style="text-align:left;">
+			<div>
+				<div style="width:60px;float:left">桌号:</div>
+				<div style="width:80px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.panSoupData.table.name">18号</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Table:</div>
+				<div style="width:80px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.panSoupData.table.name">NO.18</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">日期:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.panSoupData.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">时间:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.panSoupData.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">Date:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.panSoupData.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">Time:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.panSoupData.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:50px;float:left">单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.panSoupData._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:50px;float:left">NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.panSoupData._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">订单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.panSoupData._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Order NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.panSoupData._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		<!-- 锅底等 -->
+		<div>
+			<div>
+				<div style="width:90px;text-align:left;float:left">品名</div>
+				<div style="width:130px;text-align:center;float:left">口味</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:90px;text-align:left;float:left">Item</div>
+				<div style="width:130px;text-align:center;float:left">Attribute</div>
+				<div style="clear:both"></div>
+			</div>
+			<div ng-show="printerCtrl.panSoupData.pan_category">
+				<div style="width:90px;text-align:left;float:left" ng-bind="printerCtrl.panSoupData.pan_category.name+'('+printerCtrl.panSoupData.pan_category.name_english+')'">苹果</div>
+				<div style="clear:both"></div>
+			</div>
+			<div ng-repeat="soup in printerCtrl.panSoupData.pan_soups">
+				
+				<div style="width:90px;text-align:left;float:left" ng-bind="soup.name+'('+soup.name_english+')'">苹果</div>
+				<div style="width:130px;text-align:center;float:left">
+					<div ng-repeat="att in soup.attribute" ng-bind="att.name+'('+att.name_english+')'+':'+att.value.name+'('+att.value.name_english+')'"></div>
+				</div>
+				<div style="clear:both"></div>
+				
+			</div>
+			
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		
+	</div>
+	
+	<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+		<tr>
+			<td style="width:0;text-align:left">品名</td>
+			<td style="width:0;text-align:center">规格</td>
+			<td style="width:0;text-align:center">数量</td>
+			<td style="width:220px;text-align:right">金额</td>
+		</tr>
+		<tr>
+			<td style="width:70px;text-align:left">Item</td>
+			<td style="width:50px;text-align:center">Specificat</td>
+			<td style="width:50px;text-align:center">Qty</td>
+			<td style="width:50px;text-align:right">Amount</td>
+		</tr>
+		<tr ng-repeat="a in [1,2,3]">
+			<td style="width:70px;text-align:left">苹果</td>
+			<td style="width:50px;text-align:center">锅</td>
+			<td style="width:50px;text-align:center">1.00</td>
+			<td style="width:50px;text-align:right">23.00</td>
+		</tr>
+	</table> -->
+</div>
+
+<input type="button" value="预览" onclick="printPan(1)">
+<input type="button" value="打印" onclick="printPan()">
+</div>
+
+<div style="float:left">
+<br><br>锅汤底 ----拉伸状态<br>
+<!-- 总宽220px  锅底汤底，菜品-->
+<div id="secondPan">
+	<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;">
+		<!-- 餐桌信息 -->
+		<div style="text-align:left;">
+			<div>
+				<div style="width:60px;float:left">桌号:</div>
+				<div style="width:80px;float:left;font-size:14px;font-weight:600;">18号</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Table:</div>
+				<div style="width:80px;float:left;font-size:14px;font-weight:600;">NO.18</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">日期:</div>
+				<div style="width:90px;float:left">2016-07-29</div>
+				<div style="width:40px;float:left">时间:</div>
+				<div style="width:50px;float:left">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">Date:</div>
+				<div style="width:90px;float:left">2016-07-29</div>
+				<div style="width:40px;float:left">Time:</div>
+				<div style="width:50px;float:left">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:50px;float:left">单号:</div>
+				<div style="width:80px;float:left">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:50px;float:left">NO.:</div>
+				<div style="width:80px;float:left">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		<!-- 菜品及锅底等 -->
+		<div>
+			<div>
+				<div style="width:90px;text-align:left;float:left">品名</div>
+				<div style="width:50px;text-align:center;float:left">规格</div>
+				<div style="width:40px;text-align:center;float:left">数量</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:90px;text-align:left;float:left">Item</div>
+				<div style="width:50px;text-align:center;float:left">Specificat</div>
+				<div style="width:40px;text-align:center;float:left">Qty</div>
+				<div style="clear:both"></div>
+			</div>
+			<div ng-repeat="a in [1,2,3]">
+				<div>
+					<div style="width:90px;text-align:left;float:left">苹果</div>
+					<div style="width:50px;text-align:center;float:left">锅</div>
+					<div style="width:40px;text-align:center;float:left">1.00</div>
+					<div style="clear:both"></div>
+				</div>
+				<div>
+					<div style="width:90px;text-align:left;float:left">apple</div>
+					<div style="width:50px;text-align:center;float:left">pan</div>
+					<div style="width:40px;text-align:center;float:left">1.00</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		
+	</div>
+	
+	<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+		<tr>
+			<td style="width:0;text-align:left">品名</td>
+			<td style="width:0;text-align:center">规格</td>
+			<td style="width:0;text-align:center">数量</td>
+			<td style="width:220px;text-align:right">金额</td>
+		</tr>
+		<tr>
+			<td style="width:70px;text-align:left">Item</td>
+			<td style="width:50px;text-align:center">Specificat</td>
+			<td style="width:50px;text-align:center">Qty</td>
+			<td style="width:50px;text-align:right">Amount</td>
+		</tr>
+		<tr ng-repeat="a in [1,2,3]">
+			<td style="width:70px;text-align:left">苹果</td>
+			<td style="width:50px;text-align:center">锅</td>
+			<td style="width:50px;text-align:center">1.00</td>
+			<td style="width:50px;text-align:right">23.00</td>
+		</tr>
+	</table> -->
+</div>
+
+<input type="button" value="预览" onclick="secondPrintPan(1)">
+<input type="button" value="打印" onclick="secondPrintPan()">
+</div>
+<div style="clear:both;"></div>
+
+
+
+<div style="float:left">
+<br><br>菜品<br>
+<!--纸张宽度：340px 总宽  锅底汤底，菜品-->
+<div id="product">
+	<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;padding:0 20px;">
+		<!-- 餐桌信息 -->
+		<div style="text-align:left;">
+			<div>
+				<div style="width:60px;float:left">桌号:</div>
+				<div style="width:140px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.printProduct.order_change.table.name">18号</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Table:</div>
+				<div style="width:140px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.printProduct.order_change.table.name">NO.18</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">订单状态:</div>
+				<div style="width:140px;float:left">下单</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:65px;float:left">Order State:</div>
+				<div style="width:145px;float:left">New Order</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">日期:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.printProduct.order_change.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">时间:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.printProduct.order_change.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">Date:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.printProduct.order_change.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">Time:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.printProduct.order_change.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.printProduct.order_change._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.printProduct.order_change._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">订单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.printProduct.order_change._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Order NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.printProduct.order_change._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		<!-- 菜品及锅底等 -->
+		<div>
+			<div>
+				<div style="width:140px;text-align:left;float:left">品名</div>
+				<div style="width:40px;text-align:center;float:left">数量</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:140px;text-align:left;float:left">Item</div>
+				<div style="width:40px;text-align:center;float:left">Qty</div>
+				<div style="clear:both"></div>
+			</div>
+			<div ng-repeat="product in printerCtrl.printProduct.products">
+				<div style="width:140px;text-align:left;float:left" ng-bind="product.name+'('+product.name_english+')'">苹果</div>
+				<div style="width:40px;text-align:center;float:left" ng-bind="product.orderQuantity">1.00</div>
+				<div style="clear:both"></div>
+			</div>
+			
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		
+	</div>
+	
+	<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+		<tr>
+			<td style="width:0;text-align:left">品名</td>
+			<td style="width:0;text-align:center">规格</td>
+			<td style="width:0;text-align:center">数量</td>
+			<td style="width:220px;text-align:right">金额</td>
+		</tr>
+		<tr>
+			<td style="width:70px;text-align:left">Item</td>
+			<td style="width:50px;text-align:center">Specificat</td>
+			<td style="width:50px;text-align:center">Qty</td>
+			<td style="width:50px;text-align:right">Amount</td>
+		</tr>
+		<tr ng-repeat="a in [1,2,3]">
+			<td style="width:70px;text-align:left">苹果</td>
+			<td style="width:50px;text-align:center">锅</td>
+			<td style="width:50px;text-align:center">1.00</td>
+			<td style="width:50px;text-align:right">23.00</td>
+		</tr>
+	</table> -->
+</div>
+
+<input type="button" value="预览" onclick="printProduct(1)">
+<input type="button" value="打印" onclick="printProduct()">
+</div>
+
+
+<div style="float:left">
+<br><br>菜品----拉伸状态<br>
+<!--纸张宽度：340px 总宽  锅底汤底，菜品-->
+<div id="secondProduct">
+	<div style="font-size:12px;word-wrap:break-word;word-break:break-all;width:260px;">
+		<!-- 餐桌信息 -->
+		<div style="text-align:left;">
+			<div>
+				<div style="width:60px;float:left">桌号:</div>
+				<div style="width:140px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.testChange.table.name">18号</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Table:</div>
+				<div style="width:140px;float:left;font-size:14px;font-weight:600;" ng-bind="printerCtrl.testChange.table.name">NO.18</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">订单状态:</div>
+				<div style="width:140px;float:left">下单</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:65px;float:left">Order State:</div>
+				<div style="width:145px;float:left">New Order</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">订单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.testChange._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">Order NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.testChange._order">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">日期:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.testChange.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">时间:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.testChange.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:40px;float:left">Date:</div>
+				<div style="width:90px;float:left" ng-bind="printerCtrl.testChange.createDate | date:'yyyy-MM-dd'">2016-07-29</div>
+				<div style="width:40px;float:left">Time:</div>
+				<div style="width:50px;float:left" ng-bind="printerCtrl.testChange.createDate | date:'shortTime'">14:36</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">单号:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.testChange._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:60px;float:left">NO.:</div>
+				<div style="width:200px;float:left" ng-bind="printerCtrl.testChange._id">0000086063</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		<!-- 菜品 -->
+		<div>
+			<div>
+				<div style="width:140px;text-align:left;float:left">品名</div>
+				<div style="width:40px;text-align:center;float:left">数量</div>
+				<div style="clear:both"></div>
+			</div>
+			<div>
+				<div style="width:140px;text-align:left;float:left">Item</div>
+				<div style="width:40px;text-align:center;float:left">Qty</div>
+				<div style="clear:both"></div>
+			</div>
+			<div ng-repeat="product in printerCtrl.testChange.products">
+				<div style="width:140px;text-align:left;float:left" ng-bind="product.name+'('+product.name_english+')'">苹果</div>
+				<div style="width:40px;text-align:center;float:left" ng-bind="product.orderQuantity">1.00</div>
+				<div style="clear:both"></div>
+			</div>
+			
+		</div>
+		<hr style=" height:2px;border:none;border-top:2px dotted #000;" />
+		
+	</div>
+	
+	<!-- <table style="font-size:12px;word-wrap:break-word;word-break:break-all; ">
+		<tr>
+			<td style="width:0;text-align:left">品名</td>
+			<td style="width:0;text-align:center">规格</td>
+			<td style="width:0;text-align:center">数量</td>
+			<td style="width:220px;text-align:right">金额</td>
+		</tr>
+		<tr>
+			<td style="width:70px;text-align:left">Item</td>
+			<td style="width:50px;text-align:center">Specificat</td>
+			<td style="width:50px;text-align:center">Qty</td>
+			<td style="width:50px;text-align:right">Amount</td>
+		</tr>
+		<tr ng-repeat="a in [1,2,3]">
+			<td style="width:70px;text-align:left">苹果</td>
+			<td style="width:50px;text-align:center">锅</td>
+			<td style="width:50px;text-align:center">1.00</td>
+			<td style="width:50px;text-align:right">23.00</td>
+		</tr>
+	</table> -->
+</div>
+
+<input type="button" value="预览" onclick="secondPrintProduct(1)">
+<input type="button" value="打印" onclick="secondPrintProduct()">
+</div>
+<div style="clear:both;"></div>
+
+<input type="button" value="开启自动打印" ng-click="printerCtrl.aaa()">
+<input type="button" value="关闭自动打印" ng-click="printerCtrl.aaa()">
+
+<script type="text/javascript">
+	var LODOP=getLodop();  
+	var test;
+	var name;
+	  function myPreview(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);//设置对后台打印状态补获
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("div2").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(-1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	test=LODOP.PRINT();
+	    	name=LODOP.GET_VALUE('PrintTaskName',test)
+	    }
+	  };
+	  function secondPreview(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("secondDiv2").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(-1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	LODOP.PRINT();
+	    }
+	  };
+	  function printPan(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("pan").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	LODOP.PRINT();
+	    }
+	  };
+	  function secondPrintPan(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("secondPan").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(-1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	LODOP.PRINT();
+	    }
+	  };
+	  function printProduct(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("product").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(-1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	LODOP.PRINT();
+	    }
+	  };
+	  function secondPrintProduct(state) { 
+	    LODOP.PRINT_INIT("");
+	    LODOP.SET_PRINT_PAGESIZE(3,880,100,"");
+	    // LODOP.ADD_PRINT_TEXT("0mm","0mm","58mm","10mm","Hello,World!Hello,World!Hello,World!Hello,World!Hello,World!");//添加纯文本
+	    // LODOP.ADD_PRINT_TABLE(0,0,"58mm","100cm",document.getElementById("div2").innerHTML);
+	    // var strStyle="<style> #div2 {border:1px solid #000;width:100px;}</style>";
+	    LODOP.ADD_PRINT_HTM(0,0,"88mm","BottomMargin:0",document.getElementById("secondProduct").innerHTML);
+	    // LODOP.ADD_PRINT_HTM(0,0,"58mm","50mm",document.getElementById("div2").innerHTML);
+	    // LODOP.SET_PRINTER_INDEXA()
+	    var printerName=LODOP.GET_PRINTER_NAME(-1);//获取打印机名字
+	    console.log(printerName);
+	    LODOP.SET_PRINTER_INDEXA(printerName);//设置打印机
+	    if(state){
+	    	LODOP.PREVIEW();
+	    }else{
+	    	LODOP.PRINT();
+	    }
+	  };
+	  function cancel(){
+	  	console.log(test,name);
+	  	LODOP.SET_PRINT_STYLEA(name,"Deleted",true);
+	  	
+	  }
+</script>

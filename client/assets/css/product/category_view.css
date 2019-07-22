@@ -1,0 +1,240 @@
+/*header*/
+.header{
+	/*border:1px solid red;*/
+	margin-bottom: 20px;
+}
+.main{
+	/*border:1px solid red;*/
+	margin: 0 auto;
+	background-color: #fff;
+}
+.maintitle{
+	/*border:1px solid red;*/
+}
+.mainleft{
+	width: 30%;
+}
+.mainright{
+	width: 70%;
+	border-left: 1px solid #ccc;
+}
+.mainright,.mainleft{
+	/*border:1px solid red;*/
+	position: relative;
+	float: left;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+}
+.srot_btnPosition{
+	margin: auto 0;
+	position: absolute;
+	top:0px;
+	bottom: 0px;
+	right: 10px;
+}
+.smallTitle{
+	padding:10px 0 0 20px;
+}
+
+
+.leftcontent{
+	width: 30%;
+}
+.rightcontent{
+	width: 70%;
+}
+.leftcontent,.rightcontent{
+	/*border:1px solid red;*/
+	position: relative;
+	float: left;
+	border-top: 1px solid #ccc;
+}
+.rightcontent{
+	border-left: 1px solid #ccc;
+	min-height: 40px;
+}
+.postion{
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	width: 100%
+}
+.first{
+	text-align: center;
+}
+.edit_btnPosition{
+	margin: auto 0;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 10px;
+}
+.second,.addsecondbtn{
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	width: 100px;
+	height: 30px;
+	line-height: 28px;
+	text-align: center;
+	border-radius: 30px;
+	border: 1px solid #ccc;
+}
+.addsecondbtn{
+	background: url(../../images/addS.png) no-repeat 10px 10px;
+	text-indent: 20px;
+	color: #fba025;
+}
+.addsecondbtn:hover{
+	border:none;
+	line-height: 30px;
+	background: #fba025 url(../../images/addSw.png) no-repeat 10px 10px;
+	color: #fff;
+}
+.editbtns{
+	/*border:1px solid red;*/
+	float: left;
+	margin-left: 20px;
+	width: 100px;
+	height: 40px;
+	font-size: 12px;
+}
+.edit_btnDeferent,.sort_btnDeferent{
+	float: left;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;	
+	cursor: pointer;
+}
+.edit_btnDeferent{
+	background: url(../../images/edit.png) no-repeat 20px 15px;
+}
+.sort_btnDeferent{
+	background: url(../../images/sort.png) no-repeat 20px 15px;
+}
+
+
+.addfirst{
+	height: 80px;
+}
+.leftadd{
+	width: 30%;
+}
+.rightadd{
+	width: 70%;
+	border-left: 1px solid #ccc;
+}
+.leftadd,.rightadd{
+	float: left;
+	height: 80px;
+	border-top: 1px solid #ccc;
+}
+.add_btnPosition{
+	margin: 20px auto;
+}
+
+
+/*新增类目*/
+.addcategoryposition{
+	/*display: none;*/
+	margin:auto;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 420px;
+	height: 265px;
+	background-color: #fff;
+	box-shadow: #ccc 0 0 5px 0;
+}
+.eidtcategoryposition{
+	margin:auto;
+	position: fixed;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 420px;
+	background-color: #fff;
+	box-shadow: #ccc 0 0 5px 0;
+}
+.categoryinput{
+	float: left;
+	width: 280px;
+	height: 44px;
+	text-indent: 20px;
+}
+.deleteBtnS{
+	float: left;
+	margin-top: 14px;
+	width: 15px;
+	height: 19px;
+	background: url(../../images/deleteS.png);
+}
+
+
+
+
+/*类目排序*/
+
+.sortcategoryposition{
+	/*display: none;*/
+	margin:auto;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 420px;
+	background-color: #fff;
+	box-shadow: #ccc 0 0 5px 0;
+}
+.categories,.sorts{
+	/*border:1px solid red;*/
+	margin: 40px auto;
+	width: 300px;
+}
+.category,.sort{
+	width: 300px;
+	height: 46px;
+	margin-top: 20px;
+	border:1px solid #ccc;
+}
+.sortindex{
+	float: left;
+	width: 30px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+}
+.sortinput{
+	float: left;
+	width: 200px;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+}
+.sortup{
+	float: left;
+	margin-top: 18px;
+	width: 14px;
+	height: 16px;
+	background: url(../../images/asecR.png);
+}
+.sortdown{
+	float: left;
+	margin-top: 18px;
+	margin-left: 10px;
+	width: 14px;
+	height: 16px;
+	background: url(../../images/pxG.png);
+}
+.savesort{
+	margin: 30px auto;
+	width: 32px;
+	height: 32px;
+	background: url(../../images/correct.png);
+}

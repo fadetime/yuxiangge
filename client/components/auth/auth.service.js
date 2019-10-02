@@ -39,13 +39,35 @@ angular.module('kuaishangcaiwebApp')
 
         return deferred.promise;
       },
+      //20190808
+      //Use waiter account check edit order info
+      check: function(user, callback) {
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
 
+        $http.post('/auth/local', {
+          account: 'manager_web',
+          password: user.password,
+          edition:"order"
+        }).
+        success(function(data) {
+          deferred.resolve(data);
+          return cb();
+        }).
+        error(function(err) {
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
       /**
        * Delete access token and user info
        *
        * @param  {Function}
        */
       logout: function() {
+        console.log('enter logout')
         $cookieStore.remove('token');
         currentUser = {};
         $location.path('/login');

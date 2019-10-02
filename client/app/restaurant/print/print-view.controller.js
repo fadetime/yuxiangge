@@ -257,6 +257,12 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
 
     //检查X打印机是否能打印该产品
     var isAbleToPrint=function (printer,product){
+        console.log('检查X打印机是否能打印该产品')
+        console.log(printer)
+        console.log('检查X打印机是否能打印该产品')
+        console.log('检查X打印机是否能打印该产品')
+        console.log(product)
+        console.log('检查X打印机是否能打印该产品')
         if(!printer.isPrintProduct){
             return false;
         }
@@ -305,10 +311,11 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
                     }
                 });
                 //如果均不能打印则默认打印机打印
-                if(sign){
-                    printerObj=defaultPrinter;
-                }
-                pushToArrByPrinter(printerObj,product);
+                //v1.4.0 修改 去掉如无打印机打印此单将此单丢回默认打印机
+                // if(sign){
+                //     printerObj=defaultPrinter;
+                // }
+                // pushToArrByPrinter(printerObj,product);
             }
         });
     };
@@ -382,6 +389,7 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
         var str='<div style="font-size:30px;word-wrap:break-word;word-break:break-all;padding:0 20px;">';
         str+='<div style="text-align:left;">';
         //table
+        str+='<div><div style=";font-weight:600;">主单</div>';
         str+='<div><div style="">桌号:</div>';
         str+='<div><div style=";font-weight:600;">'+self.printProduct.order_change.table.name+'</div>';
         //订单状态
@@ -405,15 +413,67 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
         //内容部分
         str+='<div>';
         //标题
-        str+='<div><div style="font-size:30px;width:140px;text-align:left;float:left">品名</div>';
+        str+='<div><div style="font-size:30px;width:240px;text-align:left;float:left">品名</div>';
         str+='<div style="font-size:30px;width:70px;text-align:center;float:left">数量</div>';
         str+='<div style="clear:both"></div></div>';
         //product
+        //20190801 add remark
         _.each(self.printProduct.products,function (product){
-            str+='<div><div style="font-size:30px;width:140px;text-align:left;float:left">'+product.name+'</div>';
+            str+='<div><div style="font-size:30px;width:240px;text-align:left;float:left"><div>'+product.name+'</div>';
+            if(product.remark){
+                str+='<div>'+product.remark+'</div></div>';
+            }else{
+                str+='</div>'
+            }
             str+='<div style="font-size:30px;width:70px;text-align:center;float:left">'+product.orderQuantity+'</div>';
             str+='<div style="clear:both"></div></div>';
         });
+        str+= '<div style="height: 10px;"></div>'
+        str+= '<div style="height: 10px; border-top: 5px dashed"></div>'
+        //copy start
+        str+='<div style="text-align:left;">';
+        //table
+        str+='<div><div style=";font-weight:600;">出菜单</div>';
+        str+='<div><div style="">桌号:</div>';
+        str+='<div><div style=";font-weight:600;">'+self.printProduct.order_change.table.name+'</div>';
+        //订单状态
+        str+='<div><div style="">订单状态:</div>';
+        str+='<div><div style="">'+(status==2?'下单':'加单')+'</div>';
+        //日期
+        str+='<div><div style="font-size:30px;">日期:</div>';
+        str+='<div><div style="font-size:30px;">'+createDate.Format("yyyy-MM-dd")+'</div>';
+        str+='<div><div style="font-size:30px;">时间:</div>';
+        str+='<div><div style="font-size:30px;">'+createDate.Format("hh:mm")+'</div>';
+        //单号，order_change
+        // str+='<div><div style="width:100%;float:left">单号:</div>';
+        // str+='<div style="clear:both"></div></div>';
+        // str+='<div style="width:200px;float:left">'+self.printProduct.order_change.doNumber+'</div>';
+        // str+='<div style="clear:both"></div></div>';
+        //订单号：order
+        str+='<div><div style="font-size:30px;">订单号:</div>';
+        str+='<div style="font-size:30px;">'+self.printProduct.order_change.doNumber+'</div>';
+        //结束及分割线
+        str+='</div><hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
+        //内容部分
+        str+='<div>';
+        //标题
+        str+='<div><div style="font-size:30px;width:240px;text-align:left;float:left">品名</div>';
+        str+='<div style="font-size:30px;width:70px;text-align:center;float:left">数量</div>';
+        str+='<div style="clear:both"></div></div>';
+        //product
+        //20190801 add remark
+        _.each(self.printProduct.products,function (product){
+            str+='<div><div style="font-size:30px;width:240px;text-align:left;float:left"><div>'+product.name+'</div>';
+            if(product.remark){
+                str+='<div>'+product.remark+'</div></div>';
+            }else{
+                str+='</div>'
+            }
+            str+='<div style="font-size:30px;width:70px;text-align:center;float:left">'+product.orderQuantity+'</div>';
+            str+='<div style="clear:both"></div></div>';
+        });
+        //copy end 
+
         //结束及分割线
         str+='</div><hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
         return str;
@@ -545,6 +605,9 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
     //开始进行菜品打印
     var beginToPrintProduct=function(){
         console.log("print-product");
+        console.log('#############')
+        console.log(self.printProductArr)
+        console.log('#############')
         _.each(self.printProductArr,function (printProduct){
             self.printProduct=printProduct;
             setPrinter(printProduct.printerName);

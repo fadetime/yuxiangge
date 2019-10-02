@@ -50,7 +50,13 @@ angular.module('kuaishangcaiwebApp')
 	    	params:{
 	    		id:"bind-account"
 	    	}
-	    }
+		},
+		searchOrderNum:{
+	    	method: 'post',
+	    	params:{
+	    		id:"print"
+	    	}
+	    },
 	});
   });
 

@@ -6,19 +6,34 @@
 	<div class="content_body htmSize">
 	<!-- 这里开始显示不同页面 -->
 		<div class="header" style="position:relative">
-			<div class="search_box dateBox">
-				<div class="search_input blackAlpha54" ng-bind="'From:'+(statisticCtrl.startTime | date:'MMM d, yyyy')">今天</div>
-				<div class="calendar_btn" ng-click="statisticCtrl.showStartTime=!statisticCtrl.showStartTime"></div>
+			<div style="display: flex;align-items: center;">
+				<div style="display: flex;align-items: center">
+					<div class="search_box dateBox">
+						<div class="search_input blackAlpha54" ng-bind="'From:'+(statisticCtrl.startTime | date:'MMM d, yyyy')">今天</div>
+						<div class="calendar_btn" ng-click="statisticCtrl.showStartTime=!statisticCtrl.showStartTime"></div>
+					</div>
+					<div>
+						<timepicker ng-model="statisticCtrl.startTime" show-meridian="false"></timepicker>
+					</div>
+				</div>
+				<div style="display: flex;align-items: center;padding-left: 10px;">
+					<div class="search_box dateBox">
+						<div class="search_input blackAlpha54" ng-bind="'To:'+(statisticCtrl.endTime | date:'MMM d, yyyy')">今天</div>
+						<div class="calendar_btn" ng-click="statisticCtrl.showEndTime=!statisticCtrl.showEndTime"></div>
+					</div>
+					<div>
+						<timepicker ng-model="statisticCtrl.endTime" show-meridian="false"></timepicker>
+					</div>
+				</div>
+				<div style="padding-left: 10px;">
+					<div class="search_btn" ng-click="statisticCtrl.select()"></div>
+				</div>
 			</div>
-			<div class="search_box dateBox">
-				<div class="search_input blackAlpha54" ng-bind="'To:'+(statisticCtrl.endTime | date:'MMM d, yyyy')">今天</div>
-				<div class="calendar_btn" ng-click="statisticCtrl.showEndTime=!statisticCtrl.showEndTime"></div>
-			</div>
-			<div class="search_btn" ng-click="statisticCtrl.select()"></div>
 			<div style="clear:both"></div>
 			<div class="datepickerPosition">
 				<datepicker class="from-data" style="box-shadow: 0 0 20px #aaa;" ng-show="statisticCtrl.showStartTime" ng-model="statisticCtrl.startTime"  datepicker-mode="year"></datepicker>
 			</div>
+			
 			<div class="datepickerPosition secondDate">
 				<datepicker class="from-data" style="box-shadow: 0 0 20px #aaa;" ng-show="statisticCtrl.showEndTime" ng-model="statisticCtrl.endTime"  datepicker-mode="year"></datepicker>
 			</div>
@@ -26,25 +41,30 @@
 
 		
 
-		<div>
+		<div style="padding-top: 30px;">
 			<div class="table_captions">
-				<div class="table_caption width16 textIndent20">{{statisticCtrl.languagePack.restaurant.statistic.cashCost}}</div>
-				<div class="table_caption width14">银联消费</div>
-				<div class="table_caption width14">信用卡消费</div>
-				<div class="table_caption width14">网络消费</div>
-				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.discountCost}}</div>
-				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.giveProducts}}</div>
-				<div class="table_caption width14">{{statisticCtrl.languagePack.restaurant.statistic.orderCount}}</div>
+				<div class="table_caption textIndent20" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.cashCost}}</div>
+				<div class="table_caption" style="width: 10%">银联消费</div>
+				<div class="table_caption" style="width: 10%">信用卡消费</div>
+				<div class="table_caption" style="width: 10%">网络消费</div>
+				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.discountCost}}</div>
+				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.giveProducts}}</div>
+				<div class="table_caption" style="width: 10%">优惠卷数</div>
+				<div class="table_caption" style="width: 10%">优惠卷总值</div>
+				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.orderCount}}</div>
 				<!-- <div class="table_caption width14"></div> -->
 			</div>
 			<div class="table_contents">
-				<div class="table_content ellipsis width16 textIndent20" ng-bind="statisticCtrl.statistic.cashCost | currency:'$'"></div>
-				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.unionPayCost | currency:'$'"></div>
-				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.creditCost | currency:'$'"></div>
-				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.netCost | currency:'$'"></div>
-				<div class="table_content ellipsis width14 unique_color" ng-bind="statisticCtrl.statistic.discountCost  | currency:'$'"></div>
-				<div class="table_content width14" ng-bind="statisticCtrl.statistic.givePrs"  style="line-height:26px;"></div>
-				<div class="table_content ellipsis width14" ng-bind="statisticCtrl.statistic.orderCount"></div>
+				<div class="table_content ellipsis textIndent20" style="width: 10%" ng-bind="statisticCtrl.statistic.cashCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.unionPayCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.creditCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.netCost | currency:'$'"></div>
+				<div class="table_content ellipsis unique_color" style="width: 10%" ng-bind="statisticCtrl.statistic.discountCost  | currency:'$'"></div>
+				<!-- <div class="table_content width14" ng-bind="statisticCtrl.statistic.givePrs"  style="line-height:26px;"></div> -->
+				<div class="table_content"  style="line-height:26px;width: 10%"></div>
+				<div class="table_content"  style="width: 10%" ng-bind="statisticCtrl.statistic.couponNum"></div>
+				<div class="table_content"  style="width: 10%" ng-bind="statisticCtrl.statistic.allCouponValue  | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.orderCount"></div>
 			</div>
 		</div>
 	</div>

@@ -19,7 +19,8 @@ var ProductBasicSchema = new Schema({
 	product_info:String,//联表产品信息
 	isActive:Boolean,//是否上架,默认为不上架
 	ableDiscount:Boolean,//是否能打折，默认为true
-	createDate:Date
+	createDate:Date,
+	remark:{type:String,default:null}
 });
 
 module.exports = mongoose.model('ProductBasic', ProductBasicSchema);

@@ -1943,89 +1943,106 @@ exports.statistic = function (req,res){
 	if(endTime&&isNaN(endTime)){
 		return res.json(200,util.code502(language,"endTime"));
 	}
-	var startDate = util.getTimePoint(new Date(parseInt(startTime)),"start");
-	var endDate;
-	if(endTime){
-		endDate = util.getTimePoint(new Date(parseInt(endTime)),"end");
-	}else{
-		endDate = util.getTimePoint(new Date(parseInt(startTime)),"end");
-	}
+	//20190723取消時間方法 改用前端選擇器時間
+	// var startDate = util.getTimePoint(new Date(parseInt(startTime)),"start");
+	// var endDate;
+	// if(endTime){
+	// 	endDate = util.getTimePoint(new Date(parseInt(endTime)),"end");
+	// }else{
+	// 	endDate = util.getTimePoint(new Date(parseInt(startTime)),"end");
+	// }
+	var startDate = startTime
+	var endDate = endTime
 	var condition={
 		_restaurant:_restaurant,
 		status:4,
 		createDate:{$gte:startDate,$lte:endDate}
 	};
-	Order.find(condition,function (err,orders){
+	var countCouponOption = {
+		_restaurant:_restaurant,
+		status:4,
+		coupon_id:{$ne:null},
+		createDate:{$gte:startDate,$lte:endDate}
+	}
+	Order.find(countCouponOption,function(err,couponsInfo){
 		if (err) { return handleError(res, err); }
-		if(state == "export"){
-			condition={
-				_restaurant:_restaurant,
-				startDate:startDate
-			};
-			exports.createTxt(orders,condition,function (err){
-				if (err) { return handleError(res, err); }
-				return res.json(200);
-			});
-		}else{
-			var givePrs=[];
-			var result={
-				unionPayCost:0,
-				creditCost:0,
-				netCost:0,
-				cashCost:0,
-				discountCost:0,
-				givePrs:"",
-				orderCount:orders.length
-			};
-			_.each(orders,function (order){
-				if(order.discount!=1){
-					result.discountCost=result.discountCost+order.total*100-order.finalTotal*100;
-				}
-				if(order.payment=="unionPay"){
-					result.unionPayCost=result.unionPayCost+order.subtotal*100;
-				}else if(order.payment=="credit"){
-					result.creditCost=result.creditCost+order.subtotal*100;
-				}else if(order.payment=="net"){
-					result.netCost=result.netCost+order.subtotal*100;
-				}else{
-					result.cashCost=result.cashCost+order.subtotal*100;
-				}
-				_.each(order.products,function (product){
-					//送菜记录
-					if(product.finalTotal==0){
-						var c=_.findWhere(givePrs,{_product:product._product});
-						if(c){
-							c.orderQuantity+=(product.orderQuantity*100);
-						}else{
-							givePrs.push({
-								_product:product._product,
-								name:product.name,
-								name_english:product.name_english,
-								orderQuantity:product.orderQuantity*100
-							});
+		var couponNum = couponsInfo.length
+		var allCouponValue = 0
+		_.each(couponsInfo,function (coupon){
+			allCouponValue += coupon.coupon_value
+		})
+		Order.find(condition,function (err,orders){
+			if (err) { return handleError(res, err); }
+			if(state == "export"){
+				condition={
+					_restaurant:_restaurant,
+					startDate:startDate
+				};
+				exports.createTxt(orders,condition,function (err){
+					if (err) { return handleError(res, err); }
+					return res.json(200);
+				});
+			}else{
+				var givePrs=[];
+				var result={
+					unionPayCost:0,
+					creditCost:0,
+					netCost:0,
+					cashCost:0,
+					discountCost:0,
+					givePrs:"",
+					orderCount:orders.length
+				};
+				_.each(orders,function (order){
+					if(order.discount!=1){
+						result.discountCost=result.discountCost+order.total*100-order.finalTotal*100;
+					}
+					if(order.payment=="unionPay"){
+						result.unionPayCost=result.unionPayCost+order.subtotal*100;
+					}else if(order.payment=="credit"){
+						result.creditCost=result.creditCost+order.subtotal*100;
+					}else if(order.payment=="net"){
+						result.netCost=result.netCost+order.subtotal*100;
+					}else{
+						result.cashCost=result.cashCost+order.subtotal*100;
+					}
+					_.each(order.products,function (product){
+						//送菜记录
+						if(product.finalTotal==0){
+							var c=_.findWhere(givePrs,{_product:product._product});
+							if(c){
+								c.orderQuantity+=(product.orderQuantity*100);
+							}else{
+								givePrs.push({
+									_product:product._product,
+									name:product.name,
+									name_english:product.name_english,
+									orderQuantity:product.orderQuantity*100
+								});
+							}
 						}
+					});
+				});
+				_.each(givePrs,function (pr){
+					if(language=="english"){
+						result.givePrs+=(pr.name+"("+util.dealNumber(pr.orderQuantity/100)+")");
+					}else{
+						result.givePrs+=(pr.name_english+"("+util.dealNumber(pr.orderQuantity/100)+")");
 					}
 				});
-			});
-			_.each(givePrs,function (pr){
-				if(language=="english"){
-					result.givePrs+=(pr.name+"("+util.dealNumber(pr.orderQuantity/100)+")");
-				}else{
-					result.givePrs+=(pr.name_english+"("+util.dealNumber(pr.orderQuantity/100)+")");
-				}
-			});
-			result.unionPayCost=util.dealNumber(result.unionPayCost/100);
-			result.creditCost=util.dealNumber(result.creditCost/100);
-			result.netCost=util.dealNumber(result.netCost/100);
-			result.cashCost=util.dealNumber(result.cashCost/100);
-			result.discountCost=util.dealNumber(result.discountCost/100);
-			res.json(200,{
-				statistic:result
-			});
-		}
-		
-	});
-  	
+				result.unionPayCost=util.dealNumber(result.unionPayCost/100);
+				result.creditCost=util.dealNumber(result.creditCost/100);
+				result.netCost=util.dealNumber(result.netCost/100);
+				result.cashCost=util.dealNumber(result.cashCost/100);
+				result.discountCost=util.dealNumber(result.discountCost/100);
+				result.couponNum =couponNum
+				result.allCouponValue =allCouponValue
+				res.json(200,{
+					statistic:result
+				});
+			}
+		});
+	})
 };
 
 
@@ -2050,4 +2067,13 @@ exports.changePrintState=function (req,res){
 	});
 };
 
-
+//20190806 search order number
+//获取某天的所有订单信息或某个用户的订单
+exports.searchOrderNum = function (req, res){
+	console.log(req.params.id)
+	Order.findOne({"doNumber":req.params.id},function (err, order){
+		if (err) { return handleError(res, err); }
+		if (!order) {return res.json(200,util.code404(language,"order"));}
+		return res.json(200,order);
+	})
+}

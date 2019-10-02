@@ -112,7 +112,14 @@ angular.module('kuaishangcaiwebApp')
         controllerAs: 'viewGiftCtrl',
         // authenticate: true
       })
-
+      // 管理---优惠卷
+      .state('restaurant-coupon-view', {
+        params:{"navValue":"restaurant-coupon-view"},
+        url: '/restaurant/coupon-view',
+        templateUrl: 'app/restaurant/coupon/coupon-view.html',
+        controller: 'ViewGiftCtrl',
+        controllerAs: 'ViewGiftCtrl'
+      })
 
 
       //客户---客户列表

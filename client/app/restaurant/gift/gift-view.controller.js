@@ -4,6 +4,8 @@ angular.module('kuaishangcaiwebApp')
   .controller('ViewGiftCtrl', ['$scope', '$location', '$state','$stateParams','$cookieStore','Auth','Gift','Compress_ready','Upload',
     function ($scope, $location, $state,$stateParams,$cookieStore,Auth,Gift,Compress_ready,Upload) {
     var self = this;
+    console.log('self')
+    console.log(self)
     $scope.updateLanguage = function(){
         // console.log("product-view");
       init();
@@ -26,7 +28,6 @@ angular.module('kuaishangcaiwebApp')
 		integralPrice:'',
 		image:'',
   	};
-
     //检查积分和库存
     self.check=function(params){
     switch(params){
@@ -173,7 +174,7 @@ angular.module('kuaishangcaiwebApp')
         self.languagePack=languagePack;
     	resert();
     	self.gift = {};
-    	loadGifts();
+        loadGifts();
     	self.loaded = '';
         if(self.quantityError){
             delete self.quantityError
@@ -200,7 +201,6 @@ angular.module('kuaishangcaiwebApp')
 
     	});
     };
-
 
     self.openGiftAdd = function (){
     	init();
@@ -249,10 +249,7 @@ angular.module('kuaishangcaiwebApp')
         }else{
             alert(self.languagePack.error.restaurant.gift);
         }
-
-       
     };
-
     self.update = function (id){
     	Gift.update({id:id},self.gift,function (data){
             if(data.code){

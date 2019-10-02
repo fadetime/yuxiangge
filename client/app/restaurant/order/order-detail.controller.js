@@ -108,15 +108,15 @@ angular.module('kuaishangcaiwebApp')
     //20190704 edit web print font size
     var initPrintModel = function (){
       var createDate = new Date(self.order.createDate);
-      var str='<div style="font-size:20px;word-wrap:break-word;word-break:break-all;width:280px;padding:0 20px;">';
-      str+='<div><div style="font-size:20px;font-weight:900;text-align:center;margin-bottom:10px;">'+self.order._restaurant.name+'</div><div>';
+      var str='<div style="font-size:20px;word-break: keep-all;width:320px;padding:0 20px;">';
+      str+='<div><div style="font-size:20px;font-weight:900;text-align:center;margin-bottom:10px;word-break: keep-all">'+self.order._restaurant.name+'</div><div>';
       // str+='<div><div style="font-size:20px;font-weight:900;text-align:center;margin-bottom:10px;">Upin Dining Pte Itd</div><div>';
       //餐厅地址
-      str+='<span>地址(Address):</span><span>'+self.order._restaurant.address+'</span></div><div>';
+      str+='<div><span>地址(Address):</span><span>'+self.order._restaurant.address+'</span><div>';
       //餐厅电话
-      str+='<span>电话(Tel):</span><span>'+self.order._restaurant.tel+'</span></div><div>';
+      str+='<div><span>电话(Tel):</span><span>'+self.order._restaurant.tel+'</span><div>';
       //税号
-      str+='<span>税号(GST Reg):</span><span>201911821D</span></div>';
+      str+='<div><span>税号(GST Reg):</span><span>201911821D</span></div>';
       //查询号
       // str+='<span>查询号(Query number):</span><span>'+self.order._id+'</span></div>';
       //桌号
@@ -137,12 +137,12 @@ angular.module('kuaishangcaiwebApp')
       str+='<div style="clear:both"></div></div></div>';
       str+='<hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
       // 名称
-      str+='<div><div><div style="width:100px;text-align:left;float:left">品名</div>';
-      str+='<div style="width:75px;text-align:center;float:left">数量</div>';
-      str+='<div style="width:75px;text-align:right;float:left">金额</div>';
-      str+='<div style="clear:both"></div></div><div><div style="width:100px;text-align:left;float:left">Item</div>';
-      str+='<div style="width:75px;text-align:center;float:left">Qty</div>';
-      str+='<div style="width:75px;text-align:right;float:left">Amount</div>';
+      str+='<div><div><div style="width:160px;text-align:left;float:left">品名</div>';
+      str+='<div style="width:65px;text-align:center;float:left">数量</div>';
+      str+='<div style="width:65px;text-align:right;float:left">金额</div>';
+      str+='<div style="clear:both"></div></div><div><div style="width:160px;text-align:left;float:left">Item</div>';
+      str+='<div style="width:65px;text-align:center;float:left">Qty</div>';
+      str+='<div style="width:65px;text-align:right;float:left">Amt</div>';
       str+='<div style="clear:both"></div></div>';
       // 锅子
       //原始-显示锅底和括号内的汤底
@@ -155,7 +155,7 @@ angular.module('kuaishangcaiwebApp')
       //新加-按汤底条目显示并附带数量和价格
       _.each(self.pan_soups,function (pan_soups){
         str+='<div><div>';
-        str+='<div style="width:100px;text-align:left;float:left">'+pan_soups.name+'</div>';
+        str+='<div style="width:160px;text-align:left;float:left">'+pan_soups.name+'</div>';
         str+='<div style="width:75px;text-align:center;float:left">'+'x1'+'</div>';
         str+='<div style="width:75px;text-align:right;float:left">'+pan_soups.price+'</div>';
         str+='<div style="clear:both"></div></div><div>';
@@ -166,7 +166,7 @@ angular.module('kuaishangcaiwebApp')
       // 额外收费
       _.each(self.extras,function (extra){
         str+='<div><div>';
-        str+='<div style="width:100px;text-align:left;float:left">'+extra.name+'</div>';
+        str+='<div style="width:160px;text-align:left;float:left">'+extra.name+'</div>';
         str+='<div style="width:75px;text-align:center;float:left">'+extra.orderQuantity+'</div>';
         str+='<div style="width:75px;text-align:right;float:left">'+extra.finalTotal+'</div>';
         str+='<div style="clear:both"></div></div><div>';
@@ -197,16 +197,16 @@ angular.module('kuaishangcaiwebApp')
       //add same quantity end
       _.each(newProductArray,function (product){
         str+='<div><div>';
-        str+='<div style="width:100px;text-align:left;float:left">'+product.name+'</div>';
-        str+='<div style="width:75px;text-align:center;float:left">x'+product.orderQuantity+'</div>';
-        str+='<div style="width:75px;text-align:right;float:left">'+product.finalTotal+'</div>';
+        str+='<div style="width:160px;text-align:left;float:left">'+product.name+'</div>';
+        str+='<div style="width:65px;text-align:center;float:left">x'+product.orderQuantity+'</div>';
+        str+='<div style="width:65px;text-align:right;float:left">'+product.finalTotal+'</div>';
         str+='<div style="clear:both"></div></div><div>';
-        str+='<div style="width:100px;text-align:left;float:left">'+product.name_english+'</div>';
+        str+='<div style="width:160px;text-align:left;float:left;word-break: keep-all;">'+product.name_english+'</div>';
         str+='<div style="clear:both"></div></div></div>';
       });
       //结算部分
       str+='</div><hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
-      str+='<div style="text-align:left;"><div><div style="width:160px;float:left">菜品合计(Sub Total):</div>';
+      str+='<div style="text-align:left;"><div><div style="width:160px;float:left;word-break: keep-all">菜品合计(Sub Total):</div>';
       str+='<div style="width:90px;float:left;text-align:right">'+self.order.total+'</div>';
       str+='<div style="clear:both"></div></div><div>';
       str+='<div style="width:160px;float:left">服务费(SvcCharge)(<span>'+self.servicePercent+'</span>):</div>';
@@ -217,7 +217,7 @@ angular.module('kuaishangcaiwebApp')
       str+='<div style="width:160px;float:left">税金(Gst)(<span>'+self.gstPercent+'</span>):</div>';
       str+='<div style="width:90px;float:left;text-align:right">'+self.order.gst+'</div>';
       str+='<div style="clear:both"></div></div><div><div style="width:160px;float:left">实收(Total):</div>';
-      str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.subtotal+'</div>';
+      str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.subtotal.toFixed(2)+'</div>';
       str+='<div style="clear:both"></div></div></div>';
       str+='<hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
       str+='<div style="font-size:20px;">Thanks!</div></div>';

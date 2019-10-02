@@ -23,5 +23,6 @@ router.put('/change/deliver/:id', auth.hasRole(['waiter']), controller.changeDel
 router.get('/statistics/bydate', auth.hasRole(['restaurant']), controller.statistic);
 router.get('/statistics/onedaydate', controller.getStatistic);
 router.put('/changePrintState/:id', auth.hasRole(['restaurant','waiter']), controller.changePrintState);
+router.post('/:id', controller.searchOrderNum);
 
 module.exports = router;

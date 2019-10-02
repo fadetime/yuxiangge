@@ -15,31 +15,35 @@ angular.module('kuaishangcaiwebApp')
     
 
     if(isNaN(startTime)){
-      self.startTime=new Date();
+      self.startTime=new Date().setHours(11);
+      self.startTime=new Date(self.startTime).setMinutes(0);
+      self.startTime=new Date(self.startTime).setSeconds(0);
     }else{
       self.startTime=new Date(parseInt(startTime));
     }
 
     if(isNaN(endTime)){
-      self.endTime=self.startTime;
+      self.endTime=new Date();
     }else{
       self.endTime=new Date(parseInt(endTime));
     }
-
+    if(self.startTime > self.endTime){
+      self.startTime =new Date(self.startTime).setDate(new Date(self.startTime).getDate()-1);
+    }
     self.showStartTime=false;
     self.showEndTime=false;
   	var doLocation = function (){
       $location
-        .search('startTime',self.startTime.getTime())
-        .search('endTime',self.endTime.getTime())
+        .search('startTime',new Date(self.startTime).getTime())
+        .search('endTime',new Date(self.endTime).getTime())
         .search('hasNav', hasNav)
         .search('token', token);
     };
 
     var loadStatistic = function(){
       var condition={
-        startTime:self.startTime.getTime(),
-        endTime:self.endTime.getTime()
+        startTime:new Date(self.startTime).getTime(),
+        endTime:new Date(self.endTime).getTime()
       };
       if(self.state){
         condition=_.merge(condition,{state:'export'});

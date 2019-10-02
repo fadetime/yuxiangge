@@ -2,6 +2,7 @@
 
 angular.module('kuaishangcaiwebApp')
   .factory('Gift', function ($resource) {
+	  console.log('11111')
     return $resource('/api/gifts/:id/:controller', {
       id: '@_id'
     },
@@ -18,12 +19,12 @@ angular.module('kuaishangcaiwebApp')
     	changestate: {
      		method: 'PUT',
      		params:{
-      		id:'changestate'
-      	}
+				id:'changestate'
+			}
     	},
     	destory:{
     		method: 'DELETE',
-    	}
+		}
 	});
 });
 

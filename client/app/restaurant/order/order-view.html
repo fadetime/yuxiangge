@@ -15,7 +15,8 @@
 			</div>
 
 			<div class="add_btnDifferent" ng-click="viewOrderCtrl.autoPrint()">{{viewOrderCtrl.intervalId==''?'开启自动打印':'关闭自动打印'}}</div>
-
+			<!-- search order number -->
+			<!-- <input type="text" style="border: 1px solid #eee" ng-model="searchOrderNum"><button ng-click="viewOrderCtrl.testMethod(searchOrderNum)">test</button> -->
 			<div class="download pointer" ng-click="viewOrderCtrl.download()">{{viewOrderCtrl.languagePack.restaurant.order.download}}</div>
 			<div style="clear:both"></div>
 		</div>
@@ -23,31 +24,54 @@
 
 		<div>
 			<div class="table_captions">
-				<div class="table_caption width10 textIndent20">{{viewOrderCtrl.languagePack.restaurant.order.date}}</div>
-				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.tableNumber}}</div>
-				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.cost}}</div>
-				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.customer}}</div>
-				<div class="table_caption width10">{{viewOrderCtrl.languagePack.restaurant.order.waiter}}</div>
-				<div class="table_caption width16">订单号</div>
-				<div class="table_caption width10">消费方式</div>
-				<div class="table_caption width10" style="color:red">isPrint</div>
-				<div class="table_caption width14"></div>
+				<div class="table_caption textIndent20" style="width: 10%">{{viewOrderCtrl.languagePack.restaurant.order.date}}</div>
+				<div class="table_caption" style="width: 4%">{{viewOrderCtrl.languagePack.restaurant.order.tableNumber}}</div>
+				<div class="table_caption" style="width: 10%">{{viewOrderCtrl.languagePack.restaurant.order.cost}}</div>
+				<div class="table_caption" style="width: 10%">{{viewOrderCtrl.languagePack.restaurant.order.customer}}</div>
+				<div class="table_caption" style="width: 10%">{{viewOrderCtrl.languagePack.restaurant.order.waiter}}</div>
+				<div class="table_caption" style="width: 10%">订单号</div>
+				<div class="table_caption" style="width: 10%">消费方式</div>
+				<div class="table_caption" style="width: 10%">isCoupon</div>
+				<div class="table_caption" style="width: 10%;color:red">isPrint</div>
+				<div class="table_caption" style="width: 16%"></div>
 			</div>
 			<div class="table_contents" ng-repeat="order in viewOrderCtrl.orders">
-				<div class="table_content width10 textIndent20 ellipsis"  ng-bind="order.createDate | date:'shortTime'"></div>
-				<div class="table_content width10 ellipsis"><span ng-bind="order.table.name">8</span></div>
-				<div class="table_content width10 ellipsis uniquecolor" ng-bind="order.subtotal | currency:'$'">$200</div>
-				<div class="table_content width10 ellipsis" ng-bind="order._customer.name?order._customer.name:viewOrderCtrl.languagePack.restaurant.order.notMember"></div>
-				<div class="table_content width10 ellipsis" ng-bind="order.waiter.name?order.waiter.name:'服务员无姓名'">小翠</div>
-				<div class="table_content width16 ellipsis" ng-bind="order.doNumber" title="{{order.doNumber}}">订单号</div>
-				<div class="table_content width10" ng-bind="order.payment">消费方式</div>
-				<div class="table_content width10" style="color:red" ng-bind="order.isPrint"></div>
-				<div class="table_content width14 pointer">
+				<div class="table_content width9 textIndent20 ellipsis" style="width: 10%" ng-bind="order.createDate | date:'shortTime'"></div>
+				<div class="table_content width9 ellipsis" style="width: 4%"><span ng-bind="order.table.name">8</span></div>
+				<div class="table_content width9 ellipsis uniquecolor" style="width: 10%" ng-bind="order.coupon_id?order.subtotal-order.coupon_value:order.subtotal | currency:'$'">$200</div>
+				<div class="table_content width9 ellipsis" style="width: 10%" ng-bind="order._customer.name?order._customer.name:viewOrderCtrl.languagePack.restaurant.order.notMember"></div>
+				<div class="table_content width9 ellipsis" style="width: 10%" ng-bind="order.waiter.name?order.waiter.name:'服务员无姓名'">小翠</div>
+				<div class="table_content width10 ellipsis" style="width: 10%" ng-bind="order.doNumber" title="{{order.doNumber}}">订单号</div>
+				<div class="table_content width9" style="width: 10%" ng-bind="order.payment">消费方式</div>
+				<div class="table_content width9" style="width: 10%" ng-bind="order.coupon_id?order.coupon_name:' '">是否使用优惠卷</div>
+				<div class="table_content width9" style="width: 10%;color:red" ng-bind="order.isPrint"></div>
+				<div class="table_content width12 pointer" style="width: 16%">
 					<a class="unique_color" target="_blank" ui-sref="restaurant-orders-detail({id:order._id})">{{viewOrderCtrl.languagePack.restaurant.order.checkDetail}}</a>
-					<span style="margin-left:20px;" ui-sref="restaurant-orders-edit({id:order._id})" ng-show="order.status>3">编辑</span>
+					<!-- <span style="margin-left:20px;" ui-sref="restaurant-orders-edit({id:order._id})" ng-show="order.status>3">编辑</span> -->
+					<span style="margin-left:20px;" ng-click="viewOrderCtrl.checkRoleMethod(order)" ng-show="order.status>3">编辑</span>
 				</div>
 			</div>
 			<div class="table_contents" style="text-align:center;line-height:60px" ng-hide="viewOrderCtrl.orders[0]"><span class="blackAlpha28">{{viewOrderCtrl.languagePack.restaurant.order.noOrder}}</span></div>
+		</div>
+		<div ng-show="viewOrderCtrl.isShowVerificationBox" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;display: flex;justify-content: center;align-items: center">
+			<div style="background-color: #fff;box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);border-radius: 5px;overflow: hidden;">
+				<div style="text-align: center;height: 30px;line-height: 30px;background-color: #fba025;color: #fff;box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);">
+					<span>verification</span>
+				</div>
+				<div style="padding: 20px;display: flex;flex-direction: column;align-items: center;">
+					<div>
+						<input ng-model="user.password" type="password" style="border: 1px solid rgba(0,0,0,.5);border-radius: 5px;height: 40px;text-align:center;width: 168px" placeholder="Authorization code">
+					</div>
+				</div>
+				<div style="display: flex;padding: 0 10px 10px 10px">
+					<div class="download pointer" style="width: 100px" ng-click="viewOrderCtrl.checkUserMethod()">
+						<span>Confirm</span>
+					</div>
+					<div class="download pointer" style="width: 100px" ng-click="viewOrderCtrl.isShowVerificationBox = false">
+						<span>Cancel</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<pagination style="float:right;margin-right:200px;" ng-if="viewOrderCtrl.pagination.numPages > 1" total-items="viewOrderCtrl.pagination.totalItems" ng-model="viewOrderCtrl.pagination.page" items-per-page="viewOrderCtrl.pagination.itemsPerPage" max-size="viewOrderCtrl.pagination.maxSize" boundary-links="{{viewOrderCtrl.pagination.numPages > 2}}" rotate="false" num-pages="viewOrderCtrl.pagination.numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="viewOrderCtrl.pageChanged()"></pagination>

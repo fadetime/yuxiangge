@@ -37,7 +37,7 @@ exports.navbar={
 		,{
           title:"礼品",
           state:'restaurant-gifts-view',
-        }]
+		}]
     },{
         title: '职工',
         state:'restaurant-waiter'

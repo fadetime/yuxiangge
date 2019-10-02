@@ -18,7 +18,7 @@
 		<div>
 			<div class="leftbar">
 				<div class="leftbarTitle unique_color size16">{{orderDetailCtrl.languagePack.restaurant.order.costTotal}}</div>
-				<div class="leftbarContent size14">
+				<div class="leftbarContent size14" style="height: unset">
 					<div>
 						<div class="leftTitles blackAlpha54">
 							<div class="leftTitle">{{orderDetailCtrl.languagePack.restaurant.order.productTotal}}:</div>
@@ -38,8 +38,35 @@
 						</div>
 					</div>
 					<div style="clear:both"></div><!-- 清浮动 -->
-					<div>
-						<div class="sumprice blackAlpha85">{{orderDetailCtrl.languagePack.restaurant.order.totalPrice}}:<span class="unique_color" ng-bind="orderDetailCtrl.order.subtotal | currency:'$ '"> $ 200.50</span></div>
+					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+						<div class="sumprice blackAlpha85">{{orderDetailCtrl.languagePack.restaurant.order.totalPrice}}:</div>
+						<div style="width: 100px;">
+							<span class="unique_color" ng-bind="orderDetailCtrl.order.subtotal | currency:'$ '"> $ 200.50</span>
+						</div>
+					</div>
+					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+						<div class="sumprice blackAlpha85">
+							优惠卷平台:
+						</div>
+						<div style="width: 100px;">
+							<span class="unique_color" ng-bind="orderDetailCtrl.order.coupon_name">balabala </span>
+						</div>
+					</div>
+					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+						<div class="sumprice blackAlpha85">
+							优惠卷金额:
+						</div>
+						<div style="width: 100px;">
+							<span class="unique_color" ng-bind="orderDetailCtrl.order.coupon_value | currency:'$ '">10</span>
+						</div>
+					</div>
+					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+						<div class="sumprice blackAlpha85">
+							优惠后金额:
+						</div>
+						<div style="width: 100px;">
+							<span class="unique_color" ng-bind="orderDetailCtrl.order.subtotal- orderDetailCtrl.order.coupon_value| currency:'$ '">10</span>
+						</div>
 					</div>
 				</div>
 			</div>

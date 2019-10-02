@@ -114,7 +114,13 @@ var OrderSchema = new Schema({
 	createDate:Date,
 	status:Number,//1.订桌,2.进行,3.结算,4.完成，5.取消
 	payment:String,//支付方式，cash,unionPay,credit,net
-	orderTimes:Number//点菜次数
+	orderTimes:Number,//点菜次数
+	//20191002 add coupon feature
+	coupon_id:{ type: String, default: null},
+	coupon_name:{ type: String, default: null},
+	coupon_name_en:{ type: String, default: null},
+	coupon_value:{ type: Number, default: 0},
+	coupon_after:{ type: Number, default: 0}//subtotal - coupon_value
 });
 
 module.exports = mongoose.model('Order', OrderSchema);

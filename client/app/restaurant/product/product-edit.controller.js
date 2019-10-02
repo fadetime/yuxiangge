@@ -272,25 +272,29 @@ angular.module('kuaishangcaiwebApp')
     self.upload=function(file){
         if(file.length>0){
             var file=file[0];
-            var now = new Date().getTime();
-            var nowStr = now.toString();
-            var rand = (Math.floor(Math.random() * (MAX - MIN)) + MIN).toString();
-            var randStr = rand.toString();
-            var filename = nowStr + '_' + randStr + '_' + file.name.replace(/[^0-9a-z\.]+/gi, '');
-            Upload.upload({
-                method: 'POST',
-                url: 'api/upload',
-                data: {file: file, 'filename': filename}
-            }).then(function (resp) {
-                if(resp.data.code!=700){
-                    return alert(resp.data.msg);
-                }
-                self.product.image=filename;
-            }, function (resp) {
-                alert("上传失败");
-            }, function (evt) {
-                self.loaded = parseInt(100.0 * evt.loaded / evt.total);
-            });
+            if(file.size >= 1000000){
+                alert('请上传小于1M的图片')
+            }else{
+                var now = new Date().getTime();
+                var nowStr = now.toString();
+                var rand = (Math.floor(Math.random() * (MAX - MIN)) + MIN).toString();
+                var randStr = rand.toString();
+                var filename = nowStr + '_' + randStr + '_' + file.name.replace(/[^0-9a-z\.]+/gi, '');
+                Upload.upload({
+                    method: 'POST',
+                    url: 'api/upload',
+                    data: {file: file, 'filename': filename}
+                }).then(function (resp) {
+                    if(resp.data.code!=700){
+                        return alert(resp.data.msg);
+                    }
+                    self.product.image=filename;
+                }, function (resp) {
+                    alert("上传失败");
+                }, function (evt) {
+                    self.loaded = parseInt(100.0 * evt.loaded / evt.total);
+                });
+            }
        };
     };
 

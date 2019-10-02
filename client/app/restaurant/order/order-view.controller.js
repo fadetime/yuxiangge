@@ -10,7 +10,9 @@ angular.module('kuaishangcaiwebApp')
     var page = $stateParams.page || 1;
     var itemsPerPage = $stateParams.itemsPerPage || 20;
     var date = $stateParams.date;
-
+    var isShowVerificationBox = false
+    var tempOrderInfo = null
+    $scope.user = {};
     var printers=[];//不包含默认打印机
     var defaultPrinter;
     var localPrinterNames;
@@ -421,6 +423,35 @@ angular.module('kuaishangcaiwebApp')
             automaticPrint();
         }
     };
-    
+    self.testMethod=function(searchOrderNum){
+      console.log(searchOrderNum)
+      Order.searchOrderNum({id:searchOrderNum},{},function(data){
+            console.log(data)
+            var tempOrders = []
+            tempOrders.push(data)
+            self.orders = tempOrders;
+            self.pagination.totalItems = 1;
+            self.pagination.numPages = 1;
+      },function(){
+
+      });
+    }
+    self.checkRoleMethod=function(order){
+      self.isShowVerificationBox = true
+      self.tempOrderInfo = order
+    }
+    self.checkUserMethod=function(){
+      Auth.check({
+        account: $scope.user.account,
+        password: $scope.user.password
+      })
+      .then( function(data) {
+        $state.go("restaurant-orders-edit",{id:self.tempOrderInfo._id});
+      })
+      .catch( function(err) {
+        console.log('enter catch')
+        console.log(err)
+      });
+    }
     init();
   }]);

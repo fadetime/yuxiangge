@@ -46,12 +46,14 @@
 				<div class="table_caption textIndent20" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.cashCost}}</div>
 				<div class="table_caption" style="width: 10%">银联消费</div>
 				<div class="table_caption" style="width: 10%">信用卡消费</div>
-				<div class="table_caption" style="width: 10%">网络消费</div>
-				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.discountCost}}</div>
-				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.giveProducts}}</div>
-				<div class="table_caption" style="width: 10%">优惠卷数</div>
-				<div class="table_caption" style="width: 10%">优惠卷总值</div>
-				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.orderCount}}</div>
+				<div class="table_caption" style="width: 10%">Nets</div>
+				<div class="table_caption" style="width: 10%">Visa</div>
+				<div class="table_caption" style="width: 10%">Master</div>
+				<div class="table_caption" style="width: 10%">Amex's</div>
+				<div class="table_caption" style="width: 10%">Diners</div>
+				<div class="table_caption" style="width: 10%">Grab pay</div>
+				<div class="table_caption" style="width: 10%">Alipay</div>
+				
 				<!-- <div class="table_caption width14"></div> -->
 			</div>
 			<div class="table_contents">
@@ -59,12 +61,50 @@
 				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.unionPayCost | currency:'$'"></div>
 				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.creditCost | currency:'$'"></div>
 				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.netCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.visaCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.masterCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.amexsCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.dinersCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.grabPayCost | currency:'$'"></div>
+				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.aliPayCost | currency:'$'"></div>
+			</div>
+		</div>
+		<div style="padding-top: 30px;">
+			<div class="table_captions">
+				<div class="table_caption textIndent20" style="width: 10%">Wechat</div>
+				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.discountCost}}</div>
+				<div class="table_caption" style="width: 10%">优惠券数</div>
+				<div class="table_caption" style="width: 10%">优惠券总值</div>
+				<div class="table_caption" style="width: 10%">{{statisticCtrl.languagePack.restaurant.statistic.orderCount}}</div>
+			</div>
+			<div class="table_contents">
+				<div class="table_content textIndent20"  style="width: 10%" ng-bind="statisticCtrl.statistic.wechatCost | currency:'$'"></div>
 				<div class="table_content ellipsis unique_color" style="width: 10%" ng-bind="statisticCtrl.statistic.discountCost  | currency:'$'"></div>
-				<!-- <div class="table_content width14" ng-bind="statisticCtrl.statistic.givePrs"  style="line-height:26px;"></div> -->
-				<div class="table_content"  style="line-height:26px;width: 10%"></div>
 				<div class="table_content"  style="width: 10%" ng-bind="statisticCtrl.statistic.couponNum"></div>
 				<div class="table_content"  style="width: 10%" ng-bind="statisticCtrl.statistic.allCouponValue  | currency:'$'"></div>
 				<div class="table_content ellipsis" style="width: 10%" ng-bind="statisticCtrl.statistic.orderCount"></div>
+			</div>
+		</div>
+		<div style="padding-top: 30px;">
+			<div class="table_captions">
+				<div class="table_caption textIndent20" style="width: 10%">时间</div>
+				<div class="table_caption" style="width: 10%">桌号</div>
+				<div class="table_caption" style="width: 10%">支付方式</div>
+				<div class="table_caption" style="width: 10%">折扣</div>
+				<div class="table_caption" style="width: 10%">订单总价</div>
+				<div class="table_caption" style="width: 10%">优惠券</div>
+				<div class="table_caption" style="width: 10%">优惠券值</div>
+				<div class="table_caption" style="width: 10%">实际付款</div>
+			</div>
+			<div class="table_contents" ng-repeat= "order in statisticCtrl.statistic.orders">
+				<div class="table_content textIndent20"  style="width: 10%" ng-bind="order.createDate | date:'HH:mm'"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.table.name"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.payment"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.discount === 1?'':order.discount.toFixed(2)"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.subtotal | currency:'$'"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.coupon_name"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.coupon_value ===0?'': (order.coupon_value| currency:'$')"></div>
+				<div class="table_content" style="width: 10%" ng-bind="order.coupon_after === 0?(order.subtotal| currency:'$'):(order.coupon_after | currency:'$')"></div>
 			</div>
 		</div>
 	</div>

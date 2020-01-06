@@ -1297,7 +1297,7 @@ exports.update = function (req,res){
 					if(!payment){
 						return res.json(200,util.code401(language,"payment"));
 					}	
-					if(payment!="cash"&&payment!="unionPay"&&payment!="credit"&&payment!="net"){
+					if(payment!="cash"&&payment!="unionPay"&&payment!="credit"&&payment!="net"&&payment!="visa"&&payment!="master"&&payment!="amexs"&&payment!="diners"&&payment!="grabPay"&&payment!="aliPay"&&payment!="wechat"){
 						return res.json(200,util.code402(language,"payment"));
 					}
 					order.payment=payment;
@@ -1988,11 +1988,20 @@ exports.statistic = function (req,res){
 					unionPayCost:0,
 					creditCost:0,
 					netCost:0,
+					visaCost: 0,
+					masterCost: 0,
+					amexsCost: 0,
+					dinersCost: 0,
+					grabPayCost: 0,
+					aliPayCost: 0,
+					wechatCost: 0,
 					cashCost:0,
 					discountCost:0,
 					givePrs:"",
-					orderCount:orders.length
+					orderCount:orders.length,
+					orders: null
 				};
+				result.orders = orders
 				_.each(orders,function (order){
 					if(order.discount!=1){
 						result.discountCost=result.discountCost+order.total*100-order.finalTotal*100;
@@ -2003,6 +2012,20 @@ exports.statistic = function (req,res){
 						result.creditCost=result.creditCost+order.subtotal*100;
 					}else if(order.payment=="net"){
 						result.netCost=result.netCost+order.subtotal*100;
+					}else if(order.payment=="visa"){
+						result.visaCost=result.visaCost+order.subtotal*100;
+					}else if(order.payment=="master"){
+						result.masterCost=result.masterCost+order.subtotal*100;
+					}else if(order.payment=="amexs"){
+						result.amexsCost=result.amexsCost+order.subtotal*100;
+					}else if(order.payment=="diners"){
+						result.dinersCost=result.dinersCost+order.subtotal*100;
+					}else if(order.payment=="grabPay"){
+						result.grabPayCost=result.grabPayCost+order.subtotal*100;
+					}else if(order.payment=="aliPay"){
+						result.aliPayCost=result.aliPayCost+order.subtotal*100;
+					}else if(order.payment=="wechat"){
+						result.wechatCost=result.wechatCost+order.subtotal*100;
 					}else{
 						result.cashCost=result.cashCost+order.subtotal*100;
 					}
@@ -2033,6 +2056,13 @@ exports.statistic = function (req,res){
 				result.unionPayCost=util.dealNumber(result.unionPayCost/100);
 				result.creditCost=util.dealNumber(result.creditCost/100);
 				result.netCost=util.dealNumber(result.netCost/100);
+				result.visaCost=util.dealNumber(result.visaCost/100);
+				result.masterCost=util.dealNumber(result.masterCost/100);
+				result.amexsCost=util.dealNumber(result.amexsCost/100);
+				result.dinersCost=util.dealNumber(result.dinersCost/100);
+				result.grabPayCost=util.dealNumber(result.grabPayCost/100);
+				result.aliPayCost=util.dealNumber(result.aliPayCost/100);
+				result.wechatCost=util.dealNumber(result.wechatCost/100);
 				result.cashCost=util.dealNumber(result.cashCost/100);
 				result.discountCost=util.dealNumber(result.discountCost/100);
 				result.couponNum =couponNum

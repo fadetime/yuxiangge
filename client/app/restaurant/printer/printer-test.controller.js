@@ -402,7 +402,7 @@ function ($scope, $location, $state,$stateParams,$cookieStore,Auth,User,Order,Pr
         var str='<div style="font-size:38px;word-wrap:break-word;word-break:break-all;width:260px;padding:0 20px;">';
         str+='<div style="text-align:left;">';
         //table
-        str+='<div><div style="width:60px;float:left">1111桌号:</div>';
+        str+='<div><div style="width:60px;float:left">桌号:</div>';
         str+='<div style="width:140px;float:left;font-weight:600;">'+self.panSoupData.table.name+'</div>';
         str+='<div style="clear:both"></div></div>';
         str+='<div><div style="width:60px;float:left">Table:</div>';

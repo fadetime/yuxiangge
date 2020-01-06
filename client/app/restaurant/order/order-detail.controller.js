@@ -218,6 +218,14 @@ angular.module('kuaishangcaiwebApp')
       str+='<div style="width:90px;float:left;text-align:right">'+self.order.gst+'</div>';
       str+='<div style="clear:both"></div></div><div><div style="width:160px;float:left">实收(Total):</div>';
       str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.subtotal.toFixed(2)+'</div>';
+      if(self.order.coupon_id){
+        str+='<div style="clear:both"></div></div><div><div style="width:160px;float:left">优惠卷(Coupon):</div>';
+        str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.coupon_name+'</div>';
+        str+='<div style="clear:both"></div></div><div><div style="width:160px;float:left">优惠金额(CouponValue):</div>';
+        str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.coupon_value+'</div>';
+        str+='<div style="clear:both"></div></div><div><div style="width:160px;float:left">最终实收(FinalTotal):</div>';
+        str+='<div style="width:90px;float:left;font-size:20px;;text-align:right;font-weight:bold">'+self.order.coupon_after+'</div>';
+      }
       str+='<div style="clear:both"></div></div></div>';
       str+='<hr style=" height:2px;border:none;border-top:2px dotted #000;" />';
       str+='<div style="font-size:20px;">Thanks!</div></div>';

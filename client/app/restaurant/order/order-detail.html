@@ -44,7 +44,7 @@
 							<span class="unique_color" ng-bind="orderDetailCtrl.order.subtotal | currency:'$ '"> $ 200.50</span>
 						</div>
 					</div>
-					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+					<div ng-show="orderDetailCtrl.order.coupon_id" style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
 						<div class="sumprice blackAlpha85">
 							优惠卷平台:
 						</div>
@@ -52,7 +52,7 @@
 							<span class="unique_color" ng-bind="orderDetailCtrl.order.coupon_name">balabala </span>
 						</div>
 					</div>
-					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+					<div ng-show="orderDetailCtrl.order.coupon_id" style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
 						<div class="sumprice blackAlpha85">
 							优惠卷金额:
 						</div>
@@ -60,7 +60,7 @@
 							<span class="unique_color" ng-bind="orderDetailCtrl.order.coupon_value | currency:'$ '">10</span>
 						</div>
 					</div>
-					<div style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
+					<div ng-show="orderDetailCtrl.order.coupon_id" style="display: flex;justify-content: space-between;align-items: center;height: 40px;">
 						<div class="sumprice blackAlpha85">
 							优惠后金额:
 						</div>

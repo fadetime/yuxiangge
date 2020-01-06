@@ -79,6 +79,27 @@ angular.module('kuaishangcaiwebApp')
         case 'net':
           self.showPayment='net';
           break;
+        case 'visa':
+          self.showPayment='visa';
+          break;
+        case 'master':
+          self.showPayment='master';
+          break;
+        case 'amexs':
+          self.showPayment='amexs';
+          break;
+        case 'diners':
+          self.showPayment='diners';
+          break;
+        case 'grabPay':
+          self.showPayment='grabPay';
+          break;
+        case 'aliPay':
+          self.showPayment='aliPay';
+          break;
+        case 'wechat':
+          self.showPayment='wechat';
+          break;
       };
       self.openChoose=false;
     };

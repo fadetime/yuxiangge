@@ -113,7 +113,19 @@ var OrderSchema = new Schema({
 	subtotal:Number,//最终收费，总价
 	createDate:Date,
 	status:Number,//1.订桌,2.进行,3.结算,4.完成，5.取消
-	payment:String,//支付方式，cash,unionPay,credit,net
+	payment:String,
+	//*******支付方式*******/
+	//'cash'=cash(现金)
+	//'unionPay'=unionPay(银联)
+	//'credit'=Credit(信用卡)
+	//'net'=Nets(网络)
+	//'visa'=Visa
+	//'master'=Master
+	//'amexs'=Amex’s
+	//'diners'=Diners
+	//'grabPay'=Grab pay
+	//'aliPay'=Alipay(支付宝)
+	//'wechat'=Wechat(微信)
 	orderTimes:Number,//点菜次数
 	//20191002 add coupon feature
 	coupon_id:{ type: String, default: null},
